@@ -1,0 +1,445 @@
+[gd_scene load_steps=8 format=3 uid="uid://2flfmxh4u0g"]
+
+[ext_resource type="Script" path="res://Scripts/ProgressNode.cs" id="1_x7m66"]
+
+[sub_resource type="Shader" id="Shader_ms6d7"]
+code = "shader_type canvas_item;
+
+uniform float value : hint_range(0, 100.0) = 0;
+uniform int segments = 1;
+uniform float radius = 0.5;
+uniform float hollow_radius = 0.4;
+uniform float margin : hint_range(0.0, 100.0) = 0.0;
+uniform float rotation : hint_range(-100.0, 100.0);
+uniform float progress_rotation : hint_range(-1.0, 1.0);
+uniform vec3 color : source_color = vec3(1,1,1);
+//uniform sampler2D gradient = source_color;
+//uniform sampler2D radius_curve;
+
+/*
+vec4 get_gradient_color(sampler2D src, float position) {
+	position = clamp(position, 0.01, 0.99); // Color at 0.0 and 1.0 get interpolated by both end
+    return texture(src, vec2(position, 0.5));
+}
+*/
+float map_range(float min1, float max1, float min2, float max2, float v) {
+	float p = (v - min1) / (max1 - min1);
+	return p * (max2 - min2) + min2;
+}
+
+vec2 rotate_uv(vec2 uv, float p_rotation){
+    float mid = 0.5;
+    return vec2(
+        cos(p_rotation) * (uv.x - mid) + sin(p_rotation) * (uv.y - mid) + mid,
+        cos(p_rotation) * (uv.y - mid) - sin(p_rotation) * (uv.x - mid) + mid
+    );
+}
+
+float circle_shape(vec2 uv, float p_radius) {
+	vec2 center = vec2(0.5, 0.5);
+	return 1.0 - step(p_radius, distance(center, uv));
+}
+
+float radial_shape(vec2 uv, int p_segments) {
+	float radial = 0.0;
+	uv -= 0.5;
+	radial = atan(uv.y, uv.x);
+	radial = map_range(-PI, PI, 0.0, float(p_segments), radial);
+	radial = mod(radial, 1.0);
+	
+	return radial;
+}
+
+void fragment() {
+	vec2 uv = UV;
+	uv = rotate_uv(uv, PI/2.0); // Rotate 90 degrees, so origin pointing at north be default
+	uv = rotate_uv(uv, (rotation/100.0) * PI);
+	
+	float t = radial_shape(uv, 1);
+	/*if (use_value_gradient) {
+		t = value;
+	}*/
+	//float radius_t = get_gradient_color(radius_curve, radial_shape(uv, 1)).r;
+	
+	float shape = radial_shape(uv, segments);
+	float border_size = (1.0-margin/100.0)/2.0;
+	shape *= step(border_size, shape);
+	shape *= step(shape, 1.0 - border_size);
+	shape = step(shape, 0.0);
+	
+	uv = rotate_uv(uv, progress_rotation * PI);
+	float arc = radial_shape(uv, 1);
+	arc = step(arc, value/100.0);
+	
+	float bounds = circle_shape(uv, radius);
+	float hollow = 1.0-circle_shape(uv, hollow_radius);
+	
+	shape = shape * arc * bounds * hollow;
+	
+	//vec4 gradient_color = color;
+	COLOR = vec4(color, shape);
+}
+// Called for every pixel for every light affecting the CanvasItem.
+	// Uncomment to replace the default light processing function with this one.
+//}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jml51"]
+shader = SubResource("Shader_ms6d7")
+shader_parameter/value = 0.0
+shader_parameter/segments = 1
+shader_parameter/radius = 0.5
+shader_parameter/hollow_radius = 0.4
+shader_parameter/margin = 0.0
+shader_parameter/rotation = 4.75e-08
+shader_parameter/progress_rotation = 4.75e-08
+shader_parameter/color = Color(1, 1, 1, 1)
+
+[sub_resource type="Shader" id="Shader_0hnod"]
+code = "shader_type canvas_item;
+
+
+//背景填充颜色
+uniform vec3 backFillColour : source_color = vec3(0.66,0.66,0.66);
+//前景填充靠里的颜色
+//前景填充靠边的颜色
+uniform vec3 frontFillOuterColour : source_color = vec3(1,1,1);
+//环的颜色
+uniform vec3 ringColour : source_color = vec3(1,1,1);
+//玻璃罩阴影颜色
+//内环发光颜色
+
+//填充颜色调整
+uniform vec4 fillcolour : source_color = vec4(1);
+//环的宽度
+uniform float ringWidth = 0.12;
+//玻璃球与环的间隔
+uniform float innerCircleRadiusOffset = 0.06;
+//fill_value,填充球体的值
+uniform float fill_value : hint_range(-100, 100) = -100;
+uniform float amp_mul : hint_range(-1,1) = 0.7;
+uniform float freq_mul : hint_range(-4,4) = 1;
+
+// 定义函数：计算点到圆弧的距离
+float sdArc(in vec2 p, in vec2 sc, in float ra, float rb)
+{
+    // sc is the sin/cos of the arc's aperture
+	//sc 是圆弧孔径的 sin/cos
+    p.x = abs(p.x);
+    return ((sc.y*p.x>sc.x*p.y) ? length(p-sc*ra) : 
+                                  abs(length(p)-ra)) - rb;
+}
+// 计算2D旋转矩阵
+mat2 Get2DRotationMatrix(float angle) {
+    float c = cos(angle);
+    float s = sin(angle);
+	vec2 V1 = vec2(c, -s);
+	vec2 V2 = vec2(s, c);
+    return mat2(V1,V2);
+}
+
+void fragment() {
+// 获取屏幕像素的UV坐标
+// Centered, aspect ratio-corrected, normalized pixel coordinates [0.0, 1.0].
+    //vec2 uv = ((UV / -0.48)) + vec2(1.038,1.038);
+	vec2 uv = ((UV / -0.48)) + vec2(1.038,1.038);//默认最佳参数
+	////调整球体大小和边距，uv=((UV/调整球体大小的参数))+vec2(球体边距参数,球体边距参数)   
+	// FRAGCOORD.xy / SCREEN_PIXEL_SIZE.xy 其实就是 UV
+    vec2 normalizedCenteredUV = (uv - 0.5) * 2.0;
+    // vec2 normalizedCenteredUV = ((FRAGCOORD.xy / SCREEN_PIXEL_SIZE.xy) - 0.5) * 2.0;
+    //{应该是没用的代码，上面这行好像也不起作用，但是不知道怎么改：）
+    //float aspectRatio = SCREEN_PIXEL_SIZE.x / SCREEN_PIXEL_SIZE.y;
+    //vec2 uv = vec2(normalizedCenteredUV.x * aspectRatio, normalizedCenteredUV.y);}
+            
+    // Get circle SDF -> clip 3x circles.
+    //获取圆 SDF -> 剪出 3x 圆。        
+    float circleSDF = length(uv);
+    
+    //const float ringWidth = 0.15;//环的宽度
+    //const float innerCircleRadiusOffset = 0.0;//玻璃球与环的间隔
+    
+    float oneMinusRingWidth = 1.0 - ringWidth;
+    
+    // 2x circles used to generate outer ring.
+	//2x 个圆圈用于生成外环。
+    
+    float circleA = step(circleSDF, 1.0);
+    float circleB = step(circleSDF, oneMinusRingWidth);
+        
+    float ring = circleA - circleB;
+    
+    // 1x circle used for the actual container/shell (as its mask).
+	//1x 用于实际容器/外壳的圆圈（作为其遮罩）。
+    
+    float fillMaskCircle = step(circleSDF, oneMinusRingWidth - innerCircleRadiusOffset);
+    
+    // Ring glow.
+	//环发光
+        
+    float ringGlowCircleSDF = circleSDF - 1.0;
+    const float innerRingGlowRadiusOffset = 0.15;
+    
+    float innerRingGlow = ringGlowCircleSDF + innerRingGlowRadiusOffset;    
+    float outerRingGlow = ringGlowCircleSDF;   
+    
+    const float outerRingGlowWidth = 0.01;
+    float outerRingGlowPower = 0.8;
+    
+    const float innerRingGlowWidth = 0.01;
+    const float innerRingGlowPower = 1.2;
+    
+    const float outerRingGlowAnimation = 12.0;
+    const float outerRingGlowAnimationRange = 0.2;    
+    
+    innerRingGlow = pow(innerRingGlowWidth / innerRingGlow, innerRingGlowPower);
+    innerRingGlow = clamp(innerRingGlow - fillMaskCircle, 0.0, 1.0); 
+    
+    outerRingGlowPower += (sin(TIME * outerRingGlowAnimation) * outerRingGlowAnimationRange);
+    
+    outerRingGlow = pow(outerRingGlowWidth / outerRingGlow, outerRingGlowPower);
+    outerRingGlow = clamp(outerRingGlow - fillMaskCircle, 0.0, 1.0);
+    
+    // Progress/fill. Animated.
+	//进度/填充。 动画。
+    
+    const float fillAnimationFrequency = 4.0;
+    float fillAnimationAmplitude = 0.05;
+        
+    float fillAnimationPhase = TIME * fillAnimationFrequency;
+    
+    float fillAnimation = sin(fillAnimationPhase) * fillAnimationAmplitude;
+    
+     float waveFrequency = 2.0*freq_mul;
+     float waveAmplitude = 0.05*amp_mul;
+    
+    const float waveAnimation = 2.0;
+    
+    // Waves as repeating sine/band offsets to the horizontal gradient.
+	//波作为重复正弦/频带偏移到水平梯度。
+    
+    float frontWavePhase = (TIME * waveAnimation) + uv.x;
+    float backWavePhase = (TIME * -waveAnimation) + uv.x;
+        
+    frontWavePhase *= waveFrequency;
+    backWavePhase *= waveFrequency;
+        
+    const float backWavesPhaseOffset = PI;
+    
+    float frontWaves = sin(frontWavePhase) * waveAmplitude;
+    float backWaves = sin(backWavePhase + backWavesPhaseOffset) * waveAmplitude;
+            
+    float verticalBand = sin(uv.x + (PI * 0.5))*amp_mul - 0.3;
+    verticalBand = smoothstep(0.1, 0.9, verticalBand);
+   
+    // Stretch waves up/down near center, synced as they bob up/down.
+	//在中心附近向上/向下拉伸波浪，当它们向上/向下摆动时同步。
+    
+    const float animatedVerticalBandStrength = 0.125;
+    float animatedVerticalBand = verticalBand * animatedVerticalBandStrength;
+            
+    animatedVerticalBand *= sin(TIME * fillAnimationFrequency);
+            
+    frontWaves += animatedVerticalBand;
+    backWaves -= animatedVerticalBand;
+    
+    // Pinch sides (mask by the vertical gradient band) so they don't move.
+	//捏住两侧（用垂直渐变带遮盖），这样它们就不会移动。
+    
+    fillAnimation *= verticalBand;
+            
+    // Centered fill progress.居中填充进度。
+    // 0.0 = center 中心, -0.5 = bottom 底部, 0.5 = top 顶部.
+    
+    float fillProgressAnimationFrequency = 1.0;
+    float fillProgressAnimationAmplitude = 0.1;
+    
+    float fillProgress = fill_value/100.0;//填充进度
+    
+    fillProgress += sin((TIME * fillProgressAnimationFrequency) * PI)*amp_mul * fillProgressAnimationAmplitude;
+    //fillProgress = (fillProgress - 0.5) * 2.0; 
+    
+    float frontFill = step(uv.y, (fillAnimation + frontWaves) + fillProgress);
+    float backFill = step(uv.y, (-fillAnimation + backWaves) + fillProgress);
+    
+    frontFill *= fillMaskCircle;
+    backFill *= fillMaskCircle;
+    
+    // Mask back fill to only parts that would be visible separate from frontFill.
+	//仅将背面填充蒙版为与正面填充分开可见的部分。
+    
+    backFill = clamp(backFill - frontFill, 0.0, 1.0);
+    
+    float fillMask = 1.0 - (frontFill + backFill);
+    fillMask *= fillMaskCircle;
+        
+    float fill = frontFill + backFill;
+    
+    // Simple edge glow using radial gradient (circle SDF).
+	//使用径向渐变（圆形 SDF）的简单边缘发光。
+    
+    
+    // Specular reflection, drawn (stylized, like a cartoon) as two arcs.
+	//镜面反射，绘制（风格化，像卡通）为两条弧线。
+    // Final mask. Can be used as alpha.
+	//最后的遮罩。 可以用作透明通道。
+    
+    float mask = ring + fill;
+    
+    // Per-mask RGB colour.
+	//每个蒙版 RGB 颜色。
+    
+    //const vec3 ringColour = vec3(1.0, 0.9, 0.8);//环的颜色
+    
+    //const vec3 frontFillInnerColour = vec3(1.0, 0.2, 0.1);//前景填充靠里的颜色
+    //const vec3 frontFillOuterColour = vec3(0.0, 0.0, 0.0);//前景填充靠边的颜色
+    
+    vec3 frontFillColour = frontFillOuterColour;
+    
+    //const vec3 backFillColour = vec3(0.5, 0.0, 0.0);//背景填充颜色
+    
+    
+    //const vec3 fresnelColour = vec3(0.5, 0.0, 0.3);//玻璃罩阴影颜色
+    
+    //const vec3 innerRingGlowColour = vec3(1.0, 0.3, 0.1);//内环发光颜色
+    const vec3 outerRingGlowColour = vec3(1.0, 0.8, 0.1);//外环发光颜色
+             
+    vec3 rgb =
+    
+        (ring * ringColour) +
+    
+        (outerRingGlow * outerRingGlowColour) +
+        
+        
+        ((frontFill * frontFillColour) +
+        (backFill * backFillColour))*fillcolour.rgb
+      ;
+    
+    // Background gradient. Just for presentation.
+	//背景渐变。 只是为了演示。
+    
+    const float backgroundGradientPower = 0.6;
+    
+    float backgroundGradient = length(normalizedCenteredUV);
+    
+    backgroundGradient = pow(backgroundGradient, backgroundGradientPower);
+    backgroundGradient = smoothstep(0.0, 1.0, backgroundGradient);//第一个参数是背景阴影的亮度
+    
+    vec3 backgroundGradientInnerColour = vec3(0.13, 0.0, 0.4);
+    vec3 backgroundGradientOuterColour = vec3(0.0, 0.0, 0.0);//背景外玻璃颜色
+    
+    vec3 background = mix(backgroundGradientInnerColour, backgroundGradientOuterColour, backgroundGradient);
+    
+    // Simply add the background to the composite so far.
+    //到目前为止，只需将背景添加到合成中    
+    background = clamp(background - (fill + ring), 0.0, 1.0);//背景-（填充+环）,亮度参数1,亮度参数2
+         
+    const float backgroundStrength = 0.65;//背景强度    
+    background *= backgroundStrength;
+    
+    rgb += background;
+    
+    // Output to screen.将颜色输出到屏幕
+    
+	COLOR = vec4(rgb, mask);
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cnetl"]
+shader = SubResource("Shader_0hnod")
+shader_parameter/backFillColour = Color(0.658824, 0.658824, 0.658824, 1)
+shader_parameter/frontFillOuterColour = Color(1, 1, 1, 1)
+shader_parameter/ringColour = Color(1, 1, 1, 1)
+shader_parameter/fillcolour = Color(1, 1, 1, 1)
+shader_parameter/ringWidth = 0.12
+shader_parameter/innerCircleRadiusOffset = 0.06
+shader_parameter/fill_value = -100.0
+shader_parameter/amp_mul = 0.7
+shader_parameter/freq_mul = 1.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fujmc"]
+bg_color = Color(1, 1, 1, 0)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kvub3"]
+bg_color = Color(1, 1, 1, 1)
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_x7m66")
+metadata/Type = 0
+metadata/Progress = 0.0
+
+[node name="Ring" type="ColorRect" parent="."]
+visible = false
+material = SubResource("ShaderMaterial_jml51")
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = -100.0
+offset_right = 100.0
+offset_bottom = 100.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/Behavior = 0
+
+[node name="Wave" type="ColorRect" parent="."]
+visible = false
+material = SubResource("ShaderMaterial_cnetl")
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = -100.0
+offset_right = 100.0
+offset_bottom = 100.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Bar" type="Panel" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -144.0
+offset_top = -10.0
+offset_right = 144.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_fujmc")
+metadata/Behavior = 0
+metadata/BoarderColor = Color(1, 1, 1, 1)
+metadata/FillColor = Color(1, 1, 1, 1)
+metadata/BoarderWidth = 10
+
+[node name="Fill" type="Panel" parent="Bar"]
+z_index = -1
+layout_mode = 1
+offset_right = 288.0
+offset_bottom = 20.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_kvub3")
+
+[node name="Progress" type="Label" parent="."]
+offset_left = -19.0
+offset_top = 11.0
+offset_right = 23.0
+offset_bottom = 34.0
+text = "100%"
+
+[node name="Name" type="Label" parent="."]
+offset_left = -35.0
+offset_top = -36.0
+offset_right = 33.0
+offset_bottom = -13.0
+text = "Progress
+"
+
+[node name="Value" type="Marker2D" parent="."]

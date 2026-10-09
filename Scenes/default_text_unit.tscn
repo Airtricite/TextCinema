@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://bpieqovwsgmoj"]
+
+[node name="TextUnit" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="TextCase" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -0.5
+offset_right = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 44
+bbcode_enabled = true
+text = "[center][Responsibility]：点击输入文字点击输入文字点击输入文字点击输入文字[/center]
+"
+scroll_active = false
+
+[node name="ReferenceRect" type="ReferenceRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+border_color = Color(1, 1, 0, 1)
+border_width = 2.0

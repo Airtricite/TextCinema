@@ -1,0 +1,31 @@
+[gd_scene load_steps=2 format=3 uid="uid://dcjnuts6j4uhq"]
+
+[sub_resource type="GDScript" id="GDScript_dk3bn"]
+script/source = "extends Button
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+
+
+func _on_pressed() -> void:
+	get_tree().change_scene_to_file(\"res://Scenes/editor.tscn\");
+	pass # Replace with function body.
+"
+
+[node name="BackToEditingPanel" type="Button"]
+offset_left = 1819.0
+offset_top = 14.0
+offset_right = 1907.0
+offset_bottom = 72.0
+theme_override_font_sizes/font_size = 31
+text = "Back"
+script = SubResource("GDScript_dk3bn")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

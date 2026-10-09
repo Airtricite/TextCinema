@@ -1,0 +1,6087 @@
+[gd_scene load_steps=59 format=3 uid="uid://s8k1c57v8kpb"]
+
+[ext_resource type="Script" path="res://Scripts/editor.cs" id="1_6nkcw"]
+[ext_resource type="Script" path="res://Scripts/EventPanel.cs" id="2_ssd5v"]
+[ext_resource type="Script" path="res://Scripts/DragEdit.cs" id="3_2ohkr"]
+[ext_resource type="Script" path="res://Scripts/StringProp.cs" id="3_h2gw3"]
+[ext_resource type="AudioStream" uid="uid://wcuk8tp2wfjn" path="res://Audios/31_Pop1.mp3" id="3_hjaya"]
+[ext_resource type="AudioStream" uid="uid://btgwnn0u5cgcw" path="res://Audios/29_Pop2.mp3" id="4_hdj2d"]
+[ext_resource type="Script" path="res://Scripts/NumberProp.cs" id="4_qwthv"]
+[ext_resource type="AudioStream" uid="uid://oymnstna8sv3" path="res://Audios/30_Pop3.mp3" id="5_10bm7"]
+[ext_resource type="Script" path="res://Scripts/ElementProp.cs" id="5_f8ypi"]
+[ext_resource type="AudioStream" uid="uid://dorkdsj33g6s7" path="res://Audios/28_Pop4.mp3" id="6_5qj6m"]
+[ext_resource type="Script" path="res://Scripts/ElementExplorer.cs" id="6_a8r1r"]
+[ext_resource type="Texture2D" uid="uid://dfyo1sdvsqumi" path="res://icon.svg" id="7_qfadt"]
+[ext_resource type="Script" path="res://Scripts/ApplyColor.cs" id="8_a6spe"]
+[ext_resource type="Script" path="res://Scripts/PhysicsCenter.cs" id="8_cdv2j"]
+[ext_resource type="Script" path="res://Scripts/RecycleBinUnit.cs" id="9_21ixg"]
+[ext_resource type="Script" path="res://Scripts/MoveablePoint.cs" id="9_eyy3e"]
+[ext_resource type="Script" path="res://Scripts/CinemaPreview.cs" id="9_y0u15"]
+[ext_resource type="Script" path="res://Scripts/element.cs" id="10_3qxpm"]
+[ext_resource type="Script" path="res://Scripts/HitBoxDraw.cs" id="10_ohncs"]
+[ext_resource type="Script" path="res://Scripts/TextEditor.cs" id="11_7fxdy"]
+[ext_resource type="Script" path="res://Scripts/ColorProp.cs" id="11_yo4ux"]
+[ext_resource type="Script" path="res://Scenes/LFOEditor.cs" id="12_1385r"]
+[ext_resource type="Script" path="res://Scripts/BoolProp.cs" id="12_gbdob"]
+[ext_resource type="Script" path="res://Scenes/ModUnit.cs" id="13_4g6a7"]
+[ext_resource type="Script" path="res://Scripts/IntProp.cs" id="13_l66uh"]
+[ext_resource type="Script" path="res://Scripts/BelongsToProp.cs" id="13_x62a1"]
+[ext_resource type="Script" path="res://Scripts/marker.cs" id="19_glsup"]
+[ext_resource type="Script" path="res://Scenes/Button.gd" id="19_vprov"]
+[ext_resource type="Script" path="res://Scripts/ArchiveEventModeProp.cs" id="20_v3tck"]
+[ext_resource type="Script" path="res://Scripts/ContentColorProp.cs" id="21_evont"]
+[ext_resource type="Script" path="res://Scripts/ControlWindow.cs" id="22_h4dlt"]
+[ext_resource type="Script" path="res://Scripts/CustomTheme.cs" id="23_firrm"]
+[ext_resource type="Script" path="res://Scripts/ThemeUnit.cs" id="24_chh6y"]
+[ext_resource type="Texture2D" uid="uid://buuuhihs5vk8e" path="res://Images/Tweens.png" id="29_18nsd"]
+[ext_resource type="Script" path="res://Scenes/TweenPanel.cs" id="30_p67qt"]
+[ext_resource type="Script" path="res://Scripts/DecoUnit.cs" id="31_0klfr"]
+[ext_resource type="Script" path="res://Scenes/TweenPropUnit.cs" id="31_4y16b"]
+[ext_resource type="Script" path="res://Scenes/EventGroupEditor.cs" id="38_2qtl2"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1m5yt"]
+bg_color = Color(0.286275, 0.286275, 0.286275, 1)
+
+[sub_resource type="GDScript" id="GDScript_j16tl"]
+script/source = "extends Node2D
+
+@onready var rot=$\"../DragDir/X\"
+@onready var grav_edit=$\"..\"
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _physics_process(delta: float) -> void:
+	if grav_edit.visible:
+		rotation_degrees=rot.value
+	pass
+"
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_jwlwg"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_65vhs"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_idplo"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_qfadt")
+}],
+"loop": true,
+"name": &"default",
+"speed": 24.0
+}]
+
+[sub_resource type="GDScript" id="GDScript_ojmqb"]
+script/source = "extends Panel
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	pass
+
+
+func ApplyColor(extra_arg_0):
+	pass # Replace with function body.
+
+
+func _on_apply_pressed(extra_arg_0):
+	pass # Replace with function body.
+"
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m7v2a"]
+bg_color = Color(0.415686, 0.415686, 0.415686, 1)
+
+[sub_resource type="GDScript" id="GDScript_gt5pl"]
+script/source = "extends Window
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+
+
+func _on_click_pressed():
+	popup()
+	pass # Replace with function body.
+
+
+func _on_close_requested():
+	visible=false
+	pass # Replace with function body.
+"
+
+[sub_resource type="GDScript" id="GDScript_nx5yv"]
+script/source = "extends Button
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	pass
+
+
+func _on_pressed():
+	get_child(0).visible=not get_child(0).visible
+	pass # Replace with function body.
+"
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iqela"]
+bg_color = Color(0.901961, 0.901961, 0.901961, 0)
+border_width_bottom = 5
+border_color = Color(0.894118, 0.894118, 0.894118, 1)
+expand_margin_bottom = 20.0
+
+[sub_resource type="GDScript" id="GDScript_5q0nh"]
+script/source = "extends Panel
+
+@onready var unit=$\"../Unit\"
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	for i in range(1,33):
+		var u=unit.duplicate() 
+		
+		u.name=str(i)
+		u.text=str(i)
+		$Layer.add_child(u)
+		u.visible=true
+		$Mask.add_child(u.duplicate())
+		pass
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	pass
+"
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_14kt1"]
+bg_color = Color(0.381703, 0.381703, 0.381703, 1)
+
+[sub_resource type="GDScript" id="GDScript_lr6tl"]
+script/source = "extends Button
+
+# Called when the node enters the scene tree for the first time.
+func pressed():
+	$\"../FileDialog\".popup()
+	pass # Replace with function body.
+"
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_xgpqb"]
+random_pitch = 1.1
+random_volume_offset_db = 0.5
+streams_count = 4
+stream_0/stream = ExtResource("3_hjaya")
+stream_1/stream = ExtResource("4_hdj2d")
+stream_2/stream = ExtResource("5_10bm7")
+stream_3/stream = ExtResource("6_5qj6m")
+
+[sub_resource type="GDScript" id="GDScript_bmrr5"]
+script/source = "extends TextEdit
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	pass
+
+
+func _on_text_changed():
+	get_node(\"../Preview\").text=text
+	pass # Replace with function body.
+"
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s8aay"]
+bg_color = Color(0.105349, 0.635495, 9.62615e-07, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nbyax"]
+bg_color = Color(0.666667, 0.666667, 0.666667, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3eut5"]
+bg_color = Color(0.2, 0.2, 0.2, 1)
+
+[sub_resource type="Gradient" id="Gradient_h6qku"]
+colors = PackedColorArray(0, 0.586444, 0.927771, 1, 0, 1, 0.0999999, 1)
+
+[sub_resource type="GDScript" id="GDScript_qfxa7"]
+script/source = "extends Panel
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	pass
+
+
+func _on_button_pressed():
+	for i in ($\"Markers\".get_children()):
+		print(get_rect())
+		if i.position<size and i.position>Vector2.ZERO:
+			i.queue_free()
+			pass
+		pass
+	pass # Replace with function body.
+"
+
+[node name="Editor" type="Node2D"]
+script = ExtResource("1_6nkcw")
+metadata/_edit_vertical_guides_ = [-2987.0]
+
+[node name="Panel" type="TextureButton" parent="."]
+modulate = Color(1, 1, 1, 0)
+z_index = -4096
+offset_left = -4480.0
+offset_top = -3464.0
+offset_right = 4520.0
+offset_bottom = 3072.0
+mouse_filter = 1
+
+[node name="OpenThemePanel" type="Button" parent="."]
+offset_left = -1104.0
+offset_top = -536.0
+offset_right = -968.0
+offset_bottom = -488.0
+text = "Edit Themes"
+
+[node name="CancelTransform" type="Button" parent="."]
+offset_left = -1768.0
+offset_top = -528.0
+offset_right = -1670.0
+offset_bottom = -480.0
+text = "Cancel
+"
+
+[node name="ApplyTransform" type="Button" parent="."]
+modulate = Color(0.333333, 1, 0, 1)
+offset_left = -1664.0
+offset_top = -528.0
+offset_right = -1416.0
+offset_bottom = -480.0
+theme_override_font_sizes/font_size = 31
+text = "Apply"
+
+[node name="TransformEditor" type="Panel" parent="."]
+offset_left = -2120.0
+offset_top = -472.0
+offset_right = -1781.0
+offset_bottom = -20.0
+
+[node name="Indicator" type="Node2D" parent="TransformEditor"]
+visible = false
+position = Vector2(754, 226)
+
+[node name="Cursor" type="Node2D" parent="TransformEditor/Indicator"]
+modulate = Color(0.813429, 0.960754, 2.31028e-06, 1)
+
+[node name="ColorRect" type="ColorRect" parent="TransformEditor/Indicator/Cursor"]
+z_as_relative = false
+offset_left = -2.0
+offset_top = -2.0
+offset_right = 2.0
+offset_bottom = 2.0
+
+[node name="ColorRect4" type="ColorRect" parent="TransformEditor/Indicator/Cursor"]
+z_as_relative = false
+offset_left = -2.0
+offset_top = -23.0
+offset_right = 2.0
+offset_bottom = -7.0
+
+[node name="ColorRect5" type="ColorRect" parent="TransformEditor/Indicator/Cursor"]
+z_as_relative = false
+offset_left = -2.0
+offset_top = 7.0
+offset_right = 2.0
+offset_bottom = 23.0
+
+[node name="ColorRect2" type="ColorRect" parent="TransformEditor/Indicator/Cursor"]
+z_as_relative = false
+offset_left = -26.0
+offset_top = -2.0
+offset_right = -7.0
+offset_bottom = 2.0
+
+[node name="ColorRect3" type="ColorRect" parent="TransformEditor/Indicator/Cursor"]
+z_as_relative = false
+offset_left = 7.0
+offset_top = -2.0
+offset_right = 26.0
+offset_bottom = 2.0
+
+[node name="Scr" type="ScrollContainer" parent="TransformEditor"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="List" type="VBoxContainer" parent="TransformEditor/Scr"]
+layout_mode = 2
+
+[node name="Pos" type="Panel" parent="TransformEditor/Scr/List"]
+visible = false
+custom_minimum_size = Vector2(338.01, 50.015)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="TransformEditor/Scr/List/Pos"]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 14.0
+offset_right = 70.0
+offset_bottom = 37.0
+text = "Position"
+
+[node name="Drag" type="Button" parent="TransformEditor/Scr/List/Pos"]
+layout_mode = 0
+offset_left = 285.0
+offset_top = 8.0
+offset_right = 328.0
+offset_bottom = 42.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_1m5yt")
+text = "Drag"
+script = ExtResource("3_2ohkr")
+
+[node name="X" type="SpinBox" parent="TransformEditor/Scr/List/Pos/Drag"]
+layout_mode = 0
+offset_left = -200.0
+offset_top = 2.0
+offset_right = -100.757
+offset_bottom = 33.0
+min_value = -65536.0
+max_value = 65536.0
+step = 0.001
+custom_arrow_step = 10.0
+
+[node name="Y" type="SpinBox" parent="TransformEditor/Scr/List/Pos/Drag"]
+layout_mode = 0
+offset_left = -101.47
+offset_top = 2.0
+offset_right = -2.30197
+offset_bottom = 33.0
+min_value = -65536.0
+max_value = 65536.0
+step = 0.001
+custom_arrow_step = 10.0
+
+[node name="Rot" type="Panel" parent="TransformEditor/Scr/List"]
+visible = false
+custom_minimum_size = Vector2(338.01, 50)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="TransformEditor/Scr/List/Rot"]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 14.0
+offset_right = 70.0
+offset_bottom = 37.0
+text = "Rotation
+"
+
+[node name="Drag" type="Button" parent="TransformEditor/Scr/List/Rot"]
+layout_mode = 0
+offset_left = 285.0
+offset_top = 8.0
+offset_right = 328.0
+offset_bottom = 42.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_1m5yt")
+text = "Drag"
+script = ExtResource("3_2ohkr")
+
+[node name="X" type="SpinBox" parent="TransformEditor/Scr/List/Rot/Drag"]
+layout_mode = 0
+offset_left = -200.0
+offset_top = 2.0
+offset_right = -25.0
+offset_bottom = 33.0
+min_value = -65536.0
+max_value = 65536.0
+step = 0.001
+custom_arrow_step = 10.0
+
+[node name="Scale" type="Panel" parent="TransformEditor/Scr/List"]
+visible = false
+custom_minimum_size = Vector2(338.01, 50)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="TransformEditor/Scr/List/Scale"]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 14.0
+offset_right = 70.0
+offset_bottom = 37.0
+text = "Scale"
+
+[node name="Drag" type="Button" parent="TransformEditor/Scr/List/Scale"]
+layout_mode = 0
+offset_left = 285.0
+offset_top = 8.0
+offset_right = 328.0
+offset_bottom = 42.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_1m5yt")
+text = "Drag"
+script = ExtResource("3_2ohkr")
+
+[node name="X" type="SpinBox" parent="TransformEditor/Scr/List/Scale/Drag"]
+layout_mode = 0
+offset_left = -200.0
+offset_top = 4.0
+offset_right = -100.757
+offset_bottom = 35.0
+min_value = -65536.0
+max_value = 65536.0
+step = 0.001
+value = 100.0
+suffix = "%"
+custom_arrow_step = 10.0
+
+[node name="Y" type="SpinBox" parent="TransformEditor/Scr/List/Scale/Drag"]
+layout_mode = 0
+offset_left = -101.47
+offset_top = 4.0
+offset_right = -2.30197
+offset_bottom = 35.0
+min_value = -65536.0
+max_value = 65536.0
+step = 0.001
+value = 100.0
+suffix = "%"
+custom_arrow_step = 10.0
+
+[node name="Offset" type="Panel" parent="TransformEditor/Scr/List"]
+visible = false
+custom_minimum_size = Vector2(338.01, 50.015)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="TransformEditor/Scr/List/Offset"]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 14.0
+offset_right = 70.0
+offset_bottom = 37.0
+text = "Offset
+"
+
+[node name="Drag" type="Button" parent="TransformEditor/Scr/List/Offset"]
+layout_mode = 0
+offset_left = 285.0
+offset_top = 8.0
+offset_right = 328.0
+offset_bottom = 42.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_1m5yt")
+text = "Drag"
+script = ExtResource("3_2ohkr")
+
+[node name="X" type="SpinBox" parent="TransformEditor/Scr/List/Offset/Drag"]
+layout_mode = 0
+offset_left = -200.0
+offset_top = 2.0
+offset_right = -100.757
+offset_bottom = 33.0
+min_value = -65536.0
+max_value = 65536.0
+step = 0.001
+custom_arrow_step = 10.0
+
+[node name="Y" type="SpinBox" parent="TransformEditor/Scr/List/Offset/Drag"]
+layout_mode = 0
+offset_left = -101.47
+offset_top = 2.0
+offset_right = -2.30197
+offset_bottom = 33.0
+min_value = -65536.0
+max_value = 65536.0
+step = 0.001
+custom_arrow_step = 10.0
+
+[node name="Size" type="Panel" parent="TransformEditor/Scr/List"]
+visible = false
+custom_minimum_size = Vector2(338.01, 50.015)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="TransformEditor/Scr/List/Size"]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 14.0
+offset_right = 70.0
+offset_bottom = 37.0
+text = "Size
+"
+
+[node name="Drag" type="Button" parent="TransformEditor/Scr/List/Size"]
+layout_mode = 0
+offset_left = 285.0
+offset_top = 8.0
+offset_right = 328.0
+offset_bottom = 42.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_1m5yt")
+text = "Drag"
+script = ExtResource("3_2ohkr")
+
+[node name="X" type="SpinBox" parent="TransformEditor/Scr/List/Size/Drag"]
+layout_mode = 0
+offset_left = -200.0
+offset_top = 2.0
+offset_right = -100.757
+offset_bottom = 33.0
+min_value = -65536.0
+max_value = 65536.0
+step = 0.001
+value = 250.0
+custom_arrow_step = 10.0
+
+[node name="Y" type="SpinBox" parent="TransformEditor/Scr/List/Size/Drag"]
+layout_mode = 0
+offset_left = -101.47
+offset_top = 2.0
+offset_right = -2.30197
+offset_bottom = 33.0
+min_value = -65536.0
+max_value = 65536.0
+step = 0.001
+value = 250.0
+custom_arrow_step = 10.0
+
+[node name="PhysicBody" type="Panel" parent="TransformEditor/Scr/List"]
+visible = false
+custom_minimum_size = Vector2(338.01, 250)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="TransformEditor/Scr/List/PhysicBody"]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 14.0
+offset_right = 70.0
+offset_bottom = 37.0
+text = "Spawn
+Position
+
+Spawn
+Velocity
+
+Spawn
+Angular Velocity
+
+"
+
+[node name="SpawnPosition" type="Button" parent="TransformEditor/Scr/List/PhysicBody"]
+layout_mode = 0
+offset_left = 283.0
+offset_top = 18.0
+offset_right = 326.0
+offset_bottom = 52.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_1m5yt")
+text = "Drag"
+script = ExtResource("3_2ohkr")
+
+[node name="X" type="SpinBox" parent="TransformEditor/Scr/List/PhysicBody/SpawnPosition"]
+layout_mode = 0
+offset_left = -200.0
+offset_top = 2.0
+offset_right = -100.757
+offset_bottom = 33.0
+min_value = -65536.0
+max_value = 65536.0
+step = 0.001
+custom_arrow_step = 10.0
+
+[node name="Y" type="SpinBox" parent="TransformEditor/Scr/List/PhysicBody/SpawnPosition"]
+layout_mode = 0
+offset_left = -101.47
+offset_top = 2.0
+offset_right = -2.30197
+offset_bottom = 33.0
+min_value = -65536.0
+max_value = 65536.0
+step = 0.001
+custom_arrow_step = 10.0
+
+[node name="SpawnAngularVelocity" type="Button" parent="TransformEditor/Scr/List/PhysicBody"]
+layout_mode = 0
+offset_left = 283.0
+offset_top = 181.0
+offset_right = 326.0
+offset_bottom = 215.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_1m5yt")
+text = "Drag"
+script = ExtResource("3_2ohkr")
+
+[node name="Y" type="SpinBox" parent="TransformEditor/Scr/List/PhysicBody/SpawnAngularVelocity"]
+layout_mode = 0
+offset_left = -101.47
+offset_top = 2.0
+offset_right = -2.30197
+offset_bottom = 33.0
+min_value = -65536.0
+max_value = 65536.0
+step = 0.001
+custom_arrow_step = 10.0
+
+[node name="SpawnVelocity" type="Button" parent="TransformEditor/Scr/List/PhysicBody"]
+layout_mode = 0
+offset_left = 283.0
+offset_top = 100.0
+offset_right = 326.0
+offset_bottom = 134.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_1m5yt")
+text = "Drag"
+script = ExtResource("3_2ohkr")
+
+[node name="X" type="SpinBox" parent="TransformEditor/Scr/List/PhysicBody/SpawnVelocity"]
+layout_mode = 0
+offset_left = -200.0
+offset_top = 2.0
+offset_right = -100.757
+offset_bottom = 33.0
+min_value = -65536.0
+max_value = 65536.0
+step = 0.001
+custom_arrow_step = 10.0
+
+[node name="Y" type="SpinBox" parent="TransformEditor/Scr/List/PhysicBody/SpawnVelocity"]
+layout_mode = 0
+offset_left = -101.47
+offset_top = 2.0
+offset_right = -2.30197
+offset_bottom = 33.0
+min_value = -65536.0
+max_value = 65536.0
+step = 0.001
+custom_arrow_step = 10.0
+
+[node name="Gravity" type="Panel" parent="TransformEditor/Scr/List"]
+visible = false
+custom_minimum_size = Vector2(338.01, 300)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="TransformEditor/Scr/List/Gravity"]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 14.0
+offset_right = 70.0
+offset_bottom = 37.0
+text = "Gravity
+"
+
+[node name="Label2" type="Label" parent="TransformEditor/Scr/List/Gravity"]
+layout_mode = 0
+offset_left = 91.0
+offset_top = 16.0
+offset_right = 175.0
+offset_bottom = 79.0
+text = "Direction(°)
+Magnitude"
+
+[node name="DragDir" type="Button" parent="TransformEditor/Scr/List/Gravity"]
+layout_mode = 0
+offset_left = 285.0
+offset_top = 8.0
+offset_right = 328.0
+offset_bottom = 42.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_1m5yt")
+text = "Drag"
+script = ExtResource("3_2ohkr")
+
+[node name="X" type="SpinBox" parent="TransformEditor/Scr/List/Gravity/DragDir"]
+layout_mode = 0
+offset_left = -86.0
+offset_top = 1.0
+offset_right = -2.93701
+offset_bottom = 32.0
+min_value = -65536.0
+max_value = 65536.0
+step = 0.001
+value = 90.0
+custom_arrow_step = 10.0
+
+[node name="DragMag" type="Button" parent="TransformEditor/Scr/List/Gravity"]
+layout_mode = 0
+offset_left = 285.0
+offset_top = 43.0
+offset_right = 328.0
+offset_bottom = 77.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_1m5yt")
+text = "Drag"
+script = ExtResource("3_2ohkr")
+
+[node name="Y" type="SpinBox" parent="TransformEditor/Scr/List/Gravity/DragMag"]
+layout_mode = 0
+offset_left = -86.0
+offset_top = 5.0
+offset_right = -2.93701
+offset_bottom = 36.0
+min_value = -65536.0
+max_value = 65536.0
+step = 0.001
+value = 980.0
+custom_arrow_step = 10.0
+
+[node name="Arrow" type="Node2D" parent="TransformEditor/Scr/List/Gravity"]
+position = Vector2(170, 178)
+rotation = 1.5708
+script = SubResource("GDScript_j16tl")
+
+[node name="Polygon2D" type="Polygon2D" parent="TransformEditor/Scr/List/Gravity/Arrow"]
+position = Vector2(-6, -3)
+color = Color(0.529412, 1, 0.568627, 1)
+polygon = PackedVector2Array(-69, 7, 61, 9, 60, 23, 84, 3, 60, -17, 61, -3, -69, 0)
+
+[node name="GUI" type="Panel" parent="TransformEditor/Scr/List"]
+visible = false
+custom_minimum_size = Vector2(338.01, 1100)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="TransformEditor/Scr/List/GUI"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 71.0
+offset_bottom = 57.0
+text = "GUI&Camera
+"
+
+[node name="Label2" type="Label" parent="TransformEditor/Scr/List/GUI"]
+layout_mode = 0
+offset_left = 13.0
+offset_top = 47.0
+offset_right = 127.0
+offset_bottom = 330.0
+theme_override_font_sizes/font_size = 16
+text = "BaseLine{===========
+Position:
+
+Rotation:
+}
+
+General Text Area{ ===
+Position:
+
+
+
+Rotation:
+
+
+Size:
+
+
+
+Pivot Offset:
+}
+
+Plot Text Area{ ======
+Position:
+
+Rotation:
+
+
+Size:
+
+
+Pivot Offset:
+}
+
+
+Camera{ ===========
+Position:
+
+Rotation:
+
+
+Zoom:
+}"
+
+[node name="DragPosL" type="Button" parent="TransformEditor/Scr/List/GUI"]
+layout_mode = 0
+offset_left = 276.0
+offset_top = 54.0
+offset_right = 319.0
+offset_bottom = 88.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_1m5yt")
+text = "Drag"
+script = ExtResource("3_2ohkr")
+
+[node name="X" type="SpinBox" parent="TransformEditor/Scr/List/GUI/DragPosL"]
+layout_mode = 0
+offset_left = -87.0
+offset_top = -18.0
+offset_right = -3.93701
+offset_bottom = 13.0
+min_value = -65536.0
+max_value = 65536.0
+step = 0.001
+value = 960.0
+custom_arrow_step = 10.0
+
+[node name="Y" type="SpinBox" parent="TransformEditor/Scr/List/GUI/DragPosL"]
+layout_mode = 0
+offset_left = -87.0
+offset_top = 21.0
+offset_right = -3.93701
+offset_bottom = 52.0
+min_value = -65536.0
+max_value = 65536.0
+step = 0.001
+value = 660.0
+custom_arrow_step = 10.0
+
+[node name="DragRotL" type="Button" parent="TransformEditor/Scr/List/GUI"]
+layout_mode = 0
+offset_left = 231.0
+offset_top = 121.0
+offset_right = 274.0
+offset_bottom = 155.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_1m5yt")
+text = "Drag"
+script = ExtResource("3_2ohkr")
+
+[node name="X" type="SpinBox" parent="TransformEditor/Scr/List/GUI/DragRotL"]
+layout_mode = 0
+offset_left = -88.0
+offset_top = 2.0
+offset_right = -4.93701
+offset_bottom = 33.0
+min_value = -65536.0
+max_value = 65536.0
+step = 0.01
+custom_arrow_step = 10.0
+
+[node name="DragPosG" type="Button" parent="TransformEditor/Scr/List/GUI"]
+layout_mode = 0
+offset_left = 278.0
+offset_top = 220.0
+offset_right = 321.0
+offset_bottom = 254.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_1m5yt")
+text = "Drag"
+script = ExtResource("3_2ohkr")
+
+[node name="X" type="SpinBox" parent="TransformEditor/Scr/List/GUI/DragPosG"]
+layout_mode = 0
+offset_left = -87.0
+offset_top = -18.0
+offset_right = -3.93701
+offset_bottom = 13.0
+min_value = -65536.0
+max_value = 65536.0
+step = 0.001
+value = 270.0
+custom_arrow_step = 10.0
+
+[node name="Y" type="SpinBox" parent="TransformEditor/Scr/List/GUI/DragPosG"]
+layout_mode = 0
+offset_left = -87.0
+offset_top = 21.0
+offset_right = -3.93701
+offset_bottom = 52.0
+min_value = -65536.0
+max_value = 65536.0
+step = 0.001
+value = 980.0
+custom_arrow_step = 10.0
+
+[node name="DragSizeG" type="Button" parent="TransformEditor/Scr/List/GUI"]
+layout_mode = 0
+offset_left = 279.0
+offset_top = 346.0
+offset_right = 322.0
+offset_bottom = 380.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_1m5yt")
+text = "Drag"
+script = ExtResource("3_2ohkr")
+
+[node name="X" type="SpinBox" parent="TransformEditor/Scr/List/GUI/DragSizeG"]
+layout_mode = 0
+offset_left = -87.0
+offset_top = -18.0
+offset_right = -3.93701
+offset_bottom = 13.0
+min_value = -65536.0
+max_value = 65536.0
+step = 0.001
+value = 270.0
+custom_arrow_step = 10.0
+
+[node name="Y" type="SpinBox" parent="TransformEditor/Scr/List/GUI/DragSizeG"]
+layout_mode = 0
+offset_left = -87.0
+offset_top = 21.0
+offset_right = -3.93701
+offset_bottom = 52.0
+min_value = -65536.0
+max_value = 65536.0
+step = 0.001
+value = 980.0
+custom_arrow_step = 10.0
+
+[node name="DragPivotG" type="Button" parent="TransformEditor/Scr/List/GUI"]
+layout_mode = 0
+offset_left = 279.0
+offset_top = 423.0
+offset_right = 322.0
+offset_bottom = 457.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_1m5yt")
+text = "Drag"
+script = ExtResource("3_2ohkr")
+
+[node name="X" type="SpinBox" parent="TransformEditor/Scr/List/GUI/DragPivotG"]
+layout_mode = 0
+offset_left = -87.0
+offset_top = -18.0
+offset_right = -3.93701
+offset_bottom = 13.0
+min_value = -65536.0
+max_value = 65536.0
+step = 0.001
+value = 270.0
+custom_arrow_step = 10.0
+
+[node name="Y" type="SpinBox" parent="TransformEditor/Scr/List/GUI/DragPivotG"]
+layout_mode = 0
+offset_left = -87.0
+offset_top = 21.0
+offset_right = -3.93701
+offset_bottom = 52.0
+min_value = -65536.0
+max_value = 65536.0
+step = 0.001
+value = 980.0
+custom_arrow_step = 10.0
+
+[node name="DragRotG" type="Button" parent="TransformEditor/Scr/List/GUI"]
+layout_mode = 0
+offset_left = 231.0
+offset_top = 281.0
+offset_right = 274.0
+offset_bottom = 315.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_1m5yt")
+text = "Drag"
+script = ExtResource("3_2ohkr")
+
+[node name="X" type="SpinBox" parent="TransformEditor/Scr/List/GUI/DragRotG"]
+layout_mode = 0
+offset_left = -88.0
+offset_top = 2.0
+offset_right = -4.93701
+offset_bottom = 33.0
+min_value = -65536.0
+max_value = 65536.0
+step = 0.01
+custom_arrow_step = 10.0
+
+[node name="DragPosP" type="Button" parent="TransformEditor/Scr/List/GUI"]
+layout_mode = 0
+offset_left = 280.0
+offset_top = 503.0
+offset_right = 323.0
+offset_bottom = 537.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_1m5yt")
+text = "Drag"
+script = ExtResource("3_2ohkr")
+
+[node name="X" type="SpinBox" parent="TransformEditor/Scr/List/GUI/DragPosP"]
+layout_mode = 0
+offset_left = -87.0
+offset_top = -18.0
+offset_right = -3.93701
+offset_bottom = 13.0
+min_value = -65536.0
+max_value = 65536.0
+step = 0.001
+value = 270.0
+custom_arrow_step = 10.0
+
+[node name="Y" type="SpinBox" parent="TransformEditor/Scr/List/GUI/DragPosP"]
+layout_mode = 0
+offset_left = -87.0
+offset_top = 21.0
+offset_right = -3.93701
+offset_bottom = 52.0
+min_value = -65536.0
+max_value = 65536.0
+step = 0.001
+value = 980.0
+custom_arrow_step = 10.0
+
+[node name="DragSizeP" type="Button" parent="TransformEditor/Scr/List/GUI"]
+layout_mode = 0
+offset_left = 281.0
+offset_top = 629.0
+offset_right = 324.0
+offset_bottom = 663.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_1m5yt")
+text = "Drag"
+script = ExtResource("3_2ohkr")
+
+[node name="X" type="SpinBox" parent="TransformEditor/Scr/List/GUI/DragSizeP"]
+layout_mode = 0
+offset_left = -87.0
+offset_top = -18.0
+offset_right = -3.93701
+offset_bottom = 13.0
+min_value = -65536.0
+max_value = 65536.0
+step = 0.001
+value = 270.0
+custom_arrow_step = 10.0
+
+[node name="Y" type="SpinBox" parent="TransformEditor/Scr/List/GUI/DragSizeP"]
+layout_mode = 0
+offset_left = -87.0
+offset_top = 21.0
+offset_right = -3.93701
+offset_bottom = 52.0
+min_value = -65536.0
+max_value = 65536.0
+step = 0.001
+value = 980.0
+custom_arrow_step = 10.0
+
+[node name="DragRotP" type="Button" parent="TransformEditor/Scr/List/GUI"]
+layout_mode = 0
+offset_left = 233.0
+offset_top = 564.0
+offset_right = 276.0
+offset_bottom = 598.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_1m5yt")
+text = "Drag"
+script = ExtResource("3_2ohkr")
+
+[node name="X" type="SpinBox" parent="TransformEditor/Scr/List/GUI/DragRotP"]
+layout_mode = 0
+offset_left = -88.0
+offset_top = 2.0
+offset_right = -4.93701
+offset_bottom = 33.0
+min_value = -65536.0
+max_value = 65536.0
+step = 0.01
+custom_arrow_step = 10.0
+
+[node name="DragPivotP" type="Button" parent="TransformEditor/Scr/List/GUI"]
+layout_mode = 0
+offset_left = 281.0
+offset_top = 704.0
+offset_right = 324.0
+offset_bottom = 738.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_1m5yt")
+text = "Drag"
+script = ExtResource("3_2ohkr")
+
+[node name="X" type="SpinBox" parent="TransformEditor/Scr/List/GUI/DragPivotP"]
+layout_mode = 0
+offset_left = -87.0
+offset_top = -18.0
+offset_right = -3.93701
+offset_bottom = 13.0
+min_value = -65536.0
+max_value = 65536.0
+step = 0.001
+value = 270.0
+custom_arrow_step = 10.0
+
+[node name="Y" type="SpinBox" parent="TransformEditor/Scr/List/GUI/DragPivotP"]
+layout_mode = 0
+offset_left = -87.0
+offset_top = 21.0
+offset_right = -3.93701
+offset_bottom = 52.0
+min_value = -65536.0
+max_value = 65536.0
+step = 0.001
+value = 980.0
+custom_arrow_step = 10.0
+
+[node name="DragPosC" type="Button" parent="TransformEditor/Scr/List/GUI"]
+layout_mode = 0
+offset_left = 280.0
+offset_top = 792.0
+offset_right = 323.0
+offset_bottom = 826.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_1m5yt")
+text = "Drag"
+script = ExtResource("3_2ohkr")
+
+[node name="X" type="SpinBox" parent="TransformEditor/Scr/List/GUI/DragPosC"]
+layout_mode = 0
+offset_left = -87.0
+offset_top = -18.0
+offset_right = -3.93701
+offset_bottom = 13.0
+min_value = -65536.0
+max_value = 65536.0
+step = 0.001
+value = 270.0
+custom_arrow_step = 10.0
+
+[node name="Y" type="SpinBox" parent="TransformEditor/Scr/List/GUI/DragPosC"]
+layout_mode = 0
+offset_left = -87.0
+offset_top = 21.0
+offset_right = -3.93701
+offset_bottom = 52.0
+min_value = -65536.0
+max_value = 65536.0
+step = 0.001
+value = 980.0
+custom_arrow_step = 10.0
+
+[node name="DragZoomC" type="Button" parent="TransformEditor/Scr/List/GUI"]
+layout_mode = 0
+offset_left = 281.0
+offset_top = 918.0
+offset_right = 324.0
+offset_bottom = 952.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_1m5yt")
+text = "Drag"
+script = ExtResource("3_2ohkr")
+
+[node name="X" type="SpinBox" parent="TransformEditor/Scr/List/GUI/DragZoomC"]
+layout_mode = 0
+offset_left = -87.0
+offset_top = -18.0
+offset_right = -3.93701
+offset_bottom = 13.0
+min_value = -100.0
+step = 0.01
+value = 1.0
+custom_arrow_step = 0.1
+
+[node name="Y" type="SpinBox" parent="TransformEditor/Scr/List/GUI/DragZoomC"]
+layout_mode = 0
+offset_left = -87.0
+offset_top = 21.0
+offset_right = -3.93701
+offset_bottom = 52.0
+min_value = -100.0
+step = 0.01
+value = 1.0
+custom_arrow_step = 0.1
+
+[node name="DragRotC" type="Button" parent="TransformEditor/Scr/List/GUI"]
+layout_mode = 0
+offset_left = 233.0
+offset_top = 853.0
+offset_right = 276.0
+offset_bottom = 887.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_1m5yt")
+text = "Drag"
+script = ExtResource("3_2ohkr")
+
+[node name="X" type="SpinBox" parent="TransformEditor/Scr/List/GUI/DragRotC"]
+layout_mode = 0
+offset_left = -88.0
+offset_top = 2.0
+offset_right = -4.93701
+offset_bottom = 33.0
+min_value = -65536.0
+max_value = 65536.0
+step = 0.01
+custom_arrow_step = 10.0
+
+[node name="CheckBox" type="CheckButton" parent="TransformEditor"]
+layout_mode = 0
+offset_left = 95.0
+offset_top = 459.0
+offset_right = 312.0
+offset_bottom = 495.0
+scale = Vector2(1.095, 1.095)
+button_pressed = true
+text = "Clip Preview Contents"
+
+[node name="CinemaPreview" type="Panel" parent="."]
+clip_contents = true
+offset_left = -1766.0
+offset_top = -471.0
+offset_right = -966.0
+offset_bottom = -21.0
+script = ExtResource("9_y0u15")
+
+[node name="Origin" type="Node2D" parent="CinemaPreview"]
+position = Vector2(400, 225)
+
+[node name="Line" type="Line2D" parent="CinemaPreview/Origin"]
+position = Vector2(0, 66.667)
+points = PackedVector2Array(-2000, 0, 2000, 0)
+width = 5.0
+
+[node name="General" type="ReferenceRect" parent="CinemaPreview/Origin/Line"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -300.0
+offset_top = -850.0
+offset_right = 300.0
+offset_bottom = -16.667
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+border_color = Color(1, 1, 1, 1)
+border_width = 3.0
+editor_only = false
+
+[node name="Plot" type="ReferenceRect" parent="CinemaPreview/Origin/Line"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -300.0
+offset_top = 10.0
+offset_right = 300.0
+offset_bottom = 140.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+border_color = Color(1, 1, 1, 1)
+border_width = 3.0
+editor_only = false
+
+[node name="LineCase" type="Node2D" parent="CinemaPreview/Origin/Line"]
+
+[node name="Cam" type="Node2D" parent="CinemaPreview/Origin"]
+
+[node name="ReferenceRect" type="ReferenceRect" parent="CinemaPreview/Origin/Cam"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -400.0
+offset_top = -225.0
+offset_right = 400.0
+offset_bottom = 225.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+border_color = Color(0.796078, 0.172549, 0.937255, 1)
+border_width = 2.0
+editor_only = false
+
+[node name="Line2D" type="Line2D" parent="CinemaPreview/Origin/Cam/ReferenceRect"]
+points = PackedVector2Array(0, 0, 800, 450)
+width = 5.0
+default_color = Color(0.960784, 0, 0.960784, 0.262745)
+
+[node name="Line2D2" type="Line2D" parent="CinemaPreview/Origin/Cam/ReferenceRect"]
+points = PackedVector2Array(0, 450, 800, 0)
+width = 5.0
+default_color = Color(0.960784, 0, 0.960784, 0.262745)
+
+[node name="CamCase" type="Node2D" parent="CinemaPreview/Origin/Cam"]
+
+[node name="CommonCase" type="Node2D" parent="CinemaPreview"]
+position = Vector2(400, 225)
+
+[node name="ElementExplorer" type="Panel" parent="."]
+offset_left = -1767.0
+offset_right = -967.0
+offset_bottom = 519.0
+script = ExtResource("6_a8r1r")
+
+[node name="Scroll" type="ScrollContainer" parent="ElementExplorer"]
+layout_mode = 0
+offset_left = 13.0
+offset_top = 55.0
+offset_right = 781.0
+offset_bottom = 480.0
+
+[node name="GridContainer" type="GridContainer" parent="ElementExplorer/Scroll"]
+custom_minimum_size = Vector2(768, 425)
+layout_mode = 2
+columns = 7
+
+[node name="CopyElements" type="Button" parent="ElementExplorer"]
+layout_mode = 0
+offset_left = 128.0
+offset_top = 11.0
+offset_right = 193.0
+offset_bottom = 47.0
+text = "Copy
+"
+
+[node name="PasteElements" type="Button" parent="ElementExplorer"]
+layout_mode = 0
+offset_left = 198.0
+offset_top = 10.0
+offset_right = 263.0
+offset_bottom = 46.0
+text = "Paste"
+
+[node name="Edit" type="Button" parent="ElementExplorer"]
+layout_mode = 0
+offset_left = 15.0
+offset_top = 11.0
+offset_right = 80.0
+offset_bottom = 47.0
+text = "Edit
+"
+
+[node name="Delete" type="Button" parent="ElementExplorer"]
+layout_mode = 0
+offset_left = 483.0
+offset_top = 8.0
+offset_right = 548.0
+offset_bottom = 44.0
+text = "Delete"
+
+[node name="NewElements" type="OptionButton" parent="ElementExplorer"]
+layout_mode = 0
+offset_left = 281.0
+offset_top = 9.0
+offset_right = 464.0
+offset_bottom = 45.0
+allow_reselect = true
+item_count = 6
+popup/item_0/text = "🖼Image"
+popup/item_1/text = "🎞Animation"
+popup/item_1/id = 1
+popup/item_2/text = "📽Video"
+popup/item_2/id = 2
+popup/item_3/text = "📃Text"
+popup/item_3/id = 3
+popup/item_4/text = "Custom"
+popup/item_4/id = 4
+popup/item_5/text = "🌡ProgressBar"
+popup/item_5/id = 5
+
+[node name="FileDialog" type="FileDialog" parent="ElementExplorer"]
+title = "Open File(s)"
+initial_position = 1
+size = Vector2i(1130, 674)
+ok_button_text = "Open"
+dialog_hide_on_ok = true
+file_mode = 1
+access = 2
+show_hidden_files = true
+use_native_dialog = true
+
+[node name="EditWindow" type="Window" parent="ElementExplorer"]
+title = "Edit Element"
+initial_position = 1
+size = Vector2i(600, 800)
+visible = false
+
+[node name="ImageEdit" type="Panel" parent="ElementExplorer/EditWindow"]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -249.1
+offset_top = -254.09
+offset_right = 249.695
+offset_bottom = 245.975
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Preview" type="TextureRect" parent="ElementExplorer/EditWindow/ImageEdit"]
+material = SubResource("CanvasItemMaterial_jwlwg")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_qfadt")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Click" type="Button" parent="ElementExplorer/EditWindow/ImageEdit"]
+layout_mode = 0
+offset_left = 9.585
+offset_right = 497.585
+offset_bottom = 58.0
+theme_override_font_sizes/font_size = 36
+text = "Click To Select Image"
+
+[node name="OffsetX" type="LineEdit" parent="ElementExplorer/EditWindow/ImageEdit"]
+visible = false
+z_index = 1
+layout_mode = 0
+offset_left = 20.0
+offset_top = 437.0
+offset_right = 137.0
+offset_bottom = 480.0
+text = "0"
+
+[node name="OffsetY" type="LineEdit" parent="ElementExplorer/EditWindow/ImageEdit"]
+visible = false
+z_index = 1
+layout_mode = 0
+offset_left = 148.1
+offset_top = 436.09
+offset_right = 265.1
+offset_bottom = 479.09
+text = "0"
+
+[node name="SizeX" type="LineEdit" parent="ElementExplorer/EditWindow/ImageEdit"]
+visible = false
+z_index = 1
+layout_mode = 0
+offset_left = 20.0
+offset_top = 365.74
+offset_right = 137.0
+offset_bottom = 408.74
+text = "500"
+
+[node name="SizeY" type="LineEdit" parent="ElementExplorer/EditWindow/ImageEdit"]
+visible = false
+z_index = 1
+layout_mode = 0
+offset_left = 148.1
+offset_top = 365.74
+offset_right = 265.1
+offset_bottom = 408.74
+text = "500"
+
+[node name="ScaleX" type="LineEdit" parent="ElementExplorer/EditWindow/ImageEdit"]
+visible = false
+z_index = 1
+layout_mode = 0
+offset_left = 277.0
+offset_top = 434.0
+offset_right = 377.0
+offset_bottom = 477.0
+text = "1"
+
+[node name="ScaleY" type="LineEdit" parent="ElementExplorer/EditWindow/ImageEdit"]
+visible = false
+z_index = 1
+layout_mode = 0
+offset_left = 384.1
+offset_top = 434.09
+offset_right = 484.1
+offset_bottom = 477.09
+text = "1"
+
+[node name="StretchMode" type="OptionButton" parent="ElementExplorer/EditWindow/ImageEdit"]
+layout_mode = 0
+offset_left = 403.725
+offset_top = 512.98
+offset_right = 530.725
+offset_bottom = 543.98
+selected = 0
+item_count = 3
+popup/item_0/text = "Scale"
+popup/item_1/text = "Keep Aspect"
+popup/item_1/id = 1
+popup/item_2/text = "Tile"
+popup/item_2/id = 2
+
+[node name="BlendMode" type="OptionButton" parent="ElementExplorer/EditWindow/ImageEdit"]
+layout_mode = 0
+offset_left = 366.145
+offset_top = 557.295
+offset_right = 532.145
+offset_bottom = 588.295
+selected = 0
+item_count = 5
+popup/item_0/text = "Normal"
+popup/item_1/text = "Add"
+popup/item_1/id = 1
+popup/item_2/text = "Substract"
+popup/item_2/id = 2
+popup/item_3/text = "Multiply(正片叠底)"
+popup/item_3/id = 3
+popup/item_4/text = "Premultiplied Alpha"
+popup/item_4/id = 4
+
+[node name="Label" type="Label" parent="ElementExplorer/EditWindow/ImageEdit/BlendMode"]
+layout_mode = 0
+offset_top = 34.12
+offset_right = 89.0
+offset_bottom = 53.12
+text = "Blend Mode"
+
+[node name="Label" type="Label" parent="ElementExplorer/EditWindow/ImageEdit"]
+layout_mode = 0
+offset_left = 341.48
+offset_top = 510.09
+offset_right = 397.48
+offset_bottom = 559.09
+theme_override_constants/line_spacing = -5
+text = "Stretch
+Mode
+"
+
+[node name="ColorRect" type="ColorRect" parent="ElementExplorer/EditWindow/ImageEdit"]
+layout_mode = 0
+offset_left = 391.19
+offset_top = 398.53
+offset_right = 482.47
+offset_bottom = 431.62
+color = Color(0.442911, 0.442911, 0.442911, 1)
+
+[node name="PixelMode" type="CheckBox" parent="ElementExplorer/EditWindow/ImageEdit"]
+layout_mode = 0
+offset_left = 391.19
+offset_top = 398.53
+offset_right = 484.19
+offset_bottom = 429.53
+text = "Pixel Art"
+
+[node name="AnimEdit" type="Panel" parent="ElementExplorer/EditWindow"]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -249.1
+offset_top = -254.09
+offset_right = 249.695
+offset_bottom = 245.975
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Preview" type="AnimatedSprite2D" parent="ElementExplorer/EditWindow/AnimEdit"]
+material = SubResource("CanvasItemMaterial_65vhs")
+position = Vector2(247.585, 256.69)
+sprite_frames = SubResource("SpriteFrames_idplo")
+frame_progress = 0.987661
+
+[node name="Click" type="Button" parent="ElementExplorer/EditWindow/AnimEdit"]
+layout_mode = 0
+offset_left = 9.585
+offset_right = 497.585
+offset_bottom = 57.0
+theme_override_font_sizes/font_size = 36
+text = "Click To Select GIF/PNGs "
+
+[node name="Speed" type="LineEdit" parent="ElementExplorer/EditWindow/AnimEdit"]
+z_index = 1
+layout_mode = 0
+offset_left = 20.0
+offset_top = 437.0
+offset_right = 137.0
+offset_bottom = 480.0
+text = "1"
+placeholder_text = "speed = 1"
+
+[node name="FPS" type="LineEdit" parent="ElementExplorer/EditWindow/AnimEdit"]
+z_index = 1
+layout_mode = 0
+offset_left = 148.1
+offset_top = 436.09
+offset_right = 265.1
+offset_bottom = 479.09
+text = "24"
+placeholder_text = "fps = 24"
+
+[node name="ScaleX" type="LineEdit" parent="ElementExplorer/EditWindow/AnimEdit"]
+visible = false
+z_index = 1
+layout_mode = 0
+offset_left = 277.0
+offset_top = 434.0
+offset_right = 377.0
+offset_bottom = 477.0
+text = "1"
+placeholder_text = "scale x = 1"
+
+[node name="ScaleY" type="LineEdit" parent="ElementExplorer/EditWindow/AnimEdit"]
+visible = false
+z_index = 1
+layout_mode = 0
+offset_left = 384.1
+offset_top = 434.09
+offset_right = 484.1
+offset_bottom = 477.09
+text = "1"
+placeholder_text = "scale y = 1"
+
+[node name="Label" type="Label" parent="ElementExplorer/EditWindow/AnimEdit"]
+layout_mode = 0
+offset_left = 83.605
+offset_top = 406.245
+offset_right = 423.605
+offset_bottom = 430.23
+text = "Speed,    FPS,                       ScaleX,             ScaleY"
+
+[node name="ColorRect" type="ColorRect" parent="ElementExplorer/EditWindow/AnimEdit"]
+layout_mode = 0
+offset_left = 391.19
+offset_top = 511.265
+offset_right = 482.47
+offset_bottom = 544.355
+color = Color(0.442911, 0.442911, 0.442911, 1)
+
+[node name="PixelMode" type="CheckBox" parent="ElementExplorer/EditWindow/AnimEdit"]
+layout_mode = 0
+offset_left = 391.19
+offset_top = 511.265
+offset_right = 484.19
+offset_bottom = 542.265
+text = "Pixel Art"
+
+[node name="BlendMode" type="OptionButton" parent="ElementExplorer/EditWindow/AnimEdit"]
+layout_mode = 0
+offset_left = 366.145
+offset_top = 557.295
+offset_right = 532.145
+offset_bottom = 588.295
+selected = 0
+item_count = 5
+popup/item_0/text = "Normal"
+popup/item_1/text = "Add"
+popup/item_1/id = 1
+popup/item_2/text = "Substract"
+popup/item_2/id = 2
+popup/item_3/text = "Multiply(正片叠底)"
+popup/item_3/id = 3
+popup/item_4/text = "Premultiplied Alpha"
+popup/item_4/id = 4
+
+[node name="Label" type="Label" parent="ElementExplorer/EditWindow/AnimEdit/BlendMode"]
+layout_mode = 0
+offset_top = 34.12
+offset_right = 89.0
+offset_bottom = 53.12
+text = "Blend Mode"
+
+[node name="VideoEdit" type="Panel" parent="ElementExplorer/EditWindow"]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -249.1
+offset_top = -254.09
+offset_right = 249.695
+offset_bottom = 245.975
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Preview" type="VideoStreamPlayer" parent="ElementExplorer/EditWindow/VideoEdit"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+volume_db = -80.0
+
+[node name="Click" type="Button" parent="ElementExplorer/EditWindow/VideoEdit"]
+layout_mode = 0
+offset_left = 9.585
+offset_right = 497.585
+offset_bottom = 57.0
+theme_override_font_sizes/font_size = 36
+text = "Click To Select Video
+(.OGV) "
+
+[node name="Loop" type="CheckBox" parent="ElementExplorer/EditWindow/VideoEdit"]
+z_index = 1
+layout_mode = 0
+offset_left = 277.0
+offset_top = 366.875
+offset_right = 377.0
+offset_bottom = 409.875
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+text = "Looped"
+
+[node name="Expand" type="CheckBox" parent="ElementExplorer/EditWindow/VideoEdit"]
+z_index = 1
+layout_mode = 0
+offset_left = 384.1
+offset_top = 366.875
+offset_right = 484.1
+offset_bottom = 409.875
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+text = "Expand"
+
+[node name="OffsetX" type="LineEdit" parent="ElementExplorer/EditWindow/VideoEdit"]
+z_index = 1
+layout_mode = 0
+offset_left = 20.0
+offset_top = 437.0
+offset_right = 137.0
+offset_bottom = 480.0
+text = "0"
+
+[node name="OffsetY" type="LineEdit" parent="ElementExplorer/EditWindow/VideoEdit"]
+z_index = 1
+layout_mode = 0
+offset_left = 148.1
+offset_top = 436.09
+offset_right = 265.1
+offset_bottom = 479.09
+text = "0"
+
+[node name="SizeX" type="LineEdit" parent="ElementExplorer/EditWindow/VideoEdit"]
+z_index = 1
+layout_mode = 0
+offset_left = 20.0
+offset_top = 365.74
+offset_right = 137.0
+offset_bottom = 408.74
+text = "500"
+
+[node name="SizeY" type="LineEdit" parent="ElementExplorer/EditWindow/VideoEdit"]
+z_index = 1
+layout_mode = 0
+offset_left = 148.1
+offset_top = 365.74
+offset_right = 265.1
+offset_bottom = 408.74
+text = "500"
+
+[node name="ScaleX" type="LineEdit" parent="ElementExplorer/EditWindow/VideoEdit"]
+z_index = 1
+layout_mode = 0
+offset_left = 277.0
+offset_top = 434.0
+offset_right = 377.0
+offset_bottom = 477.0
+text = "1"
+
+[node name="ScaleY" type="LineEdit" parent="ElementExplorer/EditWindow/VideoEdit"]
+z_index = 1
+layout_mode = 0
+offset_left = 384.1
+offset_top = 434.09
+offset_right = 484.1
+offset_bottom = 477.09
+text = "1"
+
+[node name="CustomEdit" type="Panel" parent="ElementExplorer/EditWindow"]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -249.1
+offset_top = -254.09
+offset_right = 249.695
+offset_bottom = 245.975
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Click" type="Button" parent="ElementExplorer/EditWindow/CustomEdit"]
+layout_mode = 0
+offset_left = 9.585
+offset_right = 497.585
+offset_bottom = 57.0
+theme_override_font_sizes/font_size = 26
+text = "Click To Select Custom Nodes
+ (.tscn file with Node2D root)"
+
+[node name="Preview" type="Node2D" parent="ElementExplorer/EditWindow/CustomEdit"]
+position = Vector2(250, 250)
+
+[node name="curr_euid" type="Marker2D" parent="ElementExplorer/EditWindow"]
+visible = false
+
+[node name="ProgressEdit" type="Panel" parent="ElementExplorer/EditWindow"]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -249.1
+offset_top = -254.09
+offset_right = 249.695
+offset_bottom = 245.975
+grow_horizontal = 2
+grow_vertical = 2
+script = SubResource("GDScript_ojmqb")
+
+[node name="Click" type="Button" parent="ElementExplorer/EditWindow/ProgressEdit"]
+layout_mode = 0
+offset_left = 9.585
+offset_right = 497.585
+offset_bottom = 57.0
+theme_override_font_sizes/font_size = 26
+text = "Click To Preview"
+
+[node name="OffsetX" type="SpinBox" parent="ElementExplorer/EditWindow/ProgressEdit"]
+z_index = 1
+layout_mode = 0
+offset_left = 20.0
+offset_top = 437.0
+offset_right = 103.063
+offset_bottom = 480.0
+min_value = -65536.0
+max_value = 65536.0
+step = 0.001
+value = -125.0
+
+[node name="OffsetY" type="SpinBox" parent="ElementExplorer/EditWindow/ProgressEdit"]
+z_index = 1
+layout_mode = 0
+offset_left = 99.1
+offset_top = 438.09
+offset_right = 166.162
+offset_bottom = 481.09
+min_value = -65536.0
+max_value = 65536.0
+step = 0.001
+value = -125.0
+
+[node name="NamePosX" type="SpinBox" parent="ElementExplorer/EditWindow/ProgressEdit"]
+z_index = 1
+layout_mode = 0
+offset_left = 19.1
+offset_top = 369.09
+offset_right = 86.1625
+offset_bottom = 412.09
+min_value = -65536.0
+max_value = 65536.0
+step = 0.001
+
+[node name="NamePosY" type="SpinBox" parent="ElementExplorer/EditWindow/ProgressEdit"]
+z_index = 1
+layout_mode = 0
+offset_left = 98.2
+offset_top = 370.18
+offset_right = 165.262
+offset_bottom = 413.18
+min_value = -65536.0
+max_value = 65536.0
+step = 0.001
+
+[node name="NameSize" type="SpinBox" parent="ElementExplorer/EditWindow/ProgressEdit"]
+z_index = 1
+layout_mode = 0
+offset_left = 334.77
+offset_top = 510.69
+offset_right = 414.082
+offset_bottom = 553.69
+max_value = 1920.0
+value = 16.0
+
+[node name="Label" type="Label" parent="ElementExplorer/EditWindow/ProgressEdit/NameSize"]
+layout_mode = 0
+offset_left = -40.72
+offset_top = -23.53
+offset_right = 65.28
+offset_bottom = -4.53003
+text = "Name TextSize"
+
+[node name="ProgSize" type="SpinBox" parent="ElementExplorer/EditWindow/ProgressEdit"]
+z_index = 1
+layout_mode = 0
+offset_left = 413.34
+offset_top = 510.69
+offset_right = 492.652
+offset_bottom = 553.69
+max_value = 1920.0
+value = 16.0
+
+[node name="Label" type="Label" parent="ElementExplorer/EditWindow/ProgressEdit/ProgSize"]
+layout_mode = 0
+offset_left = -2.215
+offset_top = -23.53
+offset_right = 103.785
+offset_bottom = -4.53
+text = "Progress TextSize"
+
+[node name="ProgPosX" type="SpinBox" parent="ElementExplorer/EditWindow/ProgressEdit"]
+z_index = 1
+layout_mode = 0
+offset_left = 172.1
+offset_top = 370.09
+offset_right = 239.162
+offset_bottom = 413.09
+min_value = -65536.0
+max_value = 65536.0
+step = 0.001
+
+[node name="ProgPosY" type="SpinBox" parent="ElementExplorer/EditWindow/ProgressEdit"]
+z_index = 1
+layout_mode = 0
+offset_left = 251.2
+offset_top = 371.18
+offset_right = 318.262
+offset_bottom = 414.18
+min_value = -65536.0
+max_value = 65536.0
+step = 0.001
+
+[node name="ProgOn" type="CheckBox" parent="ElementExplorer/EditWindow/ProgressEdit"]
+z_index = 1
+layout_mode = 0
+offset_left = 325.1
+offset_top = 359.6
+offset_right = 412.1
+offset_bottom = 405.6
+button_pressed = true
+text = "Prog
+On"
+
+[node name="NameOn" type="CheckBox" parent="ElementExplorer/EditWindow/ProgressEdit"]
+z_index = 1
+layout_mode = 0
+offset_left = 403.1
+offset_top = 359.6
+offset_right = 501.1
+offset_bottom = 413.6
+button_pressed = true
+text = "Name
+On
+"
+
+[node name="SizeX" type="SpinBox" parent="ElementExplorer/EditWindow/ProgressEdit"]
+z_index = 1
+layout_mode = 0
+offset_left = 172.1
+offset_top = 438.09
+offset_right = 239.162
+offset_bottom = 481.09
+max_value = 65536.0
+step = 0.001
+value = 250.0
+
+[node name="SizeY" type="SpinBox" parent="ElementExplorer/EditWindow/ProgressEdit"]
+z_index = 1
+layout_mode = 0
+offset_left = 249.2
+offset_top = 439.18
+offset_right = 316.262
+offset_bottom = 482.18
+max_value = 65536.0
+step = 0.001
+value = 250.0
+
+[node name="ScaleX" type="SpinBox" parent="ElementExplorer/EditWindow/ProgressEdit"]
+z_index = 1
+layout_mode = 0
+offset_left = 327.1
+offset_top = 440.09
+offset_right = 410.162
+offset_bottom = 483.09
+min_value = -65536.0
+max_value = 65536.0
+step = 0.001
+value = 1.0
+
+[node name="ScaleY" type="SpinBox" parent="ElementExplorer/EditWindow/ProgressEdit"]
+z_index = 1
+layout_mode = 0
+offset_left = 407.1
+offset_top = 440.09
+offset_right = 474.162
+offset_bottom = 483.09
+min_value = -65536.0
+max_value = 65536.0
+step = 0.001
+value = 1.0
+
+[node name="Tip" type="Label" parent="ElementExplorer/EditWindow/ProgressEdit"]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 351.875
+offset_right = 493.0
+offset_bottom = 510.875
+text = "        [name pos x,y]       [progress pos x,y]
+.
+.
+.          [offset x,y]                    [size x,y]                   [scale x,y]"
+
+[node name="Type" type="OptionButton" parent="ElementExplorer/EditWindow/ProgressEdit"]
+layout_mode = 0
+offset_left = 23.1
+offset_top = 98.09
+offset_right = 145.1
+offset_bottom = 126.09
+selected = 0
+allow_reselect = true
+item_count = 3
+popup/item_0/text = "Bar"
+popup/item_1/text = "Ring"
+popup/item_1/id = 1
+popup/item_2/text = "Wave"
+popup/item_2/id = 2
+
+[node name="Bar" type="Panel" parent="ElementExplorer/EditWindow/ProgressEdit"]
+layout_mode = 0
+offset_left = 21.0
+offset_top = 141.0
+offset_right = 481.0
+offset_bottom = 351.0
+
+[node name="Behavior" type="OptionButton" parent="ElementExplorer/EditWindow/ProgressEdit/Bar"]
+layout_mode = 0
+offset_left = 313.1
+offset_top = 16.09
+offset_right = 440.1
+offset_bottom = 47.09
+selected = 0
+allow_reselect = true
+item_count = 4
+popup/item_0/text = "→"
+popup/item_1/text = "←"
+popup/item_1/id = 1
+popup/item_2/text = "←→"
+popup/item_2/id = 2
+popup/item_3/text = "→←"
+popup/item_3/id = 3
+
+[node name="BorderColor" type="ColorRect" parent="ElementExplorer/EditWindow/ProgressEdit/Bar"]
+layout_mode = 0
+offset_left = 135.1
+offset_top = 18.09
+offset_right = 175.1
+offset_bottom = 58.09
+
+[node name="Edit" type="Button" parent="ElementExplorer/EditWindow/ProgressEdit/Bar/BorderColor"]
+layout_mode = 0
+offset_left = 45.0
+offset_right = 85.0
+offset_bottom = 40.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_m7v2a")
+text = "Edit"
+
+[node name="Apply" type="Button" parent="ElementExplorer/EditWindow/ProgressEdit/Bar/BorderColor"]
+layout_mode = 0
+offset_left = 89.0
+offset_right = 141.0
+offset_bottom = 40.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_m7v2a")
+text = "Apply
+"
+script = ExtResource("8_a6spe")
+
+[node name="FillColor" type="ColorRect" parent="ElementExplorer/EditWindow/ProgressEdit/Bar"]
+layout_mode = 0
+offset_left = 135.1
+offset_top = 71.09
+offset_right = 175.1
+offset_bottom = 111.09
+
+[node name="Edit" type="Button" parent="ElementExplorer/EditWindow/ProgressEdit/Bar/FillColor"]
+layout_mode = 0
+offset_left = 45.0
+offset_right = 85.0
+offset_bottom = 40.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_m7v2a")
+text = "Edit"
+
+[node name="Apply" type="Button" parent="ElementExplorer/EditWindow/ProgressEdit/Bar/FillColor"]
+layout_mode = 0
+offset_left = 89.0
+offset_right = 141.0
+offset_bottom = 40.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_m7v2a")
+text = "Apply
+"
+script = ExtResource("8_a6spe")
+
+[node name="BorderWidth" type="SpinBox" parent="ElementExplorer/EditWindow/ProgressEdit/Bar"]
+layout_mode = 0
+offset_left = 137.0
+offset_top = 121.0
+offset_right = 275.0
+offset_bottom = 152.0
+max_value = 1000.0
+step = 0.001
+allow_greater = true
+allow_lesser = true
+suffix = "pixels"
+custom_arrow_step = 1.0
+
+[node name="Label" type="Label" parent="ElementExplorer/EditWindow/ProgressEdit/Bar"]
+layout_mode = 0
+offset_left = 2.09998
+offset_top = 16.09
+offset_right = 133.1
+offset_bottom = 163.09
+theme_override_font_sizes/font_size = 17
+text = "boarder color
+
+           fill color
+
+boarder width"
+
+[node name="Label2" type="Label" parent="ElementExplorer/EditWindow/ProgressEdit/Bar"]
+layout_mode = 0
+offset_left = 319.1
+offset_top = -5.91
+offset_right = 450.1
+offset_bottom = 141.09
+theme_override_font_sizes/font_size = 17
+text = "behavior"
+
+[node name="Ring" type="Panel" parent="ElementExplorer/EditWindow/ProgressEdit"]
+visible = false
+layout_mode = 0
+offset_left = 21.0
+offset_top = 141.0
+offset_right = 481.0
+offset_bottom = 351.0
+
+[node name="Radius" type="SpinBox" parent="ElementExplorer/EditWindow/ProgressEdit/Ring"]
+layout_mode = 0
+offset_left = 13.1
+offset_top = 29.09
+offset_right = 96.1625
+offset_bottom = 60.09
+min_value = -1.0
+max_value = 1.0
+step = 0.001
+value = 0.5
+
+[node name="HollowRadius" type="SpinBox" parent="ElementExplorer/EditWindow/ProgressEdit/Ring"]
+layout_mode = 0
+offset_left = 100.1
+offset_top = 29.09
+offset_right = 183.162
+offset_bottom = 60.09
+min_value = -1.0
+max_value = 1.0
+step = 0.001
+value = 0.4
+
+[node name="Segments" type="SpinBox" parent="ElementExplorer/EditWindow/ProgressEdit/Ring"]
+layout_mode = 0
+offset_left = 187.1
+offset_top = 29.09
+offset_right = 270.162
+offset_bottom = 60.09
+min_value = -2.14748e+09
+max_value = 2.14748e+09
+
+[node name="Margin" type="HSlider" parent="ElementExplorer/EditWindow/ProgressEdit/Ring"]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 84.0
+offset_right = 132.0
+offset_bottom = 115.0
+step = 0.001
+tick_count = 2
+ticks_on_borders = true
+
+[node name="Rotation" type="HSlider" parent="ElementExplorer/EditWindow/ProgressEdit/Ring"]
+layout_mode = 0
+offset_left = 136.0
+offset_top = 83.0
+offset_right = 258.0
+offset_bottom = 114.0
+min_value = -100.0
+step = 0.001
+tick_count = 3
+ticks_on_borders = true
+
+[node name="Color" type="ColorRect" parent="ElementExplorer/EditWindow/ProgressEdit/Ring"]
+layout_mode = 0
+offset_left = 13.1
+offset_top = 151.09
+offset_right = 53.1
+offset_bottom = 191.09
+
+[node name="Edit" type="Button" parent="ElementExplorer/EditWindow/ProgressEdit/Ring/Color"]
+layout_mode = 0
+offset_left = 45.0
+offset_right = 85.0
+offset_bottom = 40.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_m7v2a")
+text = "Edit"
+
+[node name="Apply" type="Button" parent="ElementExplorer/EditWindow/ProgressEdit/Ring/Color"]
+layout_mode = 0
+offset_left = 89.0
+offset_right = 141.0
+offset_bottom = 40.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_m7v2a")
+text = "Apply
+"
+script = ExtResource("8_a6spe")
+
+[node name="Behavior" type="OptionButton" parent="ElementExplorer/EditWindow/ProgressEdit/Ring"]
+layout_mode = 0
+offset_left = 285.0
+offset_top = 30.0
+offset_right = 445.0
+offset_bottom = 61.0
+selected = 0
+allow_reselect = true
+item_count = 2
+popup/item_0/text = "🔃"
+popup/item_1/text = "↪↩"
+popup/item_1/id = 1
+
+[node name="Label" type="Label" parent="ElementExplorer/EditWindow/ProgressEdit/Ring"]
+layout_mode = 0
+offset_left = -1.90002
+offset_top = 7.09
+offset_right = 450.1
+offset_bottom = 209.09
+text = "[Radius] [hollow radius][segments]              [behavior]
+
+[margin]                    [rotation]
+
+[color]"
+
+[node name="Wave" type="Panel" parent="ElementExplorer/EditWindow/ProgressEdit"]
+visible = false
+layout_mode = 0
+offset_left = 21.0
+offset_top = 141.0
+offset_right = 481.0
+offset_bottom = 351.0
+
+[node name="FillModulate" type="ColorRect" parent="ElementExplorer/EditWindow/ProgressEdit/Wave"]
+layout_mode = 0
+offset_left = 307.1
+offset_top = 22.09
+offset_right = 347.1
+offset_bottom = 62.09
+
+[node name="Edit" type="Button" parent="ElementExplorer/EditWindow/ProgressEdit/Wave/FillModulate"]
+layout_mode = 0
+offset_left = 45.0
+offset_right = 85.0
+offset_bottom = 40.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_m7v2a")
+text = "Edit"
+
+[node name="Apply" type="Button" parent="ElementExplorer/EditWindow/ProgressEdit/Wave/FillModulate"]
+layout_mode = 0
+offset_left = 89.0
+offset_right = 141.0
+offset_bottom = 40.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_m7v2a")
+text = "Apply
+"
+script = ExtResource("8_a6spe")
+
+[node name="RingColor" type="ColorRect" parent="ElementExplorer/EditWindow/ProgressEdit/Wave"]
+layout_mode = 0
+offset_left = 16.1
+offset_top = 90.09
+offset_right = 56.1
+offset_bottom = 130.09
+
+[node name="Edit" type="Button" parent="ElementExplorer/EditWindow/ProgressEdit/Wave/RingColor"]
+layout_mode = 0
+offset_left = 45.0
+offset_right = 85.0
+offset_bottom = 40.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_m7v2a")
+text = "Edit"
+
+[node name="Apply" type="Button" parent="ElementExplorer/EditWindow/ProgressEdit/Wave/RingColor"]
+layout_mode = 0
+offset_left = 89.0
+offset_right = 141.0
+offset_bottom = 40.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_m7v2a")
+text = "Apply
+"
+script = ExtResource("8_a6spe")
+
+[node name="FrontFill" type="ColorRect" parent="ElementExplorer/EditWindow/ProgressEdit/Wave"]
+layout_mode = 0
+offset_left = 161.1
+offset_top = 22.09
+offset_right = 201.1
+offset_bottom = 62.09
+
+[node name="Edit" type="Button" parent="ElementExplorer/EditWindow/ProgressEdit/Wave/FrontFill"]
+layout_mode = 0
+offset_left = 45.0
+offset_right = 85.0
+offset_bottom = 40.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_m7v2a")
+text = "Edit"
+
+[node name="Apply" type="Button" parent="ElementExplorer/EditWindow/ProgressEdit/Wave/FrontFill"]
+layout_mode = 0
+offset_left = 89.0
+offset_right = 141.0
+offset_bottom = 40.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_m7v2a")
+text = "Apply
+"
+script = ExtResource("8_a6spe")
+
+[node name="BackFill" type="ColorRect" parent="ElementExplorer/EditWindow/ProgressEdit/Wave"]
+layout_mode = 0
+offset_left = 15.1
+offset_top = 22.09
+offset_right = 55.1
+offset_bottom = 62.09
+color = Color(0.658824, 0.658824, 0.658824, 1)
+
+[node name="Edit" type="Button" parent="ElementExplorer/EditWindow/ProgressEdit/Wave/BackFill"]
+layout_mode = 0
+offset_left = 45.0
+offset_right = 85.0
+offset_bottom = 40.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_m7v2a")
+text = "Edit"
+
+[node name="Apply" type="Button" parent="ElementExplorer/EditWindow/ProgressEdit/Wave/BackFill"]
+layout_mode = 0
+offset_left = 89.0
+offset_right = 141.0
+offset_bottom = 40.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_m7v2a")
+text = "Apply
+"
+script = ExtResource("8_a6spe")
+
+[node name="RingWidth" type="SpinBox" parent="ElementExplorer/EditWindow/ProgressEdit/Wave"]
+layout_mode = 0
+offset_left = 167.1
+offset_top = 92.09
+offset_right = 250.162
+offset_bottom = 123.09
+min_value = -1.0
+max_value = 1.0
+step = 0.001
+value = 0.12
+
+[node name="InnerOffset" type="SpinBox" parent="ElementExplorer/EditWindow/ProgressEdit/Wave"]
+layout_mode = 0
+offset_left = 255.1
+offset_top = 93.09
+offset_right = 338.162
+offset_bottom = 124.09
+min_value = -2.0
+max_value = 2.0
+step = 0.001
+value = 0.06
+
+[node name="AmpMul" type="HSlider" parent="ElementExplorer/EditWindow/ProgressEdit/Wave"]
+layout_mode = 0
+offset_left = 20.1
+offset_top = 162.09
+offset_right = 187.32
+offset_bottom = 193.09
+min_value = -1.0
+max_value = 1.0
+step = 0.001
+value = 0.7
+tick_count = 2
+ticks_on_borders = true
+
+[node name="FreqMul" type="HSlider" parent="ElementExplorer/EditWindow/ProgressEdit/Wave"]
+layout_mode = 0
+offset_left = 205.105
+offset_top = 164.09
+offset_right = 438.525
+offset_bottom = 195.09
+min_value = -4.0
+max_value = 4.0
+step = 0.001
+value = 1.0
+tick_count = 2
+ticks_on_borders = true
+
+[node name="Label" type="Label" parent="ElementExplorer/EditWindow/ProgressEdit/Wave"]
+layout_mode = 0
+offset_right = 454.0
+offset_bottom = 49.0
+text = "    [back wave color]  [front wave color]   [fill modulate]
+
+"
+
+[node name="Label2" type="Label" parent="ElementExplorer/EditWindow/ProgressEdit/Wave"]
+layout_mode = 0
+offset_left = -0.900024
+offset_top = 63.09
+offset_right = 453.1
+offset_bottom = 112.09
+text = "    [ring color]               [ring width]   [inner offset]
+
+"
+
+[node name="Label3" type="Label" parent="ElementExplorer/EditWindow/ProgressEdit/Wave"]
+layout_mode = 0
+offset_left = 10.1
+offset_top = 140.09
+offset_right = 464.1
+offset_bottom = 189.09
+text = "    [amp mul]                                     [freq mul]  
+
+"
+
+[node name="Progress" type="HSlider" parent="ElementExplorer/EditWindow/ProgressEdit"]
+layout_mode = 0
+offset_left = 161.1
+offset_top = 104.09
+offset_right = 466.1
+offset_bottom = 120.09
+step = 0.001
+
+[node name="PreviewWindow" type="Window" parent="ElementExplorer/EditWindow/ProgressEdit"]
+initial_position = 2
+size = Vector2i(500, 500)
+visible = false
+script = SubResource("GDScript_gt5pl")
+
+[node name="Preview" type="Node2D" parent="ElementExplorer/EditWindow/ProgressEdit/PreviewWindow"]
+position = Vector2(250, 250)
+
+[node name="Label" type="Label" parent="ElementExplorer/EditWindow/ProgressEdit"]
+layout_mode = 0
+offset_left = 21.44
+offset_top = 67.34
+offset_right = 61.44
+offset_bottom = 90.34
+text = "Type                             Progress"
+
+[node name="TextEdit" type="Panel" parent="ElementExplorer/EditWindow"]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -249.1
+offset_top = -254.09
+offset_right = 249.695
+offset_bottom = 245.975
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Preview" type="TextEdit" parent="ElementExplorer/EditWindow/TextEdit"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 0.204987
+offset_bottom = -160.1
+grow_horizontal = 2
+grow_vertical = 2
+placeholder_text = "Edit Your Text Here"
+
+[node name="OffsetX" type="LineEdit" parent="ElementExplorer/EditWindow/TextEdit"]
+z_index = 1
+layout_mode = 0
+offset_left = 20.0
+offset_top = 447.59
+offset_right = 137.0
+offset_bottom = 490.59
+text = "0"
+
+[node name="OffsetY" type="LineEdit" parent="ElementExplorer/EditWindow/TextEdit"]
+z_index = 1
+layout_mode = 0
+offset_left = 148.1
+offset_top = 447.59
+offset_right = 265.1
+offset_bottom = 490.59
+text = "0"
+
+[node name="SizeX" type="LineEdit" parent="ElementExplorer/EditWindow/TextEdit"]
+z_index = 1
+layout_mode = 0
+offset_left = 20.0
+offset_top = 365.74
+offset_right = 137.0
+offset_bottom = 408.74
+text = "500"
+
+[node name="SizeY" type="LineEdit" parent="ElementExplorer/EditWindow/TextEdit"]
+z_index = 1
+layout_mode = 0
+offset_left = 148.1
+offset_top = 365.74
+offset_right = 265.1
+offset_bottom = 408.74
+text = "500"
+
+[node name="ScaleX" type="LineEdit" parent="ElementExplorer/EditWindow/TextEdit"]
+z_index = 1
+layout_mode = 0
+offset_left = 277.0
+offset_top = 447.59
+offset_right = 377.0
+offset_bottom = 490.59
+text = "1"
+
+[node name="ScaleY" type="LineEdit" parent="ElementExplorer/EditWindow/TextEdit"]
+z_index = 1
+layout_mode = 0
+offset_left = 384.1
+offset_top = 447.59
+offset_right = 484.1
+offset_bottom = 490.59
+text = "1"
+
+[node name="VisibleRatio" type="SpinBox" parent="ElementExplorer/EditWindow/TextEdit"]
+z_index = 1
+layout_mode = 0
+offset_left = 384.1
+offset_top = 365.585
+offset_right = 484.1
+offset_bottom = 408.585
+max_value = 1.0
+step = 0.001
+
+[node name="FontSize" type="SpinBox" parent="ElementExplorer/EditWindow/TextEdit"]
+z_index = 1
+layout_mode = 0
+offset_left = 282.155
+offset_top = 365.585
+offset_right = 382.155
+offset_bottom = 408.585
+min_value = 1.0
+max_value = 1024.0
+value = 1.0
+
+[node name="Label" type="Label" parent="ElementExplorer/EditWindow/TextEdit"]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 341.0
+offset_right = 499.0
+offset_bottom = 494.0
+text = "                      size x,y                                  font size      visible ratio
+
+
+                   offset x, y                                         scale x,y"
+
+[node name="ZIndex" type="SpinBox" parent="ElementExplorer/EditWindow"]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 50.895
+offset_top = -141.63
+offset_right = 210.318
+offset_bottom = -110.63
+grow_vertical = 0
+min_value = -65536.0
+max_value = 65536.0
+
+[node name="Label" type="Label" parent="ElementExplorer/EditWindow/ZIndex"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = 8.62
+offset_top = -2.335
+offset_right = 92.62
+offset_bottom = 31.665
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 24
+text = "Z Index"
+
+[node name="Name" type="LineEdit" parent="ElementExplorer/EditWindow"]
+z_index = 5
+anchors_preset = -1
+anchor_left = 0.0833333
+anchor_top = 0.0625
+anchor_right = 0.916667
+anchor_bottom = 0.125
+theme_override_font_sizes/font_size = 26
+placeholder_text = "Element Name"
+metadata/_edit_use_anchors_ = true
+
+[node name="Apply" type="Button" parent="ElementExplorer/EditWindow"]
+z_index = 5
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -75.0
+offset_top = -100.0
+offset_right = 75.0
+offset_bottom = -25.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 36
+text = "Apply"
+
+[node name="Label" type="Label" parent="ElementExplorer"]
+layout_mode = 0
+offset_left = -249.0
+offset_top = 40.0
+offset_right = -21.0
+offset_bottom = 112.0
+text = "The ZIndex(Layer Level) Of The
+Base Line is: 0
+线的图层是第0层
+"
+
+[node name="EventPanel" type="Panel" parent="."]
+z_index = -1
+offset_left = -431.0
+offset_top = -1314.0
+offset_right = 414.0
+offset_bottom = 1320.0
+mouse_filter = 1
+mouse_default_cursor_shape = 13
+script = ExtResource("2_ssd5v")
+
+[node name=">" type="Label" parent="EventPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.00591716
+anchor_top = 0.500775
+anchor_right = 0.945562
+anchor_bottom = 0.500775
+offset_left = -67.0
+offset_top = -59.041
+offset_right = 69.0
+offset_bottom = 58.959
+theme_override_font_sizes/font_size = 86
+text = ">---------------------"
+
+[node name="tips" type="Label" parent="EventPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.10178
+anchor_top = 0.539499
+anchor_right = 1.44237
+anchor_bottom = 0.638197
+offset_left = -67.0
+offset_top = -59.041
+offset_right = 186.201
+offset_bottom = 360.988
+theme_override_font_sizes/font_size = 21
+text = "[WASD]=Move around（移动视角）
+
+Hold [Ctrl]+Click on the event block=Multiselect
+（按住ctrl键可多选事件块）
+Hold [Ctrl]+Drag=Move multiple items
+（移动多个事件块）
+
+Hold[Alt] +Drag the event block=Move Horizontally
+
+Hold [Alt]+Mouse Wheel=Scaling the view
+Don't forget to add initial element_events for the
+elements(to confirm the initial value)
+
+Ctrl+S to save,
+ATTENTION: NO UNDO&REDO!"
+
+[node name="scale" type="Label" parent="EventPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.01417
+anchor_top = 0.428601
+anchor_right = 1.22979
+anchor_bottom = 0.449787
+offset_left = 0.0299683
+offset_top = 1.06592
+offset_right = -0.174988
+offset_bottom = 15.262
+theme_override_font_sizes/font_size = 51
+text = "Scale: 1"
+
+[node name="units" type="Label" parent="EventPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.09701
+anchor_top = 0.461251
+anchor_right = 1.4866
+anchor_bottom = 0.479779
+offset_left = -29.97
+offset_top = 1.06592
+offset_right = -30.175
+offset_bottom = 15.262
+theme_override_font_sizes/font_size = 21
+text = "minutes           seconds        frames
+分钟                   秒                    帧"
+
+[node name="<" type="Label" parent="EventPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.01663
+anchor_top = 0.492027
+anchor_right = 1.39178
+anchor_bottom = 0.492027
+offset_left = -30.055
+offset_top = -59.0
+offset_right = 105.945
+offset_bottom = 59.0
+theme_override_font_sizes/font_size = 86
+text = "        :    :    f"
+
+[node name="new" type="Button" parent="EventPanel"]
+layout_mode = 2
+offset_left = 853.0
+offset_top = 784.0
+offset_right = 962.0
+offset_bottom = 864.0
+theme_override_font_sizes/font_size = 26
+text = "New 
+Event
+"
+script = SubResource("GDScript_nx5yv")
+
+[node name="EventSelecting" type="OptionButton" parent="EventPanel/new"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = 7.0
+offset_top = 3.0
+offset_right = 252.0
+offset_bottom = 34.0
+grow_horizontal = 0
+allow_reselect = true
+item_count = 13
+popup/item_0/text = "GeneralTextEvent"
+popup/item_1/text = "PlotEvent"
+popup/item_1/id = 1
+popup/item_2/text = "ElementEvent"
+popup/item_2/id = 2
+popup/item_3/text = "PhysicsEvent"
+popup/item_3/id = 3
+popup/item_4/text = "PhysicsElementEvent"
+popup/item_4/id = 4
+popup/item_5/text = "GUIEvent"
+popup/item_5/id = 5
+popup/item_6/text = "GeneralTextRemoveEvent"
+popup/item_6/id = 6
+popup/item_7/text = "Mark"
+popup/item_7/id = 7
+popup/item_8/text = "BPMMark"
+popup/item_8/id = 8
+popup/item_9/text = "ArchiveEvent"
+popup/item_9/id = 9
+popup/item_10/text = "SpecialEvent"
+popup/item_10/id = 10
+popup/item_11/text = "CameraShakeEvent"
+popup/item_11/id = 11
+popup/item_12/text = "EventGroup"
+popup/item_12/id = 12
+
+[node name="delete" type="Button" parent="EventPanel"]
+layout_mode = 2
+offset_left = 855.0
+offset_top = 872.0
+offset_right = 961.0
+offset_bottom = 945.0
+theme_override_font_sizes/font_size = 26
+text = "Delete
+"
+
+[node name="Save" type="Button" parent="EventPanel"]
+layout_mode = 2
+offset_left = 1223.0
+offset_top = 786.0
+offset_right = 1384.0
+offset_bottom = 856.0
+theme_override_font_sizes/font_size = 41
+text = "Save"
+
+[node name="Load" type="Button" parent="EventPanel"]
+layout_mode = 2
+offset_left = 1223.0
+offset_top = 864.0
+offset_right = 1384.0
+offset_bottom = 934.0
+theme_override_font_sizes/font_size = 41
+text = "Load
+"
+
+[node name="Exit" type="Button" parent="EventPanel"]
+layout_mode = 2
+offset_left = 1222.0
+offset_top = 944.0
+offset_right = 1383.0
+offset_bottom = 1014.0
+theme_override_font_sizes/font_size = 41
+text = "Exit
+"
+
+[node name="copy" type="Button" parent="EventPanel"]
+layout_mode = 2
+offset_left = 855.0
+offset_top = 953.0
+offset_right = 961.0
+offset_bottom = 1026.0
+theme_override_font_sizes/font_size = 26
+text = "copy"
+
+[node name="paste" type="Button" parent="EventPanel"]
+layout_mode = 2
+offset_left = 855.0
+offset_top = 1036.0
+offset_right = 961.0
+offset_bottom = 1109.0
+theme_override_font_sizes/font_size = 26
+text = "paste"
+
+[node name="rhythm" type="Button" parent="EventPanel"]
+layout_mode = 2
+offset_left = 1081.0
+offset_top = 1145.0
+offset_right = 1352.0
+offset_bottom = 1200.0
+theme_override_font_sizes/font_size = 26
+text = "▶🎼Feel the rhythm"
+
+[node name="TestPlay" type="Button" parent="EventPanel"]
+layout_mode = 2
+offset_left = 1222.0
+offset_top = 1082.0
+offset_right = 1383.0
+offset_bottom = 1133.0
+theme_override_font_sizes/font_size = 26
+text = "▶Test Play"
+
+[node name="Hide" type="CheckBox" parent="EventPanel/TestPlay"]
+layout_mode = 0
+offset_top = -28.0
+offset_right = 46.0
+offset_bottom = -4.0
+text = "Hide \"Back\" Button
+"
+
+[node name="PlaceHolder" type="CheckBox" parent="EventPanel/TestPlay"]
+layout_mode = 0
+offset_left = -183.0
+offset_right = -4.0
+offset_bottom = 56.0
+theme_override_colors/font_color = Color(1, 0.9875, 0.25, 1)
+theme_override_font_sizes/font_size = 20
+button_pressed = true
+text = "Enable 
+PlaceHolder Info
+"
+
+[node name="min" type="LineEdit" parent="EventPanel"]
+layout_mode = 0
+offset_left = 866.0
+offset_top = 1276.0
+offset_right = 1022.0
+offset_bottom = 1339.0
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxFlat_iqela")
+placeholder_text = "\""
+alignment = 1
+
+[node name="sec" type="LineEdit" parent="EventPanel"]
+layout_mode = 0
+offset_left = 996.0
+offset_top = 1276.0
+offset_right = 1152.0
+offset_bottom = 1339.0
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxFlat_iqela")
+placeholder_text = "'"
+alignment = 1
+
+[node name="frame" type="LineEdit" parent="EventPanel"]
+layout_mode = 0
+offset_left = 1108.0
+offset_top = 1276.0
+offset_right = 1264.0
+offset_bottom = 1339.0
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxFlat_iqela")
+placeholder_text = "f"
+alignment = 1
+
+[node name="PhysicsCenter" type="Window" parent="EventPanel"]
+initial_position = 2
+size = Vector2i(1055, 475)
+visible = false
+script = ExtResource("8_cdv2j")
+
+[node name="point" type="Node2D" parent="EventPanel/PhysicsCenter"]
+visible = false
+
+[node name="id" type="Label" parent="EventPanel/PhysicsCenter/point"]
+offset_left = 4.79
+offset_top = 0.0699999
+offset_right = 44.79
+offset_bottom = 23.07
+text = "1"
+
+[node name="point" type="ColorRect" parent="EventPanel/PhysicsCenter/point"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -3.0
+offset_top = -3.0
+offset_right = 3.0
+offset_bottom = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.976471, 0.443137, 0, 1)
+
+[node name="Move" type="Control" parent="EventPanel/PhysicsCenter/point"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -12.5
+offset_top = -12.5
+offset_right = 12.5
+offset_bottom = 12.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_default_cursor_shape = 6
+script = ExtResource("9_eyy3e")
+
+[node name="Unit" type="CheckBox" parent="EventPanel/PhysicsCenter"]
+visible = false
+offset_left = 566.905
+offset_top = 55.815
+offset_right = 604.905
+offset_bottom = 86.815
+text = "1"
+
+[node name="Panel" type="Panel" parent="EventPanel/PhysicsCenter"]
+offset_left = 2.225
+offset_top = 10.815
+offset_right = 1036.15
+offset_bottom = 458.815
+script = SubResource("GDScript_5q0nh")
+
+[node name="HitBoxEdit" type="Panel" parent="EventPanel/PhysicsCenter/Panel"]
+layout_mode = 0
+offset_left = 35.0
+offset_top = 35.0
+offset_right = 355.0
+offset_bottom = 353.0
+
+[node name="Origin" type="Node2D" parent="EventPanel/PhysicsCenter/Panel/HitBoxEdit"]
+position = Vector2(157, 163)
+
+[node name="Preview" type="Node2D" parent="EventPanel/PhysicsCenter/Panel/HitBoxEdit/Origin"]
+
+[node name="HitBox" type="Node2D" parent="EventPanel/PhysicsCenter/Panel/HitBoxEdit/Origin"]
+script = ExtResource("10_ohncs")
+
+[node name="Points" type="Node2D" parent="EventPanel/PhysicsCenter/Panel/HitBoxEdit/Origin"]
+
+[node name="Type" type="OptionButton" parent="EventPanel/PhysicsCenter/Panel/HitBoxEdit"]
+layout_mode = 0
+offset_left = 328.775
+offset_top = 5.185
+offset_right = 336.775
+offset_bottom = 13.185
+selected = 0
+item_count = 4
+popup/item_0/text = "Circle"
+popup/item_1/text = "Rect"
+popup/item_1/id = 1
+popup/item_2/text = "Capsule"
+popup/item_2/id = 2
+popup/item_3/text = "Polygon"
+popup/item_3/id = 3
+
+[node name="CircleEdit" type="Panel" parent="EventPanel/PhysicsCenter/Panel/HitBoxEdit"]
+layout_mode = 0
+offset_left = 332.0
+offset_top = 44.0
+offset_right = 436.0
+offset_bottom = 317.0
+
+[node name="Label" type="Label" parent="EventPanel/PhysicsCenter/Panel/HitBoxEdit/CircleEdit"]
+layout_mode = 0
+offset_right = 102.0
+offset_bottom = 223.0
+text = "PosX
+
+
+PosY
+
+
+Radius"
+
+[node name="X" type="SpinBox" parent="EventPanel/PhysicsCenter/Panel/HitBoxEdit/CircleEdit"]
+layout_mode = 0
+offset_left = 9.77499
+offset_top = 36.185
+offset_right = 92.8375
+offset_bottom = 67.185
+min_value = -65536.0
+max_value = 65536.0
+step = 0.01
+
+[node name="Y" type="SpinBox" parent="EventPanel/PhysicsCenter/Panel/HitBoxEdit/CircleEdit"]
+layout_mode = 0
+offset_left = 8.77499
+offset_top = 106.185
+offset_right = 91.8375
+offset_bottom = 137.185
+min_value = -65536.0
+max_value = 65536.0
+step = 0.01
+
+[node name="R" type="SpinBox" parent="EventPanel/PhysicsCenter/Panel/HitBoxEdit/CircleEdit"]
+layout_mode = 0
+offset_left = 8.77499
+offset_top = 178.185
+offset_right = 91.8375
+offset_bottom = 209.185
+min_value = -65536.0
+max_value = 65536.0
+step = 0.01
+value = 100.0
+
+[node name="RectEdit" type="Panel" parent="EventPanel/PhysicsCenter/Panel/HitBoxEdit"]
+visible = false
+layout_mode = 0
+offset_left = 332.0
+offset_top = 44.0
+offset_right = 520.0
+offset_bottom = 317.0
+
+[node name="Label" type="Label" parent="EventPanel/PhysicsCenter/Panel/HitBoxEdit/RectEdit"]
+layout_mode = 0
+offset_right = 102.0
+offset_bottom = 223.0
+text = "PosX               PosY
+
+
+SizeX              SizeY"
+
+[node name="X" type="SpinBox" parent="EventPanel/PhysicsCenter/Panel/HitBoxEdit/RectEdit"]
+layout_mode = 0
+offset_left = 9.77499
+offset_top = 36.185
+offset_right = 92.8375
+offset_bottom = 67.185
+min_value = -65536.0
+max_value = 65536.0
+step = 0.01
+
+[node name="Y" type="SpinBox" parent="EventPanel/PhysicsCenter/Panel/HitBoxEdit/RectEdit"]
+layout_mode = 0
+offset_left = 96.775
+offset_top = 37.185
+offset_right = 179.837
+offset_bottom = 68.185
+min_value = -65536.0
+max_value = 65536.0
+step = 0.01
+
+[node name="SizeX" type="SpinBox" parent="EventPanel/PhysicsCenter/Panel/HitBoxEdit/RectEdit"]
+layout_mode = 0
+offset_left = 5.77499
+offset_top = 107.185
+offset_right = 88.8375
+offset_bottom = 138.185
+max_value = 65536.0
+step = 0.01
+value = 100.0
+
+[node name="SizeY" type="SpinBox" parent="EventPanel/PhysicsCenter/Panel/HitBoxEdit/RectEdit"]
+layout_mode = 0
+offset_left = 92.775
+offset_top = 108.185
+offset_right = 175.837
+offset_bottom = 139.185
+max_value = 65536.0
+step = 0.01
+value = 100.0
+
+[node name="CapsuleEdit" type="Panel" parent="EventPanel/PhysicsCenter/Panel/HitBoxEdit"]
+visible = false
+layout_mode = 0
+offset_left = 332.0
+offset_top = 44.0
+offset_right = 520.0
+offset_bottom = 317.0
+
+[node name="Label" type="Label" parent="EventPanel/PhysicsCenter/Panel/HitBoxEdit/CapsuleEdit"]
+layout_mode = 0
+offset_right = 102.0
+offset_bottom = 223.0
+text = "PosX               PosY
+
+
+Radius             Length
+
+
+Rotation"
+
+[node name="X" type="SpinBox" parent="EventPanel/PhysicsCenter/Panel/HitBoxEdit/CapsuleEdit"]
+layout_mode = 0
+offset_left = 9.77499
+offset_top = 36.185
+offset_right = 92.8375
+offset_bottom = 67.185
+min_value = -65536.0
+max_value = 65536.0
+step = 0.01
+
+[node name="Y" type="SpinBox" parent="EventPanel/PhysicsCenter/Panel/HitBoxEdit/CapsuleEdit"]
+layout_mode = 0
+offset_left = 96.775
+offset_top = 37.185
+offset_right = 179.837
+offset_bottom = 68.185
+min_value = -65536.0
+max_value = 65536.0
+step = 0.01
+
+[node name="R" type="SpinBox" parent="EventPanel/PhysicsCenter/Panel/HitBoxEdit/CapsuleEdit"]
+layout_mode = 0
+offset_left = 5.77499
+offset_top = 107.185
+offset_right = 88.8375
+offset_bottom = 138.185
+max_value = 65536.0
+step = 0.01
+value = 25.0
+
+[node name="L" type="SpinBox" parent="EventPanel/PhysicsCenter/Panel/HitBoxEdit/CapsuleEdit"]
+layout_mode = 0
+offset_left = 92.775
+offset_top = 108.185
+offset_right = 175.837
+offset_bottom = 139.185
+max_value = 65536.0
+step = 0.01
+value = 100.0
+
+[node name="Rotation" type="SpinBox" parent="EventPanel/PhysicsCenter/Panel/HitBoxEdit/CapsuleEdit"]
+layout_mode = 0
+offset_left = 2.77499
+offset_top = 184.185
+offset_right = 85.8375
+offset_bottom = 215.185
+max_value = 65536.0
+step = 0.01
+
+[node name="PolygonEdit" type="Panel" parent="EventPanel/PhysicsCenter/Panel/HitBoxEdit"]
+visible = false
+layout_mode = 0
+offset_left = 332.0
+offset_top = 44.0
+offset_right = 520.0
+offset_bottom = 317.0
+
+[node name="Label" type="Label" parent="EventPanel/PhysicsCenter/Panel/HitBoxEdit/PolygonEdit"]
+layout_mode = 0
+offset_right = 102.0
+offset_bottom = 223.0
+text = "PosX               PosY
+
+
+Rotation"
+
+[node name="X" type="SpinBox" parent="EventPanel/PhysicsCenter/Panel/HitBoxEdit/PolygonEdit"]
+layout_mode = 0
+offset_left = 9.77499
+offset_top = 36.185
+offset_right = 92.8375
+offset_bottom = 67.185
+min_value = -65536.0
+max_value = 65536.0
+step = 0.01
+
+[node name="Y" type="SpinBox" parent="EventPanel/PhysicsCenter/Panel/HitBoxEdit/PolygonEdit"]
+layout_mode = 0
+offset_left = 96.775
+offset_top = 37.185
+offset_right = 179.837
+offset_bottom = 68.185
+min_value = -65536.0
+max_value = 65536.0
+step = 0.01
+
+[node name="Rotation" type="SpinBox" parent="EventPanel/PhysicsCenter/Panel/HitBoxEdit/PolygonEdit"]
+layout_mode = 0
+offset_left = 8.77499
+offset_top = 108.185
+offset_right = 91.8375
+offset_bottom = 139.185
+max_value = 65536.0
+step = 0.01
+
+[node name="add" type="Button" parent="EventPanel/PhysicsCenter/Panel/HitBoxEdit/PolygonEdit"]
+layout_mode = 0
+offset_left = 15.775
+offset_top = 156.185
+offset_right = 80.775
+offset_bottom = 183.185
+text = "AddPoint
+"
+
+[node name="del" type="Button" parent="EventPanel/PhysicsCenter/Panel/HitBoxEdit/PolygonEdit"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 195.0
+offset_right = 94.0
+offset_bottom = 249.0
+text = "Remove
+Point
+"
+
+[node name="pid" type="Node2D" parent="EventPanel/PhysicsCenter/Panel/HitBoxEdit/PolygonEdit"]
+visible = false
+
+[node name="View" type="HSlider" parent="EventPanel/PhysicsCenter/Panel"]
+layout_mode = 0
+offset_left = 390.0
+offset_top = 389.0
+offset_right = 848.535
+offset_bottom = 410.0
+mouse_filter = 1
+max_value = 4.0
+step = 0.001
+value = 1.0
+tick_count = 5
+
+[node name="Label" type="Label" parent="EventPanel/PhysicsCenter/Panel"]
+layout_mode = 0
+offset_left = 555.305
+offset_top = 410.0
+offset_right = 687.24
+offset_bottom = 433.0
+text = "%"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="EventPanel/PhysicsCenter/Panel"]
+layout_mode = 0
+offset_left = 568.975
+offset_top = 10.0
+offset_right = 700.91
+offset_bottom = 33.0
+text = "Collision Layers"
+horizontal_alignment = 1
+
+[node name="Label3" type="Label" parent="EventPanel/PhysicsCenter/Panel"]
+layout_mode = 0
+offset_left = 568.975
+offset_top = 190.37
+offset_right = 700.91
+offset_bottom = 213.37
+text = "Collision Masks"
+horizontal_alignment = 1
+
+[node name="Apply" type="Button" parent="EventPanel/PhysicsCenter/Panel"]
+layout_mode = 0
+offset_left = 34.0
+offset_top = 375.0
+offset_right = 355.0
+offset_bottom = 427.0
+theme_override_font_sizes/font_size = 31
+text = "Apply"
+
+[node name="Layer" type="GridContainer" parent="EventPanel/PhysicsCenter/Panel"]
+z_index = 1
+layout_mode = 0
+offset_left = 564.68
+offset_top = 44.9999
+offset_right = 849.68
+offset_bottom = 191.0
+mouse_filter = 2
+columns = 8
+
+[node name="Mask" type="GridContainer" parent="EventPanel/PhysicsCenter/Panel"]
+z_index = 1
+layout_mode = 0
+offset_left = 564.68
+offset_top = 222.01
+offset_right = 849.68
+offset_bottom = 369.01
+mouse_filter = 2
+columns = 8
+
+[node name="TextEditor" type="Window" parent="EventPanel"]
+initial_position = 1
+size = Vector2i(800, 600)
+visible = false
+script = ExtResource("11_7fxdy")
+
+[node name="Panel" type="Panel" parent="EventPanel/TextEditor"]
+offset_right = 800.0
+offset_bottom = 600.0
+
+[node name="TextEdit" type="TextEdit" parent="EventPanel/TextEditor/Panel"]
+layout_mode = 0
+offset_left = 26.01
+offset_top = 37.415
+offset_right = 776.01
+offset_bottom = 537.415
+theme_override_font_sizes/font_size = 20
+wrap_mode = 1
+
+[node name="PropName" type="Label" parent="EventPanel/TextEditor/Panel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -23.5
+offset_right = 23.5
+offset_bottom = 23.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 26
+text = "Name"
+
+[node name="TargetPath" type="Label" parent="EventPanel/TextEditor/Panel"]
+visible = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="Done" type="Button" parent="EventPanel/TextEditor"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -64.395
+offset_top = -50.11
+offset_right = 64.395
+offset_bottom = -11.11
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 22
+text = "Done"
+
+[node name="Centered" type="CheckBox" parent="EventPanel/TextEditor"]
+visible = false
+offset_left = 31.235
+offset_top = 546.185
+offset_right = 126.235
+offset_bottom = 573.185
+scale = Vector2(1.365, 1.365)
+theme_override_styles/normal = SubResource("StyleBoxFlat_14kt1")
+text = "Centered"
+
+[node name="ExitConfirmation" type="ConfirmationDialog" parent="EventPanel"]
+initial_position = 1
+size = Vector2i(345, 100)
+ok_button_text = "Yes"
+dialog_text = "Save Current File?"
+cancel_button_text = "Exit Anyway"
+
+[node name="LFOEditor" type="Window" parent="EventPanel"]
+position = Vector2i(0, 36)
+size = Vector2i(1000, 700)
+visible = false
+script = ExtResource("12_1385r")
+
+[node name="Panel" type="Panel" parent="EventPanel/LFOEditor"]
+offset_right = 989.0
+offset_bottom = 688.0
+
+[node name="Oscilliscope" type="Panel" parent="EventPanel/LFOEditor/Panel"]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 45.0
+offset_right = 359.0
+offset_bottom = 264.0
+
+[node name="WaveType" type="OptionButton" parent="EventPanel/LFOEditor/Panel"]
+layout_mode = 0
+offset_left = 55.0
+offset_top = 277.0
+offset_right = 345.0
+offset_bottom = 310.0
+selected = 0
+item_count = 8
+popup/item_0/text = "Sine"
+popup/item_1/text = "Square"
+popup/item_1/id = 1
+popup/item_2/text = "Triangle"
+popup/item_2/id = 2
+popup/item_3/text = "Saw"
+popup/item_3/id = 3
+popup/item_4/text = "SmoothRandom"
+popup/item_4/id = 4
+popup/item_5/text = "SteppedRandom"
+popup/item_5/id = 5
+popup/item_6/text = "SpikeRandom"
+popup/item_6/id = 6
+popup/item_7/text = "RampRandom"
+popup/item_7/id = 7
+
+[node name="AddModifier" type="OptionButton" parent="EventPanel/LFOEditor/Panel"]
+layout_mode = 0
+offset_left = 385.0
+offset_top = 51.0
+offset_right = 675.0
+offset_bottom = 84.0
+item_count = 6
+popup/item_0/text = "Clip"
+popup/item_1/text = "Taut"
+popup/item_1/id = 1
+popup/item_2/text = "Round"
+popup/item_2/id = 2
+popup/item_3/text = "Fold"
+popup/item_3/id = 3
+popup/item_4/text = "Tension"
+popup/item_4/id = 4
+popup/item_5/text = "Flip"
+popup/item_5/id = 5
+
+[node name="Min" type="SpinBox" parent="EventPanel/LFOEditor/Panel"]
+layout_mode = 0
+offset_left = 57.0
+offset_top = 342.0
+offset_right = 158.0
+offset_bottom = 385.0
+
+[node name="Max" type="SpinBox" parent="EventPanel/LFOEditor/Panel"]
+layout_mode = 0
+offset_left = 166.0
+offset_top = 344.0
+offset_right = 267.0
+offset_bottom = 387.0
+
+[node name="Freq" type="SpinBox" parent="EventPanel/LFOEditor/Panel"]
+layout_mode = 0
+offset_left = 55.0
+offset_top = 430.0
+offset_right = 156.0
+offset_bottom = 473.0
+
+[node name="AmpMul" type="SpinBox" parent="EventPanel/LFOEditor/Panel"]
+layout_mode = 0
+offset_left = 55.0
+offset_top = 511.0
+offset_right = 156.0
+offset_bottom = 554.0
+
+[node name="Polarized" type="CheckBox" parent="EventPanel/LFOEditor/Panel"]
+layout_mode = 0
+offset_left = 63.0
+offset_top = 589.0
+offset_right = 203.0
+offset_bottom = 630.0
+text = "Polarized"
+
+[node name="Modifiers" type="ScrollContainer" parent="EventPanel/LFOEditor/Panel"]
+layout_mode = 0
+offset_left = 386.0
+offset_top = 108.0
+offset_right = 673.0
+offset_bottom = 663.0
+
+[node name="List" type="VBoxContainer" parent="EventPanel/LFOEditor/Panel/Modifiers"]
+layout_mode = 2
+
+[node name="Mod" type="Panel" parent="EventPanel/LFOEditor/Panel/Modifiers/List"]
+custom_minimum_size = Vector2(287, 40)
+layout_mode = 2
+script = ExtResource("13_4g6a7")
+
+[node name="ModType" type="Label" parent="EventPanel/LFOEditor/Panel/Modifiers/List/Mod"]
+layout_mode = 0
+offset_right = 81.0
+offset_bottom = 27.0
+theme_override_font_sizes/font_size = 16
+text = "Mod_Type"
+
+[node name="Up" type="Button" parent="EventPanel/LFOEditor/Panel/Modifiers/List/Mod"]
+layout_mode = 0
+offset_left = 246.0
+offset_right = 266.0
+offset_bottom = 39.0
+theme_override_font_sizes/font_size = 22
+text = "↑"
+
+[node name="Edit" type="Button" parent="EventPanel/LFOEditor/Panel/Modifiers/List/Mod"]
+layout_mode = 0
+offset_left = 182.0
+offset_right = 219.0
+offset_bottom = 39.0
+theme_override_font_sizes/font_size = 22
+text = "🖋"
+
+[node name="Delete" type="Button" parent="EventPanel/LFOEditor/Panel/Modifiers/List/Mod"]
+modulate = Color(1, 0.15, 0.49, 1)
+layout_mode = 0
+offset_left = 218.0
+offset_top = -1.0
+offset_right = 245.0
+offset_bottom = 39.0
+theme_override_font_sizes/font_size = 22
+text = "x"
+
+[node name="Confirmation" type="Window" parent="EventPanel/LFOEditor/Panel/Modifiers/List/Mod/Delete"]
+size = Vector2i(180, 100)
+visible = false
+
+[node name="Label" type="Label" parent="EventPanel/LFOEditor/Panel/Modifiers/List/Mod/Delete/Confirmation"]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Are You sure?
+Delete this modifier"
+
+[node name="Y" type="Button" parent="EventPanel/LFOEditor/Panel/Modifiers/List/Mod/Delete/Confirmation"]
+offset_left = 3.915
+offset_top = 49.56
+offset_right = 47.745
+offset_bottom = 95.08
+text = "Yes"
+
+[node name="N" type="Button" parent="EventPanel/LFOEditor/Panel/Modifiers/List/Mod/Delete/Confirmation"]
+offset_left = 51.015
+offset_top = 49.56
+offset_right = 170.33
+offset_bottom = 95.17
+theme_override_font_sizes/font_size = 27
+text = "No"
+
+[node name="Down" type="Button" parent="EventPanel/LFOEditor/Panel/Modifiers/List/Mod"]
+layout_mode = 0
+offset_left = 266.0
+offset_right = 286.0
+offset_bottom = 39.0
+theme_override_font_sizes/font_size = 22
+text = "↓"
+
+[node name="GridContainer" type="GridContainer" parent="EventPanel/LFOEditor/Panel"]
+layout_mode = 0
+offset_left = 697.0
+offset_top = 55.0
+offset_right = 949.0
+offset_bottom = 658.0
+columns = 2
+
+[node name="Parameter" type="Label" parent="EventPanel/LFOEditor/Panel/GridContainer"]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+text = "param_name"
+
+[node name="Value" type="SpinBox" parent="EventPanel/LFOEditor/Panel/GridContainer/Parameter"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="EventPanel/LFOEditor/Panel"]
+layout_mode = 0
+offset_left = 51.0
+offset_top = 313.0
+offset_right = 256.0
+offset_bottom = 344.0
+text = "Mod: Min           Max"
+
+[node name="Label2" type="Label" parent="EventPanel/LFOEditor/Panel"]
+layout_mode = 0
+offset_left = 53.0
+offset_top = 406.0
+offset_right = 160.0
+offset_bottom = 506.0
+text = "frequency    
+
+
+amplitude multiplier"
+
+[node name="SMM" type="Button" parent="EventPanel/LFOEditor/Panel"]
+layout_mode = 0
+offset_left = 250.0
+offset_top = 413.0
+offset_right = 348.0
+offset_bottom = 490.0
+text = "Speed
+Multiplier
+Modulation"
+
+[node name="AMM" type="Button" parent="EventPanel/LFOEditor/Panel"]
+layout_mode = 0
+offset_left = 251.0
+offset_top = 507.0
+offset_right = 349.0
+offset_bottom = 584.0
+text = "Amplitude
+Multiplier
+Modulation"
+
+[node name="Apply" type="Button" parent="EventPanel/LFOEditor/Panel"]
+layout_mode = 0
+offset_left = 389.0
+offset_top = 630.0
+offset_right = 628.0
+offset_bottom = 666.0
+text = "Apply"
+
+[node name="PropUnits" type="Node" parent="."]
+
+[node name="ClassTitle" type="Label" parent="PropUnits"]
+visible = false
+offset_left = -798.0
+offset_top = -481.0
+offset_right = -595.0
+offset_bottom = -431.0
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 36
+text = "Class Name"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DoubleClick" type="Label" parent="PropUnits"]
+visible = false
+offset_left = -944.0
+offset_top = -472.0
+offset_right = -463.0
+offset_bottom = -245.0
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 27
+text = "Double click the event to edit 
+the group  |  type \"$vs\" in a 
+string property to 
+reference the variable: 
+VarString
+
+type \"$name\" in a 
+string property to 
+reference the variable: 
+[name]
+of this group"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="StringProp" type="Panel" parent="PropUnits"]
+visible = false
+custom_minimum_size = Vector2(0, 40)
+offset_left = -940.0
+offset_top = -427.0
+offset_right = -453.0
+offset_bottom = -387.0
+script = ExtResource("3_h2gw3")
+
+[node name="PropName" type="Label" parent="PropUnits/StringProp"]
+layout_mode = 0
+offset_left = 13.0
+offset_right = 80.0
+offset_bottom = 34.0
+theme_override_font_sizes/font_size = 24
+text = "String"
+
+[node name="Preview" type="Label" parent="PropUnits/StringProp"]
+layout_mode = 0
+offset_left = 100.0
+offset_right = 332.0
+offset_bottom = 34.0
+theme_override_colors/font_color = Color(0.788189, 0.986906, 0.681254, 1)
+theme_override_font_sizes/font_size = 17
+text = "Preview
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+text_overrun_behavior = 1
+
+[node name="Edit" type="Button" parent="PropUnits/StringProp"]
+layout_mode = 0
+offset_left = 347.0
+offset_top = 9.0
+offset_right = 486.0
+offset_bottom = 34.0
+text = "Edit"
+
+[node name="BoolProp" type="Panel" parent="PropUnits"]
+visible = false
+custom_minimum_size = Vector2(0, 40)
+offset_left = -940.0
+offset_top = -427.0
+offset_right = -453.0
+offset_bottom = -387.0
+script = ExtResource("12_gbdob")
+
+[node name="PropName" type="Label" parent="PropUnits/BoolProp"]
+layout_mode = 0
+offset_left = 13.0
+offset_right = 80.0
+offset_bottom = 34.0
+theme_override_font_sizes/font_size = 24
+text = "Bool"
+
+[node name="Toggle" type="CheckBox" parent="PropUnits/BoolProp"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.559
+anchor_top = 0.125
+anchor_right = 0.977
+anchor_bottom = 0.9
+offset_left = 166.767
+offset_right = 6.20099
+text = "<-"
+
+[node name="NumberProp" type="Panel" parent="PropUnits"]
+visible = false
+custom_minimum_size = Vector2(0, 36)
+offset_left = -940.0
+offset_top = -383.0
+offset_right = -453.0
+offset_bottom = -347.0
+script = ExtResource("4_qwthv")
+
+[node name="PropName" type="Label" parent="PropUnits/NumberProp"]
+layout_mode = 0
+offset_left = 13.0
+offset_right = 109.0
+offset_bottom = 34.0
+theme_override_font_sizes/font_size = 24
+text = "Number
+"
+
+[node name="Input" type="SpinBox" parent="PropUnits/NumberProp"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.559
+anchor_top = 0.125
+anchor_right = 0.977
+anchor_bottom = 0.9
+offset_left = -0.233002
+offset_right = 0.200958
+min_value = -65535.0
+max_value = 65535.0
+step = 0.001
+
+[node name="IntProp" type="Panel" parent="PropUnits"]
+visible = false
+custom_minimum_size = Vector2(0, 36)
+offset_left = -940.0
+offset_top = -383.0
+offset_right = -453.0
+offset_bottom = -347.0
+script = ExtResource("13_l66uh")
+
+[node name="PropName" type="Label" parent="PropUnits/IntProp"]
+layout_mode = 0
+offset_left = 13.0
+offset_right = 109.0
+offset_bottom = 34.0
+theme_override_font_sizes/font_size = 24
+text = "Int
+
+"
+
+[node name="Input" type="SpinBox" parent="PropUnits/IntProp"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.559
+anchor_top = 0.125
+anchor_right = 0.977
+anchor_bottom = 0.9
+offset_left = -0.233002
+offset_right = 0.200958
+min_value = -65535.0
+max_value = 65535.0
+value = 1.0
+
+[node name="ElementProp" type="Panel" parent="PropUnits"]
+visible = false
+custom_minimum_size = Vector2(0, 111.605)
+offset_left = -940.0
+offset_top = -343.0
+offset_right = -453.0
+offset_bottom = -232.0
+script = ExtResource("5_f8ypi")
+
+[node name="PropName" type="Label" parent="PropUnits/ElementProp"]
+layout_mode = 0
+offset_left = 13.0
+offset_right = 54.0
+offset_bottom = 34.0
+theme_override_font_sizes/font_size = 24
+text = "Element"
+
+[node name="Select" type="Button" parent="PropUnits/ElementProp"]
+layout_mode = 0
+offset_left = 236.0
+offset_top = 7.0
+offset_right = 362.0
+offset_bottom = 52.0
+text = "Select"
+
+[node name="Expand" type="Button" parent="PropUnits/ElementProp"]
+modulate = Color(0.21, 1, 0.828833, 1)
+layout_mode = 0
+offset_left = 404.0
+offset_top = 7.0
+offset_right = 476.0
+offset_bottom = 104.0
+theme_override_font_sizes/font_size = 58
+text = ">"
+
+[node name="Element" type="Button" parent="PropUnits/ElementProp"]
+visible = false
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = 6.0
+offset_top = 2.0
+offset_right = 163.0
+offset_bottom = 165.0
+grow_horizontal = 0
+text = "[Custom]"
+script = ExtResource("10_3qxpm")
+
+[node name="Edit" type="Button" parent="PropUnits/ElementProp/Element"]
+modulate = Color(0.43, 0.924, 1, 1)
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = 5.0
+offset_right = 159.0
+offset_bottom = 58.0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 36
+text = "Edit"
+
+[node name="euid" type="Marker2D" parent="PropUnits/ElementProp/Element"]
+visible = false
+position = Vector2(-1, 0)
+
+[node name="ReferenceRect" type="ReferenceRect" parent="PropUnits/ElementProp/Element"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+border_color = Color(0.988235, 0.92549, 0.192157, 1)
+border_width = 4.5
+editor_only = false
+
+[node name="WriteFrame" type="Button" parent="PropUnits/ElementProp"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 236.0
+offset_top = -55.0
+offset_right = 363.0
+offset_bottom = -7.0
+grow_vertical = 0
+text = "WriteFrame"
+
+[node name="TransformOnly" type="CheckBox" parent="PropUnits/ElementProp"]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 71.0
+offset_right = 194.0
+offset_bottom = 98.0
+text = "Write Transform Only"
+
+[node name="ColorProp" type="Panel" parent="PropUnits"]
+visible = false
+custom_minimum_size = Vector2(0, 36)
+offset_left = -940.0
+offset_top = -303.0
+offset_right = -453.0
+offset_bottom = -267.0
+script = ExtResource("11_yo4ux")
+
+[node name="PropName" type="Label" parent="PropUnits/ColorProp"]
+layout_mode = 0
+offset_left = 13.0
+offset_right = 75.0
+offset_bottom = 34.0
+theme_override_font_sizes/font_size = 24
+text = "Color"
+
+[node name="Indicator" type="ColorRect" parent="PropUnits/ColorProp"]
+layout_mode = 0
+offset_left = 412.0
+offset_top = 4.0
+offset_right = 477.0
+offset_bottom = 33.0
+
+[node name="Edit" type="Button" parent="PropUnits/ColorProp/Indicator"]
+layout_mode = 0
+offset_left = -139.0
+offset_right = -71.0
+offset_bottom = 31.0
+text = "🎨Edit"
+
+[node name="Apply" type="Button" parent="PropUnits/ColorProp/Indicator"]
+layout_mode = 0
+offset_left = -68.0
+offset_top = -1.0
+offset_right = -8.0
+offset_bottom = 30.0
+text = "Apply"
+
+[node name="ContentColorProp" type="Panel" parent="PropUnits"]
+visible = false
+custom_minimum_size = Vector2(0, 36)
+offset_left = -940.0
+offset_top = -303.0
+offset_right = -453.0
+offset_bottom = -267.0
+script = ExtResource("21_evont")
+
+[node name="PropName" type="Label" parent="PropUnits/ContentColorProp"]
+layout_mode = 0
+offset_left = 13.0
+offset_right = 75.0
+offset_bottom = 34.0
+theme_override_font_sizes/font_size = 24
+text = "Content Color"
+
+[node name="Indicator" type="ColorRect" parent="PropUnits/ContentColorProp"]
+layout_mode = 0
+offset_left = 412.0
+offset_top = 4.0
+offset_right = 477.0
+offset_bottom = 33.0
+
+[node name="Edit" type="Button" parent="PropUnits/ContentColorProp/Indicator"]
+layout_mode = 0
+offset_left = -139.0
+offset_right = -71.0
+offset_bottom = 31.0
+text = "🎨Edit"
+
+[node name="Apply" type="Button" parent="PropUnits/ContentColorProp/Indicator"]
+layout_mode = 0
+offset_left = -68.0
+offset_top = -1.0
+offset_right = -8.0
+offset_bottom = 30.0
+text = "Apply"
+
+[node name="TransformProp" type="Panel" parent="PropUnits"]
+visible = false
+custom_minimum_size = Vector2(0, 90)
+offset_left = -940.0
+offset_top = -263.0
+offset_right = -453.0
+offset_bottom = -173.0
+
+[node name="PropName" type="Label" parent="PropUnits/TransformProp"]
+layout_mode = 0
+offset_left = 13.0
+offset_right = 88.0
+offset_bottom = 34.0
+theme_override_font_sizes/font_size = 24
+text = "Transform
+"
+
+[node name="Edit" type="Button" parent="PropUnits/TransformProp"]
+layout_mode = 0
+offset_left = 191.0
+offset_top = 15.0
+offset_right = 336.0
+offset_bottom = 79.0
+text = "📝Edit
+"
+
+[node name="Write" type="Button" parent="PropUnits/TransformProp"]
+visible = false
+layout_mode = 0
+offset_left = 350.0
+offset_top = 16.0
+offset_right = 479.0
+offset_bottom = 80.0
+text = "📝Write (Apply)
+"
+
+[node name="BelongsToProp" type="Panel" parent="PropUnits"]
+visible = false
+custom_minimum_size = Vector2(0, 90)
+offset_left = -940.0
+offset_top = -263.0
+offset_right = -453.0
+offset_bottom = -173.0
+script = ExtResource("13_x62a1")
+
+[node name="PropName" type="Label" parent="PropUnits/BelongsToProp"]
+layout_mode = 0
+offset_left = 13.0
+offset_right = 88.0
+offset_bottom = 34.0
+theme_override_font_sizes/font_size = 24
+text = "Belongs To:
+"
+
+[node name="Edit" type="OptionButton" parent="PropUnits/BelongsToProp"]
+layout_mode = 0
+offset_left = 275.0
+offset_top = 15.0
+offset_right = 476.0
+offset_bottom = 50.0
+selected = 0
+allow_reselect = true
+item_count = 3
+popup/item_0/text = "GeneralSpace"
+popup/item_1/text = "BaseLine"
+popup/item_1/id = 1
+popup/item_2/text = "Camera"
+popup/item_2/id = 2
+
+[node name="ArchiveEventModeProp" type="Panel" parent="PropUnits"]
+visible = false
+custom_minimum_size = Vector2(0, 90)
+offset_left = -940.0
+offset_top = -263.0
+offset_right = -453.0
+offset_bottom = -173.0
+script = ExtResource("20_v3tck")
+
+[node name="PropName" type="Label" parent="PropUnits/ArchiveEventModeProp"]
+layout_mode = 0
+offset_left = 13.0
+offset_right = 88.0
+offset_bottom = 34.0
+theme_override_font_sizes/font_size = 24
+text = "Mode:
+"
+
+[node name="Edit" type="OptionButton" parent="PropUnits/ArchiveEventModeProp"]
+layout_mode = 0
+offset_left = 275.0
+offset_top = 15.0
+offset_right = 476.0
+offset_bottom = 50.0
+selected = 0
+allow_reselect = true
+item_count = 3
+popup/item_0/text = "Save"
+popup/item_1/text = "Load"
+popup/item_1/id = 1
+popup/item_2/text = "New"
+popup/item_2/id = 2
+
+[node name="LFOProp" type="Button" parent="PropUnits"]
+visible = false
+custom_minimum_size = Vector2(0, 62.81)
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = -931.0
+offset_top = -1371.0
+offset_right = -804.0
+offset_bottom = -1323.0
+grow_vertical = 0
+text = "Edit Low Frequency Oscillator Here"
+
+[node name="ThemeOverride" type="Button" parent="PropUnits"]
+visible = false
+custom_minimum_size = Vector2(0, 60)
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = -931.0
+offset_top = -1383.0
+offset_right = -653.0
+offset_bottom = -1323.0
+grow_vertical = 0
+text = "Select your custom text frame theme
+"
+
+[node name="PhysicsBodyProp" type="Panel" parent="PropUnits"]
+visible = false
+custom_minimum_size = Vector2(473, 156)
+offset_right = 473.0
+offset_bottom = 156.0
+
+[node name="PropName" type="Label" parent="PropUnits/PhysicsBodyProp"]
+layout_mode = 0
+offset_right = 471.0
+offset_bottom = 38.0
+theme_override_font_sizes/font_size = 23
+text = "Physics Body Properties
+"
+
+[node name="Button" type="Button" parent="PropUnits/PhysicsBodyProp"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -160.5
+offset_top = -30.0
+offset_right = 166.5
+offset_bottom = 55.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 46
+text = "Edit"
+
+[node name="SpecialEventProp" type="Panel" parent="PropUnits"]
+visible = false
+custom_minimum_size = Vector2(473, 156)
+offset_right = 473.0
+offset_bottom = 156.0
+
+[node name="PropName" type="Label" parent="PropUnits/SpecialEventProp"]
+layout_mode = 0
+offset_right = 471.0
+offset_bottom = 38.0
+theme_override_font_sizes/font_size = 23
+text = "Custom Special Event (AnimationPlayer):
+"
+
+[node name="Button" type="Button" parent="PropUnits/SpecialEventProp"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -160.5
+offset_top = -30.0
+offset_right = 166.5
+offset_bottom = 55.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 46
+text = "Select"
+script = SubResource("GDScript_lr6tl")
+
+[node name="FileDialog" type="FileDialog" parent="PropUnits/SpecialEventProp"]
+title = "Open a File"
+initial_position = 2
+size = Vector2i(345, 175)
+ok_button_text = "Open"
+file_mode = 0
+access = 2
+use_native_dialog = true
+
+[node name="TweenControls" type="Button" parent="PropUnits"]
+visible = false
+custom_minimum_size = Vector2(0, 62.81)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -931.0
+offset_top = -306.0
+offset_right = -2596.0
+offset_bottom = -1323.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Tween(Property Change) Controls
+"
+
+[node name="EventStream" type="Node2D" parent="."]
+
+[node name="second0" type="Line2D" parent="EventStream"]
+points = PackedVector2Array(-431, 0, 415, 0)
+width = 5.0
+default_color = Color(0.490196, 1, 0.6, 1)
+
+[node name="Panel" type="Panel" parent="EventStream"]
+modulate = Color(0, 0, 0, 1)
+offset_left = -430.0
+offset_top = -50648.0
+offset_right = 413.0
+offset_bottom = -2.0
+mouse_filter = 2
+
+[node name="PropertyPanel" type="Panel" parent="."]
+offset_left = -940.0
+offset_top = -481.0
+offset_right = -452.0
+offset_bottom = 521.0
+
+[node name="Scroll" type="ScrollContainer" parent="PropertyPanel"]
+clip_contents = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="List" type="VBoxContainer" parent="PropertyPanel/Scroll"]
+custom_minimum_size = Vector2(487, 0)
+layout_mode = 2
+
+[node name="current_uid" type="Marker2D" parent="PropertyPanel"]
+visible = false
+
+[node name="LoadDialog" type="FileDialog" parent="."]
+title = "Open a File"
+initial_position = 1
+size = Vector2i(1130, 674)
+ok_button_text = "Open"
+dialog_hide_on_ok = true
+file_mode = 0
+access = 2
+use_native_dialog = true
+
+[node name="SaveDialog" type="FileDialog" parent="."]
+auto_translate_mode = 1
+initial_position = 1
+size = Vector2i(1130, 674)
+ok_button_text = "Save"
+dialog_hide_on_ok = true
+access = 2
+filters = PackedStringArray("*.tmov")
+use_native_dialog = true
+
+[node name="RecycleBinUnit" type="Panel" parent="."]
+visible = false
+custom_minimum_size = Vector2(500, 45)
+offset_left = -951.0
+offset_top = 599.0
+offset_right = -451.0
+offset_bottom = 644.0
+script = ExtResource("9_21ixg")
+
+[node name="Name" type="Label" parent="RecycleBinUnit"]
+layout_mode = 0
+offset_right = 342.0
+offset_bottom = 50.0
+text = "[Type]Name"
+autowrap_mode = 3
+text_overrun_behavior = 3
+
+[node name="Del" type="Button" parent="RecycleBinUnit"]
+layout_mode = 0
+offset_left = 356.0
+offset_top = 4.0
+offset_right = 415.0
+offset_bottom = 40.0
+text = "Delete"
+
+[node name="Restore" type="Button" parent="RecycleBinUnit"]
+layout_mode = 0
+offset_left = 420.0
+offset_top = 4.0
+offset_right = 479.0
+offset_bottom = 40.0
+text = "Restore"
+
+[node name="id" type="Marker2D" parent="RecycleBinUnit"]
+
+[node name="RecycleEvents" type="Panel" parent="."]
+offset_left = -951.0
+offset_top = 552.0
+offset_right = -453.0
+offset_bottom = 1321.0
+
+[node name="Label" type="Label" parent="RecycleEvents"]
+layout_mode = 0
+offset_right = 501.0
+offset_bottom = 40.0
+theme_override_font_sizes/font_size = 31
+text = "Recycle Bin (Events)"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Scr" type="ScrollContainer" parent="RecycleEvents"]
+layout_mode = 0
+offset_top = 47.0
+offset_right = 499.0
+offset_bottom = 765.0
+
+[node name="List" type="VBoxContainer" parent="RecycleEvents/Scr"]
+layout_mode = 2
+
+[node name="Clear" type="Button" parent="RecycleEvents"]
+layout_mode = 0
+offset_right = 95.0
+offset_bottom = 43.0
+theme_override_font_sizes/font_size = 26
+text = "Clear"
+
+[node name="RecycleElements" type="Panel" parent="."]
+offset_left = -1468.0
+offset_top = 552.0
+offset_right = -970.0
+offset_bottom = 1321.0
+
+[node name="Label" type="Label" parent="RecycleElements"]
+layout_mode = 0
+offset_right = 501.0
+offset_bottom = 40.0
+theme_override_font_sizes/font_size = 31
+text = "Recycle Bin (Elements)"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Scr" type="ScrollContainer" parent="RecycleElements"]
+layout_mode = 0
+offset_top = 47.0
+offset_right = 499.0
+offset_bottom = 765.0
+
+[node name="List" type="VBoxContainer" parent="RecycleElements/Scr"]
+layout_mode = 2
+
+[node name="Clear" type="Button" parent="RecycleElements"]
+layout_mode = 0
+offset_right = 73.0
+offset_bottom = 44.0
+theme_override_font_sizes/font_size = 26
+text = "Clear"
+
+[node name="ReferenceRect" type="ReferenceRect" parent="."]
+visible = false
+offset_left = -1524.0
+offset_top = -1172.0
+offset_right = 1405.0
+offset_bottom = 1058.0
+mouse_filter = 2
+border_width = 3.1
+
+[node name="SFX" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_xgpqb")
+max_polyphony = 32
+
+[node name="Preview" type="RichTextLabel" parent="."]
+offset_left = -1764.0
+offset_top = -1027.0
+offset_right = -968.0
+offset_bottom = -544.0
+mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 20
+bbcode_enabled = true
+
+[node name="Notes" type="TextEdit" parent="."]
+offset_left = -939.0
+offset_top = -1035.0
+offset_right = -452.0
+offset_bottom = -501.0
+theme_override_font_sizes/font_size = 20
+text = "[center]Write Your note here
+[/center]
+
+Tips:
+[center]	居中	[/center]
+[right]		右对齐	[/right]
+[u]	下划线	[/u]
+[b]	加粗	[/b]
+[i]		斜体	[/i]
+[s]	删除线	[/s]
+[color=#ffffff][/color]颜色
+[wave amp=a freq=f]		波动		[/wave]
+[tornado radius=r freq=f]	龙卷风	[/tornado]
+[shake rate=r level=l]		抖动		[/shake]
+[fade start=s length=l]		渐变	[/fade]
+[rainbow freq=f sat=s]		彩虹	[/rainbow]
+"
+script = SubResource("GDScript_bmrr5")
+
+[node name="ColorPicker" type="Window" parent="."]
+initial_position = 2
+size = Vector2i(300, 800)
+visible = false
+
+[node name="ColorPicker" type="ColorPicker" parent="ColorPicker"]
+offset_right = 298.0
+offset_bottom = 576.0
+color_mode = 1
+picker_shape = 1
+
+[node name="ControlWindow" type="Window" parent="."]
+initial_position = 2
+size = Vector2i(782, 698)
+visible = false
+script = ExtResource("22_h4dlt")
+
+[node name="Apply" type="Button" parent="ControlWindow"]
+offset_left = 265.975
+offset_top = 626.56
+offset_right = 513.35
+offset_bottom = 678.54
+theme_override_font_sizes/font_size = 26
+text = "Apply
+"
+
+[node name="Sheet" type="Button" parent="ControlWindow"]
+offset_left = 50.0
+offset_top = 637.415
+offset_right = 195.0
+offset_bottom = 670.49
+theme_override_font_sizes/font_size = 16
+text = "Open Tween Sheet"
+
+[node name="TweenPanel" type="Panel" parent="ControlWindow"]
+offset_right = 782.0
+offset_bottom = 600.0
+script = ExtResource("30_p67qt")
+
+[node name="Label" type="Label" parent="ControlWindow/TweenPanel"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_font_sizes/font_size = 17
+text = "Tick the property you want it to make change. Determine the tweening curve for each channel"
+
+[node name="Scr" type="ScrollContainer" parent="ControlWindow/TweenPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 33.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Grid" type="GridContainer" parent="ControlWindow/TweenPanel/Scr"]
+custom_minimum_size = Vector2(782, 410.465)
+layout_mode = 2
+columns = 4
+
+[node name="Unit" type="Panel" parent="ControlWindow/TweenPanel"]
+visible = false
+custom_minimum_size = Vector2(168, 143.915)
+layout_mode = 2
+offset_top = 33.0
+offset_right = 168.0
+offset_bottom = 176.395
+script = ExtResource("31_4y16b")
+
+[node name="PropName" type="Label" parent="ControlWindow/TweenPanel/Unit"]
+layout_mode = 0
+offset_right = 119.0
+offset_bottom = 23.0
+mouse_filter = 1
+text = "property_name"
+
+[node name="Enabled" type="CheckBox" parent="ControlWindow/TweenPanel/Unit"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 34.0
+offset_right = 32.0
+offset_bottom = 58.0
+mouse_filter = 1
+theme_override_colors/icon_pressed_color = Color(1, 1, 1, 1)
+theme_override_styles/pressed = SubResource("StyleBoxFlat_s8aay")
+theme_override_styles/normal = SubResource("StyleBoxFlat_nbyax")
+
+[node name="IsElementProp" type="CheckBox" parent="ControlWindow/TweenPanel/Unit"]
+visible = false
+layout_mode = 0
+offset_left = 8.0
+offset_top = 34.0
+offset_right = 32.0
+offset_bottom = 58.0
+mouse_filter = 1
+theme_override_styles/normal = SubResource("StyleBoxFlat_nbyax")
+
+[node name="TweenOptions" type="OptionButton" parent="ControlWindow/TweenPanel/Unit"]
+layout_mode = 0
+offset_left = 38.0
+offset_top = 27.0
+offset_right = 156.0
+offset_bottom = 61.0
+mouse_filter = 1
+selected = 0
+allow_reselect = true
+item_count = 13
+popup/item_0/text = "no tween"
+popup/item_1/text = "Linear"
+popup/item_1/id = 1
+popup/item_2/text = "Sine"
+popup/item_2/id = 2
+popup/item_3/text = "Quint"
+popup/item_3/id = 3
+popup/item_4/text = "Quart"
+popup/item_4/id = 4
+popup/item_5/text = "Quad"
+popup/item_5/id = 5
+popup/item_6/text = "Expo"
+popup/item_6/id = 6
+popup/item_7/text = "Elastic"
+popup/item_7/id = 7
+popup/item_8/text = "Cubic"
+popup/item_8/id = 8
+popup/item_9/text = "Circ"
+popup/item_9/id = 9
+popup/item_10/text = "Bounce"
+popup/item_10/id = 10
+popup/item_11/text = "Back"
+popup/item_11/id = 11
+popup/item_12/text = "Spring"
+popup/item_12/id = 12
+
+[node name="EaseType" type="OptionButton" parent="ControlWindow/TweenPanel/Unit"]
+layout_mode = 0
+offset_left = 38.055
+offset_top = 65.85
+offset_right = 156.055
+offset_bottom = 99.85
+mouse_filter = 1
+selected = 0
+allow_reselect = true
+item_count = 4
+popup/item_0/text = "In"
+popup/item_1/text = "Out"
+popup/item_1/id = 1
+popup/item_2/text = "InOut"
+popup/item_2/id = 2
+popup/item_3/text = "OutIn"
+popup/item_3/id = 3
+
+[node name="Duration" type="SpinBox" parent="ControlWindow/TweenPanel/Unit"]
+layout_mode = 0
+offset_left = 9.0
+offset_top = 104.2
+offset_right = 158.0
+offset_bottom = 135.2
+mouse_filter = 1
+min_value = 0.001
+max_value = 65535.0
+step = 0.001
+value = 0.001
+suffix = "sec"
+
+[node name="Marker2D" type="Marker2D" parent="ControlWindow/TweenPanel/Unit"]
+
+[node name="Box" type="ReferenceRect" parent="ControlWindow/TweenPanel/Unit"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+border_color = Color(0.95, 0.791667, 0, 1)
+border_width = 2.0
+editor_only = false
+
+[node name="TweenChart" type="Window" parent="ControlWindow"]
+size = Vector2i(870, 665)
+visible = false
+
+[node name="TextureRect" type="TextureRect" parent="ControlWindow/TweenChart"]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("29_18nsd")
+
+[node name="Label" type="Label" parent="ControlWindow"]
+offset_left = 532.32
+offset_top = 631.46
+offset_right = 752.32
+offset_bottom = 672.46
+theme_override_font_sizes/font_size = 12
+text = "LMB Drag 左键拖动 = Select （多重）选择
+RMB Drag 右键拖动 = Deselect 取消选择"
+
+[node name="CustomTheme" type="Window" parent="."]
+position = Vector2i(0, 36)
+size = Vector2i(1410, 880)
+visible = false
+script = ExtResource("23_firrm")
+
+[node name="Panel" type="Panel" parent="CustomTheme"]
+offset_right = 1405.99
+offset_bottom = 873.615
+
+[node name="Label" type="Label" parent="CustomTheme/Panel"]
+layout_mode = 0
+offset_right = 148.0
+offset_bottom = 84.0
+theme_override_font_sizes/font_size = 34
+text = "Custom Theme Editor
+"
+
+[node name="Label2" type="Label" parent="CustomTheme/Panel"]
+layout_mode = 0
+offset_left = 1024.0
+offset_top = 40.0
+offset_right = 1392.0
+offset_bottom = 124.0
+theme_override_font_sizes/font_size = 34
+text = "Decorations
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="FileDialog" type="FileDialog" parent="CustomTheme/Panel"]
+title = "Open File(s)"
+initial_position = 1
+size = Vector2i(324, 180)
+ok_button_text = "Open"
+file_mode = 1
+access = 2
+use_native_dialog = true
+
+[node name="Preview" type="Panel" parent="CustomTheme/Panel"]
+clip_contents = true
+layout_mode = 0
+offset_left = 341.0
+offset_top = 123.0
+offset_right = 1021.0
+offset_bottom = 578.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_3eut5")
+
+[node name="Preview2D" type="Node2D" parent="CustomTheme/Panel/Preview"]
+position = Vector2(107, 53)
+
+[node name="Image" type="TextureRect" parent="CustomTheme/Panel/Preview/Preview2D"]
+offset_right = 448.0
+offset_bottom = 330.0
+mouse_filter = 2
+texture = ExtResource("7_qfadt")
+
+[node name="TextCase" type="ReferenceRect" parent="CustomTheme/Panel/Preview/Preview2D/Image"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+border_color = Color(0.80848, 0.4092, 0.93, 1)
+border_width = 3.0
+editor_only = false
+
+[node name="Decos" type="Control" parent="CustomTheme/Panel/Preview/Preview2D/Image"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Lines" type="Node2D" parent="CustomTheme/Panel/Preview"]
+position = Vector2(107, 53)
+
+[node name="L" type="Line2D" parent="CustomTheme/Panel/Preview/Lines"]
+position = Vector2(0, -56)
+points = PackedVector2Array(0, 0, 0, 600)
+width = 3.0
+gradient = SubResource("Gradient_h6qku")
+
+[node name="R" type="Line2D" parent="CustomTheme/Panel/Preview/Lines"]
+position = Vector2(451.87, -53)
+points = PackedVector2Array(0, 0, 0, 600)
+width = 3.0
+gradient = SubResource("Gradient_h6qku")
+
+[node name="U" type="Line2D" parent="CustomTheme/Panel/Preview/Lines"]
+position = Vector2(-106.17, 0)
+points = PackedVector2Array(0, 0, 800, 0)
+width = 3.0
+gradient = SubResource("Gradient_h6qku")
+
+[node name="B" type="Line2D" parent="CustomTheme/Panel/Preview/Lines"]
+position = Vector2(-107, 338)
+points = PackedVector2Array(0, 0, 800, 0)
+width = 3.0
+gradient = SubResource("Gradient_h6qku")
+
+[node name="ImageName" type="Label" parent="CustomTheme/Panel"]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 624.0
+offset_right = 155.0
+offset_bottom = 733.0
+text = "[Image]"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Select" type="Button" parent="CustomTheme/Panel"]
+layout_mode = 0
+offset_left = 184.0
+offset_top = 624.0
+offset_right = 299.0
+offset_bottom = 733.54
+text = "Select"
+
+[node name="AddDeco" type="Button" parent="CustomTheme/Panel"]
+layout_mode = 0
+offset_left = 1048.0
+offset_top = 408.0
+offset_right = 1128.0
+offset_bottom = 448.0
+text = "Add"
+
+[node name="Rotation" type="SpinBox" parent="CustomTheme/Panel"]
+layout_mode = 0
+offset_left = 1048.0
+offset_top = 480.0
+offset_right = 1232.0
+offset_bottom = 520.0
+min_value = -360.0
+max_value = 360.0
+step = 0.01
+
+[node name="Size" type="SpinBox" parent="CustomTheme/Panel"]
+layout_mode = 0
+offset_left = 1240.84
+offset_top = 480.0
+offset_right = 1384.12
+offset_bottom = 520.0
+max_value = 1000.0
+step = 0.001
+value = 1.0
+
+[node name="DeleteDeco" type="Button" parent="CustomTheme/Panel"]
+layout_mode = 0
+offset_left = 1144.0
+offset_top = 408.0
+offset_right = 1232.0
+offset_bottom = 448.0
+text = "Delete"
+
+[node name="EditDeco" type="Button" parent="CustomTheme/Panel"]
+layout_mode = 0
+offset_left = 1048.18
+offset_top = 536.005
+offset_right = 1176.18
+offset_bottom = 567.005
+text = "Edit Decoration"
+
+[node name="DupDeco" type="Button" parent="CustomTheme/Panel"]
+layout_mode = 0
+offset_left = 1248.0
+offset_top = 408.0
+offset_right = 1336.0
+offset_bottom = 448.0
+text = "Duplicate"
+
+[node name="Add" type="Button" parent="CustomTheme/Panel"]
+layout_mode = 0
+offset_left = 13.0
+offset_top = 64.455
+offset_right = 176.655
+offset_bottom = 119.455
+theme_override_font_sizes/font_size = 34
+text = "Add"
+
+[node name="ThemeDup" type="Button" parent="CustomTheme/Panel"]
+layout_mode = 0
+offset_left = 336.0
+offset_top = 64.0
+offset_right = 515.0
+offset_bottom = 119.0
+theme_override_font_sizes/font_size = 34
+text = "Duplicate"
+
+[node name="Delete" type="Button" parent="CustomTheme/Panel"]
+modulate = Color(1, 0.117647, 0.176471, 1)
+layout_mode = 0
+offset_left = 187.0
+offset_top = 65.0
+offset_right = 327.0
+offset_bottom = 120.0
+theme_override_font_sizes/font_size = 34
+text = "Delete
+"
+
+[node name="Explorer" type="Panel" parent="CustomTheme/Panel"]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 126.0
+offset_right = 319.0
+offset_bottom = 576.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_3eut5")
+
+[node name="Scr" type="ScrollContainer" parent="CustomTheme/Panel/Explorer"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBox" type="VBoxContainer" parent="CustomTheme/Panel/Explorer/Scr"]
+layout_mode = 2
+
+[node name="Unit" type="Button" parent="CustomTheme/Panel/Explorer"]
+visible = false
+custom_minimum_size = Vector2(279, 38)
+layout_mode = 0
+offset_right = 279.0
+offset_bottom = 38.0
+theme_override_font_sizes/font_size = 21
+text = "ThemeOverride"
+text_overrun_behavior = 3
+script = ExtResource("24_chh6y")
+
+[node name="tuid" type="Marker2D" parent="CustomTheme/Panel/Explorer/Unit"]
+
+[node name="Highlight" type="ReferenceRect" parent="CustomTheme/Panel/Explorer/Unit"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+border_color = Color(0.93, 0.734545, 0.0279, 1)
+editor_only = false
+
+[node name="DecoExplorer" type="Panel" parent="CustomTheme/Panel"]
+layout_mode = 0
+offset_left = 1048.0
+offset_top = 128.0
+offset_right = 1335.0
+offset_bottom = 384.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_3eut5")
+
+[node name="Scr" type="ScrollContainer" parent="CustomTheme/Panel/DecoExplorer"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBox" type="VBoxContainer" parent="CustomTheme/Panel/DecoExplorer/Scr"]
+layout_mode = 2
+
+[node name="Unit" type="Button" parent="CustomTheme/Panel/DecoExplorer"]
+visible = false
+custom_minimum_size = Vector2(279, 38)
+layout_mode = 0
+offset_right = 279.0
+offset_bottom = 38.0
+theme_override_font_sizes/font_size = 21
+text = "ThemeDecoration"
+text_overrun_behavior = 3
+script = ExtResource("31_0klfr")
+metadata/UName = ""
+
+[node name="Highlight" type="ReferenceRect" parent="CustomTheme/Panel/DecoExplorer/Unit"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+border_color = Color(0.93, 0.734545, 0.0279, 1)
+editor_only = false
+
+[node name="PatchMargins" type="Panel" parent="CustomTheme/Panel"]
+layout_mode = 0
+offset_left = 336.0
+offset_top = 616.0
+offset_right = 648.0
+offset_bottom = 744.0
+
+[node name="LMargin" type="SpinBox" parent="CustomTheme/Panel/PatchMargins"]
+layout_mode = 0
+offset_left = 56.0
+offset_top = 8.0
+offset_right = 139.063
+offset_bottom = 51.0
+max_value = 65536.0
+
+[node name="RMargin" type="SpinBox" parent="CustomTheme/Panel/PatchMargins"]
+layout_mode = 0
+offset_left = 56.0
+offset_top = 72.0
+offset_right = 139.063
+offset_bottom = 115.0
+max_value = 65536.0
+
+[node name="UMargin" type="SpinBox" parent="CustomTheme/Panel/PatchMargins"]
+layout_mode = 0
+offset_left = 224.0
+offset_top = 8.0
+offset_right = 307.063
+offset_bottom = 51.0
+max_value = 65536.0
+
+[node name="BMargin" type="SpinBox" parent="CustomTheme/Panel/PatchMargins"]
+layout_mode = 0
+offset_left = 224.0
+offset_top = 72.0
+offset_right = 307.063
+offset_bottom = 115.0
+max_value = 65536.0
+
+[node name="Label3" type="Label" parent="CustomTheme/Panel/PatchMargins"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 24.0
+offset_right = 48.0
+offset_bottom = 47.0
+text = "Left"
+
+[node name="Label4" type="Label" parent="CustomTheme/Panel/PatchMargins"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 80.0
+offset_right = 49.0
+offset_bottom = 103.0
+text = "Right"
+
+[node name="Label5" type="Label" parent="CustomTheme/Panel/PatchMargins"]
+layout_mode = 0
+offset_left = 160.0
+offset_top = 24.0
+offset_right = 200.0
+offset_bottom = 47.0
+text = "Up"
+
+[node name="Label9" type="Label" parent="CustomTheme/Panel/PatchMargins"]
+layout_mode = 0
+offset_left = 160.0
+offset_top = 80.0
+offset_right = 219.0
+offset_bottom = 103.0
+text = "Bottom
+"
+
+[node name="AnchorOffsets" type="Panel" parent="CustomTheme/Panel"]
+layout_mode = 0
+offset_left = 1072.0
+offset_top = 616.0
+offset_right = 1384.0
+offset_bottom = 744.0
+
+[node name="LOffset" type="SpinBox" parent="CustomTheme/Panel/AnchorOffsets"]
+layout_mode = 0
+offset_left = 56.0
+offset_top = 8.0
+offset_right = 139.063
+offset_bottom = 51.0
+max_value = 1.0
+step = 0.001
+
+[node name="ROffset" type="SpinBox" parent="CustomTheme/Panel/AnchorOffsets"]
+layout_mode = 0
+offset_left = 56.0
+offset_top = 72.0
+offset_right = 139.063
+offset_bottom = 115.0
+max_value = 1.0
+step = 0.001
+value = 1.0
+
+[node name="UOffset" type="SpinBox" parent="CustomTheme/Panel/AnchorOffsets"]
+layout_mode = 0
+offset_left = 224.0
+offset_top = 8.0
+offset_right = 307.063
+offset_bottom = 51.0
+max_value = 1.0
+step = 0.001
+
+[node name="BOffset" type="SpinBox" parent="CustomTheme/Panel/AnchorOffsets"]
+layout_mode = 0
+offset_left = 224.0
+offset_top = 72.0
+offset_right = 307.063
+offset_bottom = 115.0
+max_value = 1.0
+step = 0.001
+value = 1.0
+
+[node name="Label3" type="Label" parent="CustomTheme/Panel/AnchorOffsets"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 24.0
+offset_right = 48.0
+offset_bottom = 47.0
+text = "Left"
+
+[node name="Label4" type="Label" parent="CustomTheme/Panel/AnchorOffsets"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 80.0
+offset_right = 49.0
+offset_bottom = 103.0
+text = "Right"
+
+[node name="Label5" type="Label" parent="CustomTheme/Panel/AnchorOffsets"]
+layout_mode = 0
+offset_left = 160.0
+offset_top = 24.0
+offset_right = 200.0
+offset_bottom = 47.0
+text = "Up"
+
+[node name="Label9" type="Label" parent="CustomTheme/Panel/AnchorOffsets"]
+layout_mode = 0
+offset_left = 160.0
+offset_top = 80.0
+offset_right = 219.0
+offset_bottom = 103.0
+text = "Bottom
+"
+
+[node name="HStretch" type="OptionButton" parent="CustomTheme/Panel"]
+layout_mode = 0
+offset_left = 656.0
+offset_top = 656.0
+offset_right = 840.0
+offset_bottom = 680.0
+selected = 0
+item_count = 3
+popup/item_0/text = "Stretch"
+popup/item_1/text = "Tile"
+popup/item_1/id = 1
+popup/item_2/text = "TileFit"
+popup/item_2/id = 2
+
+[node name="VStretch" type="OptionButton" parent="CustomTheme/Panel"]
+layout_mode = 0
+offset_left = 864.0
+offset_top = 656.0
+offset_right = 1048.0
+offset_bottom = 680.0
+selected = 0
+item_count = 3
+popup/item_0/text = "Stretch"
+popup/item_1/text = "Tile"
+popup/item_1/id = 1
+popup/item_2/text = "TileFit"
+popup/item_2/id = 2
+
+[node name="Label6" type="Label" parent="CustomTheme/Panel"]
+layout_mode = 0
+offset_left = 344.0
+offset_top = 592.0
+offset_right = 454.0
+offset_bottom = 615.0
+text = "Patch Margins"
+
+[node name="Label9" type="Label" parent="CustomTheme/Panel"]
+layout_mode = 0
+offset_left = 1072.0
+offset_top = 584.0
+offset_right = 1266.0
+offset_bottom = 607.0
+text = "Text Case Anchor Offsets
+"
+
+[node name="Label11" type="Label" parent="CustomTheme/Panel"]
+layout_mode = 0
+offset_left = 1050.44
+offset_top = 457.16
+offset_right = 1244.44
+offset_bottom = 480.16
+text = "Rotation	                              Scale"
+
+[node name="Label10" type="Label" parent="CustomTheme/Panel"]
+layout_mode = 0
+offset_left = 736.0
+offset_top = 592.0
+offset_right = 817.0
+offset_bottom = 615.0
+text = "View Scale"
+
+[node name="Label7" type="Label" parent="CustomTheme/Panel"]
+layout_mode = 0
+offset_left = 656.0
+offset_top = 624.0
+offset_right = 845.0
+offset_bottom = 647.0
+text = "Horizontal Stretch Mode"
+
+[node name="Label8" type="Label" parent="CustomTheme/Panel"]
+layout_mode = 0
+offset_left = 864.0
+offset_top = 624.0
+offset_right = 1053.0
+offset_bottom = 647.0
+text = "Vertical Stretch Mode"
+
+[node name="PreviewScale" type="HSlider" parent="CustomTheme/Panel"]
+layout_mode = 0
+offset_left = 480.0
+offset_top = 592.0
+offset_right = 728.0
+offset_bottom = 608.0
+min_value = 0.001
+step = 0.01
+value = 1.001
+exp_edit = true
+
+[node name="Done" type="Button" parent="CustomTheme/Panel"]
+layout_mode = 0
+offset_left = 600.0
+offset_top = 776.0
+offset_right = 779.0
+offset_bottom = 831.0
+theme_override_font_sizes/font_size = 34
+text = "Done"
+
+[node name="Apply" type="Button" parent="CustomTheme/Panel"]
+visible = false
+layout_mode = 0
+offset_left = 600.0
+offset_top = 776.0
+offset_right = 779.0
+offset_bottom = 831.0
+theme_override_font_sizes/font_size = 34
+text = "Apply"
+
+[node name="Move" type="ReferenceRect" parent="CustomTheme/Panel"]
+layout_mode = 0
+offset_left = 352.0
+offset_top = 134.22
+offset_right = 1008.0
+offset_bottom = 566.22
+mouse_default_cursor_shape = 13
+
+[node name="Name" type="LineEdit" parent="CustomTheme/Panel"]
+layout_mode = 0
+offset_left = 522.355
+offset_top = 69.505
+offset_right = 1022.35
+offset_bottom = 104.31
+placeholder_text = "Theme Name"
+
+[node name="Label" type="Label" parent="CustomTheme/Panel/Name"]
+layout_mode = 0
+offset_top = -28.35
+offset_right = 108.0
+offset_bottom = -5.35
+text = "Theme Name:"
+
+[node name="ThemeUnit" type="Control" parent="CustomTheme"]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 400.0
+offset_bottom = 400.0
+metadata/image_euid = -1
+metadata/name = ""
+
+[node name="Texture" type="NinePatchRect" parent="CustomTheme/ThemeUnit"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_qfadt")
+
+[node name="Decos" type="Control" parent="CustomTheme/ThemeUnit"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextCase" type="RichTextLabel" parent="CustomTheme/ThemeUnit"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+bbcode_enabled = true
+metadata/_edit_use_anchors_ = true
+
+[node name="DecoEditor" type="Window" parent="CustomTheme"]
+position = Vector2i(0, 36)
+size = Vector2i(475, 575)
+visible = false
+
+[node name="EditPanel" type="Panel" parent="CustomTheme/DecoEditor"]
+offset_right = 424.0
+offset_bottom = 552.0
+
+[node name="Image" type="Control" parent="CustomTheme/DecoEditor/EditPanel"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ImageName" type="Label" parent="CustomTheme/DecoEditor/EditPanel/Image"]
+layout_mode = 0
+offset_left = 88.0
+offset_top = 64.0
+offset_right = 203.0
+offset_bottom = 173.0
+text = "[Image]"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Select" type="Button" parent="CustomTheme/DecoEditor/EditPanel/Image"]
+layout_mode = 0
+offset_left = 232.0
+offset_top = 64.0
+offset_right = 347.0
+offset_bottom = 173.54
+text = "Select"
+
+[node name="Animation" type="Control" parent="CustomTheme/DecoEditor/EditPanel"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="AnimName" type="Label" parent="CustomTheme/DecoEditor/EditPanel/Animation"]
+layout_mode = 0
+offset_left = 88.0
+offset_top = 64.0
+offset_right = 203.0
+offset_bottom = 173.0
+text = "[Animation]"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="_" type="Label" parent="CustomTheme/DecoEditor/EditPanel/Animation"]
+layout_mode = 0
+offset_left = 184.0
+offset_top = 192.0
+offset_right = 299.0
+offset_bottom = 301.0
+text = "Play Back 
+Speed Scale"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="_2" type="Label" parent="CustomTheme/DecoEditor/EditPanel/Animation"]
+layout_mode = 0
+offset_left = 184.0
+offset_top = 245.39
+offset_right = 299.0
+offset_bottom = 354.39
+text = "Actual FPS=Speed Scale*original_fps"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Select" type="Button" parent="CustomTheme/DecoEditor/EditPanel/Animation"]
+layout_mode = 0
+offset_left = 232.0
+offset_top = 64.0
+offset_right = 347.0
+offset_bottom = 173.54
+text = "Select"
+
+[node name="SpdScale" type="SpinBox" parent="CustomTheme/DecoEditor/EditPanel/Animation"]
+layout_mode = 0
+offset_left = 96.0
+offset_top = 232.0
+offset_right = 179.063
+offset_bottom = 263.0
+max_value = 1000.0
+step = 0.001
+value = 1.0
+
+[node name="Type" type="CheckButton" parent="CustomTheme/DecoEditor/EditPanel"]
+layout_mode = 0
+offset_left = 151.67
+offset_top = 500.0
+offset_right = 247.67
+offset_bottom = 531.0
+text = "Image"
+
+[node name="Label" type="Label" parent="CustomTheme/DecoEditor/EditPanel/Type"]
+layout_mode = 0
+offset_left = 94.485
+offset_top = 3.7
+offset_right = 175.485
+offset_bottom = 26.7
+text = "Animation"
+
+[node name="Name" type="LineEdit" parent="CustomTheme/DecoEditor/EditPanel"]
+layout_mode = 0
+offset_left = 48.0
+offset_top = 455.555
+offset_right = 392.0
+offset_bottom = 495.555
+
+[node name="Label" type="Label" parent="CustomTheme/DecoEditor/EditPanel/Name"]
+layout_mode = 0
+offset_top = -33.165
+offset_right = 344.0
+offset_bottom = -10.165
+text = "Deco Name"
+
+[node name="Deco" type="Control" parent="CustomTheme/DecoEditor"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 247.585
+offset_top = 256.69
+offset_right = 287.585
+offset_bottom = 296.69
+metadata/image_euid = -1
+metadata/changed = false
+metadata/name = ""
+
+[node name="Sprite" type="AnimatedSprite2D" parent="CustomTheme/DecoEditor/Deco"]
+visible = false
+sprite_frames = SubResource("SpriteFrames_idplo")
+frame_progress = 0.987661
+metadata/deco_index = 0
+
+[node name="ContentPreview" type="Window" parent="."]
+position = Vector2i(0, 36)
+size = Vector2i(925, 495)
+visible = false
+
+[node name="Panel" type="Panel" parent="ContentPreview"]
+offset_right = 900.0
+offset_bottom = 469.86
+
+[node name="Origin" type="Control" parent="ContentPreview/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SelectTheme" type="Window" parent="."]
+position = Vector2i(0, 36)
+visible = false
+
+[node name="Markers" type="Panel" parent="."]
+offset_left = -2040.0
+offset_top = -642.0
+offset_right = -1781.0
+offset_bottom = -481.0
+
+[node name="Label" type="Label" parent="Markers"]
+layout_mode = 0
+offset_right = 257.0
+offset_bottom = 39.0
+text = "Drag & Place Markers"
+
+[node name="Button" type="Button" parent="Markers"]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 28.0
+offset_right = 41.0
+offset_bottom = 59.0
+text = "white"
+script = ExtResource("19_vprov")
+
+[node name="marker" type="Line2D" parent="Markers/Button"]
+visible = false
+position = Vector2(196, 68)
+points = PackedVector2Array(-25, 0, 25, 0)
+width = 3.0
+
+[node name="point" type="ColorRect" parent="Markers/Button/marker"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -3.0
+offset_top = -3.0
+offset_right = 3.0
+offset_bottom = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Move" type="Control" parent="Markers/Button/marker"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -25.0
+offset_top = -12.0
+offset_right = 25.0
+offset_bottom = 12.0
+mouse_default_cursor_shape = 6
+script = ExtResource("19_glsup")
+
+[node name="Button2" type="Button" parent="Markers"]
+modulate = Color(1, 0.211765, 0.396078, 1)
+layout_mode = 0
+offset_left = 6.0
+offset_top = 62.0
+offset_right = 41.0
+offset_bottom = 93.0
+text = "red
+"
+script = ExtResource("19_vprov")
+
+[node name="marker" type="Line2D" parent="Markers/Button2"]
+visible = false
+position = Vector2(196, 68)
+points = PackedVector2Array(-25, 0, 25, 0)
+width = 3.0
+
+[node name="point" type="ColorRect" parent="Markers/Button2/marker"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -3.0
+offset_top = -3.0
+offset_right = 3.0
+offset_bottom = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Move" type="Control" parent="Markers/Button2/marker"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -25.0
+offset_top = -12.0
+offset_right = 25.0
+offset_bottom = 12.0
+mouse_default_cursor_shape = 6
+script = ExtResource("19_glsup")
+
+[node name="Button3" type="Button" parent="Markers"]
+modulate = Color(0.580392, 1, 0.211765, 1)
+layout_mode = 0
+offset_left = 6.0
+offset_top = 97.0
+offset_right = 59.0
+offset_bottom = 128.0
+text = "green"
+script = ExtResource("19_vprov")
+
+[node name="marker" type="Line2D" parent="Markers/Button3"]
+visible = false
+position = Vector2(196, 68)
+points = PackedVector2Array(-25, 0, 25, 0)
+width = 3.0
+
+[node name="point" type="ColorRect" parent="Markers/Button3/marker"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -3.0
+offset_top = -3.0
+offset_right = 3.0
+offset_bottom = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Move" type="Control" parent="Markers/Button3/marker"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -25.0
+offset_top = -12.0
+offset_right = 25.0
+offset_bottom = 12.0
+mouse_default_cursor_shape = 6
+script = ExtResource("19_glsup")
+
+[node name="Button4" type="Button" parent="Markers"]
+modulate = Color(0.211765, 0.486275, 1, 1)
+layout_mode = 0
+offset_left = 5.0
+offset_top = 130.0
+offset_right = 58.0
+offset_bottom = 161.0
+text = "blue"
+script = ExtResource("19_vprov")
+
+[node name="marker" type="Line2D" parent="Markers/Button4"]
+visible = false
+position = Vector2(196, 68)
+points = PackedVector2Array(-25, 0, 25, 0)
+width = 3.0
+
+[node name="point" type="ColorRect" parent="Markers/Button4/marker"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -3.0
+offset_top = -3.0
+offset_right = 3.0
+offset_bottom = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Move" type="Control" parent="Markers/Button4/marker"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -25.0
+offset_top = -12.0
+offset_right = 25.0
+offset_bottom = 12.0
+mouse_default_cursor_shape = 6
+script = ExtResource("19_glsup")
+
+[node name="Button5" type="Button" parent="Markers"]
+modulate = Color(1, 0.972549, 0.211765, 1)
+layout_mode = 0
+offset_left = 63.0
+offset_top = 27.0
+offset_right = 116.0
+offset_bottom = 58.0
+text = "yellow
+"
+script = ExtResource("19_vprov")
+
+[node name="marker" type="Line2D" parent="Markers/Button5"]
+visible = false
+position = Vector2(196, 68)
+points = PackedVector2Array(-25, 0, 25, 0)
+width = 3.0
+
+[node name="point" type="ColorRect" parent="Markers/Button5/marker"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -3.0
+offset_top = -3.0
+offset_right = 3.0
+offset_bottom = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Move" type="Control" parent="Markers/Button5/marker"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -25.0
+offset_top = -12.0
+offset_right = 25.0
+offset_bottom = 12.0
+mouse_default_cursor_shape = 6
+script = ExtResource("19_glsup")
+
+[node name="Button6" type="Button" parent="Markers"]
+modulate = Color(0.211765, 0.905882, 1, 1)
+layout_mode = 0
+offset_left = 125.0
+offset_top = 26.0
+offset_right = 178.0
+offset_bottom = 57.0
+text = "cyan
+"
+script = ExtResource("19_vprov")
+
+[node name="marker" type="Line2D" parent="Markers/Button6"]
+visible = false
+position = Vector2(196, 68)
+points = PackedVector2Array(-25, 0, 25, 0)
+width = 3.0
+
+[node name="point" type="ColorRect" parent="Markers/Button6/marker"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -3.0
+offset_top = -3.0
+offset_right = 3.0
+offset_bottom = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Move" type="Control" parent="Markers/Button6/marker"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -25.0
+offset_top = -12.0
+offset_right = 25.0
+offset_bottom = 12.0
+mouse_default_cursor_shape = 6
+script = ExtResource("19_glsup")
+
+[node name="Button7" type="Button" parent="Markers"]
+modulate = Color(0.776471, 0.211765, 1, 1)
+layout_mode = 0
+offset_left = 182.0
+offset_top = 25.0
+offset_right = 235.0
+offset_bottom = 56.0
+text = "purple
+"
+script = ExtResource("19_vprov")
+
+[node name="marker" type="Line2D" parent="Markers/Button7"]
+visible = false
+position = Vector2(196, 68)
+points = PackedVector2Array(-25, 0, 25, 0)
+width = 3.0
+
+[node name="point" type="ColorRect" parent="Markers/Button7/marker"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -3.0
+offset_top = -3.0
+offset_right = 3.0
+offset_bottom = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Move" type="Control" parent="Markers/Button7/marker"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -25.0
+offset_top = -12.0
+offset_right = 25.0
+offset_bottom = 12.0
+mouse_default_cursor_shape = 6
+script = ExtResource("19_glsup")
+
+[node name="Button8" type="Button" parent="Markers"]
+modulate = Color(1, 0.737255, 0.211765, 1)
+layout_mode = 0
+offset_left = -64.0
+offset_top = 28.0
+offset_right = -5.0
+offset_bottom = 59.0
+text = "orange
+"
+script = ExtResource("19_vprov")
+
+[node name="marker" type="Line2D" parent="Markers/Button8"]
+visible = false
+position = Vector2(196, 68)
+points = PackedVector2Array(-25, 0, 25, 0)
+width = 3.0
+
+[node name="point" type="ColorRect" parent="Markers/Button8/marker"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -3.0
+offset_top = -3.0
+offset_right = 3.0
+offset_bottom = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Move" type="Control" parent="Markers/Button8/marker"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -25.0
+offset_top = -12.0
+offset_right = 25.0
+offset_bottom = 12.0
+mouse_default_cursor_shape = 6
+script = ExtResource("19_glsup")
+
+[node name="Delete" type="Panel" parent="Markers"]
+self_modulate = Color(1, 0.0352941, 0.180392, 1)
+layout_mode = 0
+offset_left = 3.0
+offset_top = -134.0
+offset_right = 261.0
+offset_bottom = -6.0
+script = SubResource("GDScript_qfxa7")
+
+[node name="Button" type="Button" parent="Markers/Delete"]
+modulate = Color(1, 0, 0.0156863, 1)
+layout_mode = 0
+offset_left = 1.0
+offset_top = -43.0
+offset_right = 177.0
+offset_bottom = -8.0
+text = "Click to clear the zone"
+
+[node name="Markers" type="Node2D" parent="Markers/Delete"]
+
+[node name="SelectionRect" type="ReferenceRect" parent="."]
+visible = false
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+border_color = Color(0.890196, 0.733333, 0.85098, 1)
+border_width = 2.0
+editor_only = false
+
+[node name="ColorRect" type="ColorRect" parent="SelectionRect"]
+self_modulate = Color(1, 1, 1, 0.466667)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.823529, 0.733333, 0.835294, 1)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position_smoothing_enabled = true
+position_smoothing_speed = 10.0
+
+[node name="test" type="Button" parent="Camera2D"]
+offset_left = 758.0
+offset_top = 418.0
+offset_right = 940.0
+offset_bottom = 495.0
+theme_override_font_sizes/font_size = 21
+text = "Debug"
+
+[node name="EventGroupEditor" type="Window" parent="."]
+position = Vector2i(0, 36)
+size = Vector2i(940, 840)
+visible = false
+min_size = Vector2i(940, 840)
+max_size = Vector2i(940, 840)
+script = ExtResource("38_2qtl2")
+
+[node name="EventStream" type="Node2D" parent="EventGroupEditor"]
+position = Vector2(400, 50)
+
+[node name="ColorRect" type="ColorRect" parent="EventGroupEditor/EventStream"]
+offset_left = -4000.0
+offset_right = 5999.0
+offset_bottom = 4.99
+
+[node name="ReferenceRect" type="ReferenceRect" parent="EventGroupEditor"]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+border_color = Color(0.963333, 1, 0.45, 1)
+border_width = 5.0
+editor_only = false
+
+[node name="Save" type="Button" parent="EventGroupEditor"]
+offset_left = 20.0
+offset_top = 750.0
+offset_right = 181.0
+offset_bottom = 820.0
+theme_override_font_sizes/font_size = 31
+text = "Save As File"
+
+[node name="Load" type="Button" parent="EventGroupEditor"]
+offset_left = 200.0
+offset_top = 750.0
+offset_right = 374.0
+offset_bottom = 820.0
+theme_override_font_sizes/font_size = 31
+text = "Load From File"
+
+[connection signal="gui_input" from="Panel" to="." method="lose_focus_event"]
+[connection signal="pressed" from="Panel" to="." method="lose_focus"]
+[connection signal="pressed" from="Panel" to="EventPanel" method="EventGroupUnfocused"]
+[connection signal="pressed" from="OpenThemePanel" to="CustomTheme" method="Open"]
+[connection signal="pressed" from="CancelTransform" to="CinemaPreview" method="Cancel"]
+[connection signal="pressed" from="ApplyTransform" to="CinemaPreview" method="Apply"]
+[connection signal="button_down" from="TransformEditor/Scr/List/Pos/Drag" to="TransformEditor/Scr/List/Pos/Drag" method="OnDrag"]
+[connection signal="button_up" from="TransformEditor/Scr/List/Pos/Drag" to="TransformEditor/Scr/List/Pos/Drag" method="StopDragging"]
+[connection signal="value_changed" from="TransformEditor/Scr/List/Pos/Drag/X" to="TransformEditor/Scr/List/Pos/Drag" method="ValueChanged"]
+[connection signal="value_changed" from="TransformEditor/Scr/List/Pos/Drag/Y" to="TransformEditor/Scr/List/Pos/Drag" method="ValueChanged"]
+[connection signal="button_down" from="TransformEditor/Scr/List/Rot/Drag" to="TransformEditor/Scr/List/Rot/Drag" method="OnDrag"]
+[connection signal="button_up" from="TransformEditor/Scr/List/Rot/Drag" to="TransformEditor/Scr/List/Rot/Drag" method="StopDragging"]
+[connection signal="value_changed" from="TransformEditor/Scr/List/Rot/Drag/X" to="TransformEditor/Scr/List/Rot/Drag" method="ValueChanged"]
+[connection signal="button_down" from="TransformEditor/Scr/List/Scale/Drag" to="TransformEditor/Scr/List/Scale/Drag" method="OnDrag"]
+[connection signal="button_up" from="TransformEditor/Scr/List/Scale/Drag" to="TransformEditor/Scr/List/Scale/Drag" method="StopDragging"]
+[connection signal="value_changed" from="TransformEditor/Scr/List/Scale/Drag/X" to="TransformEditor/Scr/List/Scale/Drag" method="ValueChanged"]
+[connection signal="value_changed" from="TransformEditor/Scr/List/Scale/Drag/Y" to="TransformEditor/Scr/List/Scale/Drag" method="ValueChanged"]
+[connection signal="button_down" from="TransformEditor/Scr/List/Offset/Drag" to="TransformEditor/Scr/List/Offset/Drag" method="OnDrag"]
+[connection signal="button_up" from="TransformEditor/Scr/List/Offset/Drag" to="TransformEditor/Scr/List/Offset/Drag" method="StopDragging"]
+[connection signal="value_changed" from="TransformEditor/Scr/List/Offset/Drag/X" to="TransformEditor/Scr/List/Offset/Drag" method="ValueChanged"]
+[connection signal="value_changed" from="TransformEditor/Scr/List/Offset/Drag/Y" to="TransformEditor/Scr/List/Offset/Drag" method="ValueChanged"]
+[connection signal="button_down" from="TransformEditor/Scr/List/Size/Drag" to="TransformEditor/Scr/List/Size/Drag" method="OnDrag"]
+[connection signal="button_up" from="TransformEditor/Scr/List/Size/Drag" to="TransformEditor/Scr/List/Size/Drag" method="StopDragging"]
+[connection signal="value_changed" from="TransformEditor/Scr/List/Size/Drag/X" to="TransformEditor/Scr/List/Size/Drag" method="ValueChanged"]
+[connection signal="value_changed" from="TransformEditor/Scr/List/Size/Drag/Y" to="TransformEditor/Scr/List/Size/Drag" method="ValueChanged"]
+[connection signal="button_down" from="TransformEditor/Scr/List/PhysicBody/SpawnPosition" to="TransformEditor/Scr/List/PhysicBody/SpawnPosition" method="OnDrag"]
+[connection signal="button_up" from="TransformEditor/Scr/List/PhysicBody/SpawnPosition" to="TransformEditor/Scr/List/PhysicBody/SpawnPosition" method="StopDragging"]
+[connection signal="value_changed" from="TransformEditor/Scr/List/PhysicBody/SpawnPosition/X" to="TransformEditor/Scr/List/PhysicBody/SpawnPosition" method="ValueChanged"]
+[connection signal="value_changed" from="TransformEditor/Scr/List/PhysicBody/SpawnPosition/Y" to="TransformEditor/Scr/List/PhysicBody/SpawnPosition" method="ValueChanged"]
+[connection signal="button_down" from="TransformEditor/Scr/List/PhysicBody/SpawnAngularVelocity" to="TransformEditor/Scr/List/PhysicBody/SpawnAngularVelocity" method="OnDrag"]
+[connection signal="button_up" from="TransformEditor/Scr/List/PhysicBody/SpawnAngularVelocity" to="TransformEditor/Scr/List/PhysicBody/SpawnAngularVelocity" method="StopDragging"]
+[connection signal="value_changed" from="TransformEditor/Scr/List/PhysicBody/SpawnAngularVelocity/Y" to="TransformEditor/Scr/List/PhysicBody/SpawnAngularVelocity" method="ValueChanged"]
+[connection signal="button_down" from="TransformEditor/Scr/List/PhysicBody/SpawnVelocity" to="TransformEditor/Scr/List/PhysicBody/SpawnVelocity" method="OnDrag"]
+[connection signal="button_up" from="TransformEditor/Scr/List/PhysicBody/SpawnVelocity" to="TransformEditor/Scr/List/PhysicBody/SpawnVelocity" method="StopDragging"]
+[connection signal="value_changed" from="TransformEditor/Scr/List/PhysicBody/SpawnVelocity/X" to="TransformEditor/Scr/List/PhysicBody/SpawnVelocity" method="ValueChanged"]
+[connection signal="value_changed" from="TransformEditor/Scr/List/PhysicBody/SpawnVelocity/Y" to="TransformEditor/Scr/List/PhysicBody/SpawnVelocity" method="ValueChanged"]
+[connection signal="button_down" from="TransformEditor/Scr/List/Gravity/DragDir" to="TransformEditor/Scr/List/Gravity/DragDir" method="OnDrag"]
+[connection signal="button_up" from="TransformEditor/Scr/List/Gravity/DragDir" to="TransformEditor/Scr/List/Gravity/DragDir" method="StopDragging"]
+[connection signal="value_changed" from="TransformEditor/Scr/List/Gravity/DragDir/X" to="TransformEditor/Scr/List/Gravity/DragDir" method="ValueChanged"]
+[connection signal="button_down" from="TransformEditor/Scr/List/Gravity/DragMag" to="TransformEditor/Scr/List/Gravity/DragMag" method="OnDrag"]
+[connection signal="button_up" from="TransformEditor/Scr/List/Gravity/DragMag" to="TransformEditor/Scr/List/Gravity/DragMag" method="StopDragging"]
+[connection signal="value_changed" from="TransformEditor/Scr/List/Gravity/DragMag/Y" to="TransformEditor/Scr/List/Gravity/DragDir" method="ValueChanged"]
+[connection signal="button_down" from="TransformEditor/Scr/List/GUI/DragPosL" to="TransformEditor/Scr/List/GUI/DragPosL" method="OnDrag"]
+[connection signal="button_up" from="TransformEditor/Scr/List/GUI/DragPosL" to="TransformEditor/Scr/List/GUI/DragPosL" method="StopDragging"]
+[connection signal="value_changed" from="TransformEditor/Scr/List/GUI/DragPosL/X" to="TransformEditor/Scr/List/GUI/DragPosL" method="ValueChanged"]
+[connection signal="value_changed" from="TransformEditor/Scr/List/GUI/DragPosL/Y" to="TransformEditor/Scr/List/GUI/DragPosL" method="ValueChanged"]
+[connection signal="button_down" from="TransformEditor/Scr/List/GUI/DragRotL" to="TransformEditor/Scr/List/GUI/DragRotL" method="OnDrag"]
+[connection signal="button_up" from="TransformEditor/Scr/List/GUI/DragRotL" to="TransformEditor/Scr/List/GUI/DragRotL" method="StopDragging"]
+[connection signal="value_changed" from="TransformEditor/Scr/List/GUI/DragRotL/X" to="TransformEditor/Scr/List/GUI/DragRotL" method="ValueChanged"]
+[connection signal="button_down" from="TransformEditor/Scr/List/GUI/DragPosG" to="TransformEditor/Scr/List/GUI/DragPosG" method="OnDrag"]
+[connection signal="button_up" from="TransformEditor/Scr/List/GUI/DragPosG" to="TransformEditor/Scr/List/GUI/DragPosG" method="StopDragging"]
+[connection signal="value_changed" from="TransformEditor/Scr/List/GUI/DragPosG/X" to="TransformEditor/Scr/List/GUI/DragPosG" method="ValueChanged"]
+[connection signal="value_changed" from="TransformEditor/Scr/List/GUI/DragPosG/Y" to="TransformEditor/Scr/List/GUI/DragPosG" method="ValueChanged"]
+[connection signal="button_down" from="TransformEditor/Scr/List/GUI/DragSizeG" to="TransformEditor/Scr/List/GUI/DragSizeG" method="OnDrag"]
+[connection signal="button_up" from="TransformEditor/Scr/List/GUI/DragSizeG" to="TransformEditor/Scr/List/GUI/DragSizeG" method="StopDragging"]
+[connection signal="value_changed" from="TransformEditor/Scr/List/GUI/DragSizeG/X" to="TransformEditor/Scr/List/GUI/DragSizeG" method="ValueChanged"]
+[connection signal="value_changed" from="TransformEditor/Scr/List/GUI/DragSizeG/Y" to="TransformEditor/Scr/List/GUI/DragSizeG" method="ValueChanged"]
+[connection signal="button_down" from="TransformEditor/Scr/List/GUI/DragPivotG" to="TransformEditor/Scr/List/GUI/DragPivotG" method="OnDrag"]
+[connection signal="button_up" from="TransformEditor/Scr/List/GUI/DragPivotG" to="TransformEditor/Scr/List/GUI/DragPivotG" method="StopDragging"]
+[connection signal="value_changed" from="TransformEditor/Scr/List/GUI/DragPivotG/X" to="TransformEditor/Scr/List/GUI/DragPivotG" method="ValueChanged"]
+[connection signal="value_changed" from="TransformEditor/Scr/List/GUI/DragPivotG/Y" to="TransformEditor/Scr/List/GUI/DragPivotG" method="ValueChanged"]
+[connection signal="button_down" from="TransformEditor/Scr/List/GUI/DragRotG" to="TransformEditor/Scr/List/GUI/DragRotG" method="OnDrag"]
+[connection signal="button_up" from="TransformEditor/Scr/List/GUI/DragRotG" to="TransformEditor/Scr/List/GUI/DragRotG" method="StopDragging"]
+[connection signal="value_changed" from="TransformEditor/Scr/List/GUI/DragRotG/X" to="TransformEditor/Scr/List/GUI/DragRotG" method="ValueChanged"]
+[connection signal="button_down" from="TransformEditor/Scr/List/GUI/DragPosP" to="TransformEditor/Scr/List/GUI/DragPosP" method="OnDrag"]
+[connection signal="button_up" from="TransformEditor/Scr/List/GUI/DragPosP" to="TransformEditor/Scr/List/GUI/DragPosP" method="StopDragging"]
+[connection signal="value_changed" from="TransformEditor/Scr/List/GUI/DragPosP/X" to="TransformEditor/Scr/List/GUI/DragPosP" method="ValueChanged"]
+[connection signal="value_changed" from="TransformEditor/Scr/List/GUI/DragPosP/Y" to="TransformEditor/Scr/List/GUI/DragPosP" method="ValueChanged"]
+[connection signal="button_down" from="TransformEditor/Scr/List/GUI/DragSizeP" to="TransformEditor/Scr/List/GUI/DragSizeP" method="OnDrag"]
+[connection signal="button_up" from="TransformEditor/Scr/List/GUI/DragSizeP" to="TransformEditor/Scr/List/GUI/DragSizeP" method="StopDragging"]
+[connection signal="value_changed" from="TransformEditor/Scr/List/GUI/DragSizeP/X" to="TransformEditor/Scr/List/GUI/DragSizeP" method="ValueChanged"]
+[connection signal="value_changed" from="TransformEditor/Scr/List/GUI/DragSizeP/Y" to="TransformEditor/Scr/List/GUI/DragSizeP" method="ValueChanged"]
+[connection signal="button_down" from="TransformEditor/Scr/List/GUI/DragRotP" to="TransformEditor/Scr/List/GUI/DragRotP" method="OnDrag"]
+[connection signal="button_up" from="TransformEditor/Scr/List/GUI/DragRotP" to="TransformEditor/Scr/List/GUI/DragRotP" method="StopDragging"]
+[connection signal="value_changed" from="TransformEditor/Scr/List/GUI/DragRotP/X" to="TransformEditor/Scr/List/GUI/DragRotP" method="ValueChanged"]
+[connection signal="button_down" from="TransformEditor/Scr/List/GUI/DragPivotP" to="TransformEditor/Scr/List/GUI/DragPivotP" method="OnDrag"]
+[connection signal="button_up" from="TransformEditor/Scr/List/GUI/DragPivotP" to="TransformEditor/Scr/List/GUI/DragPivotP" method="StopDragging"]
+[connection signal="value_changed" from="TransformEditor/Scr/List/GUI/DragPivotP/X" to="TransformEditor/Scr/List/GUI/DragPivotP" method="ValueChanged"]
+[connection signal="value_changed" from="TransformEditor/Scr/List/GUI/DragPivotP/Y" to="TransformEditor/Scr/List/GUI/DragPivotP" method="ValueChanged"]
+[connection signal="button_down" from="TransformEditor/Scr/List/GUI/DragPosC" to="TransformEditor/Scr/List/GUI/DragPosC" method="OnDrag"]
+[connection signal="button_up" from="TransformEditor/Scr/List/GUI/DragPosC" to="TransformEditor/Scr/List/GUI/DragPosC" method="StopDragging"]
+[connection signal="value_changed" from="TransformEditor/Scr/List/GUI/DragPosC/X" to="TransformEditor/Scr/List/GUI/DragPosC" method="ValueChanged"]
+[connection signal="value_changed" from="TransformEditor/Scr/List/GUI/DragPosC/Y" to="TransformEditor/Scr/List/GUI/DragPosC" method="ValueChanged"]
+[connection signal="button_down" from="TransformEditor/Scr/List/GUI/DragZoomC" to="TransformEditor/Scr/List/GUI/DragZoomC" method="OnDrag"]
+[connection signal="button_up" from="TransformEditor/Scr/List/GUI/DragZoomC" to="TransformEditor/Scr/List/GUI/DragZoomC" method="StopDragging"]
+[connection signal="value_changed" from="TransformEditor/Scr/List/GUI/DragZoomC/X" to="TransformEditor/Scr/List/GUI/DragZoomC" method="ValueChanged"]
+[connection signal="value_changed" from="TransformEditor/Scr/List/GUI/DragZoomC/Y" to="TransformEditor/Scr/List/GUI/DragZoomC" method="ValueChanged"]
+[connection signal="button_down" from="TransformEditor/Scr/List/GUI/DragRotC" to="TransformEditor/Scr/List/GUI/DragRotC" method="OnDrag"]
+[connection signal="button_up" from="TransformEditor/Scr/List/GUI/DragRotC" to="TransformEditor/Scr/List/GUI/DragRotC" method="StopDragging"]
+[connection signal="value_changed" from="TransformEditor/Scr/List/GUI/DragRotC/X" to="TransformEditor/Scr/List/GUI/DragRotC" method="ValueChanged"]
+[connection signal="toggled" from="TransformEditor/CheckBox" to="CinemaPreview" method="ToggleClipContents"]
+[connection signal="pressed" from="ElementExplorer/CopyElements" to="ElementExplorer" method="CopyE"]
+[connection signal="pressed" from="ElementExplorer/PasteElements" to="ElementExplorer" method="PasteE"]
+[connection signal="pressed" from="ElementExplorer/Edit" to="ElementExplorer" method="EditElement"]
+[connection signal="pressed" from="ElementExplorer/Delete" to="ElementExplorer" method="Delete"]
+[connection signal="item_selected" from="ElementExplorer/NewElements" to="ElementExplorer" method="NewElementPressed"]
+[connection signal="confirmed" from="ElementExplorer/FileDialog" to="ElementExplorer" method="_on_file_dialog_confirmed"]
+[connection signal="files_selected" from="ElementExplorer/FileDialog" to="ElementExplorer" method="FilesSelected"]
+[connection signal="close_requested" from="ElementExplorer/EditWindow" to="ElementExplorer" method="CloseWindow"]
+[connection signal="files_dropped" from="ElementExplorer/EditWindow" to="ElementExplorer" method="_FilesSelected"]
+[connection signal="pressed" from="ElementExplorer/EditWindow/ImageEdit/Click" to="ElementExplorer" method="SelectFiles"]
+[connection signal="text_changed" from="ElementExplorer/EditWindow/ImageEdit/OffsetX" to="ElementExplorer" method="_UpdatePreview"]
+[connection signal="text_changed" from="ElementExplorer/EditWindow/ImageEdit/OffsetY" to="ElementExplorer" method="_UpdatePreview"]
+[connection signal="text_changed" from="ElementExplorer/EditWindow/ImageEdit/SizeX" to="ElementExplorer" method="_UpdatePreview"]
+[connection signal="text_changed" from="ElementExplorer/EditWindow/ImageEdit/SizeY" to="ElementExplorer" method="_UpdatePreview"]
+[connection signal="text_changed" from="ElementExplorer/EditWindow/ImageEdit/ScaleX" to="ElementExplorer" method="_UpdatePreview"]
+[connection signal="text_changed" from="ElementExplorer/EditWindow/ImageEdit/ScaleY" to="ElementExplorer" method="_UpdatePreview"]
+[connection signal="item_selected" from="ElementExplorer/EditWindow/ImageEdit/StretchMode" to="ElementExplorer" method="_UpdatePreview"]
+[connection signal="item_selected" from="ElementExplorer/EditWindow/ImageEdit/BlendMode" to="ElementExplorer" method="_UpdatePreview"]
+[connection signal="pressed" from="ElementExplorer/EditWindow/ImageEdit/PixelMode" to="ElementExplorer" method="UpdatePreview"]
+[connection signal="pressed" from="ElementExplorer/EditWindow/AnimEdit/Click" to="ElementExplorer" method="SelectFiles"]
+[connection signal="text_changed" from="ElementExplorer/EditWindow/AnimEdit/Speed" to="ElementExplorer" method="_UpdatePreview"]
+[connection signal="text_changed" from="ElementExplorer/EditWindow/AnimEdit/FPS" to="ElementExplorer" method="_UpdatePreview"]
+[connection signal="text_changed" from="ElementExplorer/EditWindow/AnimEdit/ScaleX" to="ElementExplorer" method="_UpdatePreview"]
+[connection signal="text_changed" from="ElementExplorer/EditWindow/AnimEdit/ScaleY" to="ElementExplorer" method="_UpdatePreview"]
+[connection signal="pressed" from="ElementExplorer/EditWindow/AnimEdit/PixelMode" to="ElementExplorer" method="UpdatePreview"]
+[connection signal="item_selected" from="ElementExplorer/EditWindow/AnimEdit/BlendMode" to="ElementExplorer" method="_UpdatePreview"]
+[connection signal="pressed" from="ElementExplorer/EditWindow/VideoEdit/Click" to="ElementExplorer" method="SelectFiles"]
+[connection signal="pressed" from="ElementExplorer/EditWindow/VideoEdit/Loop" to="ElementExplorer" method="_UpdatePreview"]
+[connection signal="pressed" from="ElementExplorer/EditWindow/VideoEdit/Expand" to="ElementExplorer" method="_UpdatePreview"]
+[connection signal="text_changed" from="ElementExplorer/EditWindow/VideoEdit/OffsetX" to="ElementExplorer" method="_UpdatePreview"]
+[connection signal="text_changed" from="ElementExplorer/EditWindow/VideoEdit/OffsetY" to="ElementExplorer" method="_UpdatePreview"]
+[connection signal="text_changed" from="ElementExplorer/EditWindow/VideoEdit/SizeX" to="ElementExplorer" method="_UpdatePreview"]
+[connection signal="text_changed" from="ElementExplorer/EditWindow/VideoEdit/SizeY" to="ElementExplorer" method="_UpdatePreview"]
+[connection signal="text_changed" from="ElementExplorer/EditWindow/VideoEdit/ScaleX" to="ElementExplorer" method="_UpdatePreview"]
+[connection signal="text_changed" from="ElementExplorer/EditWindow/VideoEdit/ScaleY" to="ElementExplorer" method="_UpdatePreview"]
+[connection signal="pressed" from="ElementExplorer/EditWindow/CustomEdit/Click" to="ElementExplorer" method="SelectFiles"]
+[connection signal="pressed" from="ElementExplorer/EditWindow/ProgressEdit/Click" to="ElementExplorer/EditWindow/ProgressEdit/PreviewWindow" method="_on_click_pressed"]
+[connection signal="value_changed" from="ElementExplorer/EditWindow/ProgressEdit/OffsetX" to="ElementExplorer" method="_UpdatePreview"]
+[connection signal="value_changed" from="ElementExplorer/EditWindow/ProgressEdit/OffsetY" to="ElementExplorer" method="_UpdatePreview"]
+[connection signal="value_changed" from="ElementExplorer/EditWindow/ProgressEdit/NamePosX" to="ElementExplorer" method="_UpdatePreview"]
+[connection signal="value_changed" from="ElementExplorer/EditWindow/ProgressEdit/NamePosY" to="ElementExplorer" method="_UpdatePreview"]
+[connection signal="value_changed" from="ElementExplorer/EditWindow/ProgressEdit/NameSize" to="ElementExplorer" method="_UpdatePreview"]
+[connection signal="value_changed" from="ElementExplorer/EditWindow/ProgressEdit/ProgSize" to="ElementExplorer" method="_UpdatePreview"]
+[connection signal="value_changed" from="ElementExplorer/EditWindow/ProgressEdit/ProgPosX" to="ElementExplorer" method="_UpdatePreview"]
+[connection signal="value_changed" from="ElementExplorer/EditWindow/ProgressEdit/ProgPosY" to="ElementExplorer" method="_UpdatePreview"]
+[connection signal="pressed" from="ElementExplorer/EditWindow/ProgressEdit/ProgOn" to="ElementExplorer" method="_UpdatePreview"]
+[connection signal="pressed" from="ElementExplorer/EditWindow/ProgressEdit/NameOn" to="ElementExplorer" method="_UpdatePreview"]
+[connection signal="value_changed" from="ElementExplorer/EditWindow/ProgressEdit/SizeX" to="ElementExplorer" method="_UpdatePreview"]
+[connection signal="value_changed" from="ElementExplorer/EditWindow/ProgressEdit/SizeY" to="ElementExplorer" method="_UpdatePreview"]
+[connection signal="value_changed" from="ElementExplorer/EditWindow/ProgressEdit/ScaleX" to="ElementExplorer" method="_UpdatePreview"]
+[connection signal="value_changed" from="ElementExplorer/EditWindow/ProgressEdit/ScaleY" to="ElementExplorer" method="_UpdatePreview"]
+[connection signal="item_selected" from="ElementExplorer/EditWindow/ProgressEdit/Type" to="ElementExplorer" method="_UpdatePreview"]
+[connection signal="item_selected" from="ElementExplorer/EditWindow/ProgressEdit/Bar/Behavior" to="ElementExplorer" method="_UpdatePreview"]
+[connection signal="pressed" from="ElementExplorer/EditWindow/ProgressEdit/Bar/BorderColor/Edit" to="ElementExplorer" method="ColorPicker"]
+[connection signal="pressed" from="ElementExplorer/EditWindow/ProgressEdit/Bar/BorderColor/Apply" to="ElementExplorer/EditWindow/ProgressEdit/Bar/BorderColor/Apply" method="Apply"]
+[connection signal="pressed" from="ElementExplorer/EditWindow/ProgressEdit/Bar/FillColor/Edit" to="ElementExplorer" method="ColorPicker"]
+[connection signal="pressed" from="ElementExplorer/EditWindow/ProgressEdit/Bar/FillColor/Apply" to="ElementExplorer/EditWindow/ProgressEdit/Bar/FillColor/Apply" method="Apply"]
+[connection signal="value_changed" from="ElementExplorer/EditWindow/ProgressEdit/Bar/BorderWidth" to="ElementExplorer" method="_UpdatePreview"]
+[connection signal="value_changed" from="ElementExplorer/EditWindow/ProgressEdit/Ring/Radius" to="ElementExplorer" method="_UpdatePreview"]
+[connection signal="value_changed" from="ElementExplorer/EditWindow/ProgressEdit/Ring/HollowRadius" to="ElementExplorer" method="_UpdatePreview"]
+[connection signal="value_changed" from="ElementExplorer/EditWindow/ProgressEdit/Ring/Segments" to="ElementExplorer" method="_UpdatePreview"]
+[connection signal="value_changed" from="ElementExplorer/EditWindow/ProgressEdit/Ring/Margin" to="ElementExplorer" method="_UpdatePreview"]
+[connection signal="value_changed" from="ElementExplorer/EditWindow/ProgressEdit/Ring/Rotation" to="ElementExplorer" method="_UpdatePreview"]
+[connection signal="pressed" from="ElementExplorer/EditWindow/ProgressEdit/Ring/Color/Edit" to="ElementExplorer" method="ColorPicker"]
+[connection signal="pressed" from="ElementExplorer/EditWindow/ProgressEdit/Ring/Color/Apply" to="ElementExplorer/EditWindow/ProgressEdit/Ring/Color/Apply" method="Apply"]
+[connection signal="item_selected" from="ElementExplorer/EditWindow/ProgressEdit/Ring/Behavior" to="ElementExplorer" method="_UpdatePreview"]
+[connection signal="pressed" from="ElementExplorer/EditWindow/ProgressEdit/Wave/FillModulate/Edit" to="ElementExplorer" method="ColorPicker"]
+[connection signal="pressed" from="ElementExplorer/EditWindow/ProgressEdit/Wave/FillModulate/Apply" to="ElementExplorer/EditWindow/ProgressEdit/Wave/FillModulate/Apply" method="Apply"]
+[connection signal="pressed" from="ElementExplorer/EditWindow/ProgressEdit/Wave/RingColor/Edit" to="ElementExplorer" method="ColorPicker"]
+[connection signal="pressed" from="ElementExplorer/EditWindow/ProgressEdit/Wave/RingColor/Apply" to="ElementExplorer/EditWindow/ProgressEdit/Wave/RingColor/Apply" method="Apply"]
+[connection signal="pressed" from="ElementExplorer/EditWindow/ProgressEdit/Wave/FrontFill/Edit" to="ElementExplorer" method="ColorPicker"]
+[connection signal="pressed" from="ElementExplorer/EditWindow/ProgressEdit/Wave/FrontFill/Apply" to="ElementExplorer/EditWindow/ProgressEdit/Wave/FrontFill/Apply" method="Apply"]
+[connection signal="pressed" from="ElementExplorer/EditWindow/ProgressEdit/Wave/BackFill/Edit" to="ElementExplorer" method="ColorPicker"]
+[connection signal="pressed" from="ElementExplorer/EditWindow/ProgressEdit/Wave/BackFill/Apply" to="ElementExplorer/EditWindow/ProgressEdit/Wave/BackFill/Apply" method="Apply"]
+[connection signal="value_changed" from="ElementExplorer/EditWindow/ProgressEdit/Wave/RingWidth" to="ElementExplorer" method="_UpdatePreview"]
+[connection signal="value_changed" from="ElementExplorer/EditWindow/ProgressEdit/Wave/InnerOffset" to="ElementExplorer" method="_UpdatePreview"]
+[connection signal="value_changed" from="ElementExplorer/EditWindow/ProgressEdit/Wave/AmpMul" to="ElementExplorer" method="_UpdatePreview"]
+[connection signal="value_changed" from="ElementExplorer/EditWindow/ProgressEdit/Wave/FreqMul" to="ElementExplorer" method="_UpdatePreview"]
+[connection signal="value_changed" from="ElementExplorer/EditWindow/ProgressEdit/Progress" to="ElementExplorer" method="_UpdatePreview"]
+[connection signal="close_requested" from="ElementExplorer/EditWindow/ProgressEdit/PreviewWindow" to="ElementExplorer/EditWindow/ProgressEdit/PreviewWindow" method="_on_close_requested"]
+[connection signal="visibility_changed" from="ElementExplorer/EditWindow/ProgressEdit/PreviewWindow" to="ElementExplorer" method="_UpdatePreview"]
+[connection signal="text_changed" from="ElementExplorer/EditWindow/TextEdit/OffsetX" to="ElementExplorer" method="_UpdatePreview"]
+[connection signal="text_changed" from="ElementExplorer/EditWindow/TextEdit/OffsetY" to="ElementExplorer" method="_UpdatePreview"]
+[connection signal="text_changed" from="ElementExplorer/EditWindow/TextEdit/SizeX" to="ElementExplorer" method="_UpdatePreview"]
+[connection signal="text_changed" from="ElementExplorer/EditWindow/TextEdit/SizeY" to="ElementExplorer" method="_UpdatePreview"]
+[connection signal="text_changed" from="ElementExplorer/EditWindow/TextEdit/ScaleX" to="ElementExplorer" method="_UpdatePreview"]
+[connection signal="text_changed" from="ElementExplorer/EditWindow/TextEdit/ScaleY" to="ElementExplorer" method="_UpdatePreview"]
+[connection signal="pressed" from="ElementExplorer/EditWindow/Apply" to="ElementExplorer" method="ApplyEdit"]
+[connection signal="mouse_entered" from="EventPanel" to="EventPanel" method="Entered"]
+[connection signal="mouse_exited" from="EventPanel" to="EventPanel" method="Exited"]
+[connection signal="pressed" from="EventPanel/new" to="EventPanel/new" method="_on_pressed"]
+[connection signal="item_selected" from="EventPanel/new/EventSelecting" to="EventPanel" method="OnSelectNewEvent"]
+[connection signal="pressed" from="EventPanel/delete" to="EventPanel" method="Delete"]
+[connection signal="pressed" from="EventPanel/Save" to="." method="CallSavingDialog"]
+[connection signal="pressed" from="EventPanel/Load" to="." method="CallLoadingDialog"]
+[connection signal="pressed" from="EventPanel/Exit" to="." method="CallExitConfirmation"]
+[connection signal="pressed" from="EventPanel/copy" to="EventPanel" method="Copy"]
+[connection signal="pressed" from="EventPanel/paste" to="EventPanel" method="Paste"]
+[connection signal="pressed" from="EventPanel/rhythm" to="EventPanel" method="Rhythm"]
+[connection signal="pressed" from="EventPanel/TestPlay" to="EventPanel" method="TestPlay"]
+[connection signal="text_submitted" from="EventPanel/min" to="EventPanel" method="ConvertTimeToFrames"]
+[connection signal="text_submitted" from="EventPanel/sec" to="EventPanel" method="ConvertTimeToFrames"]
+[connection signal="text_submitted" from="EventPanel/frame" to="EventPanel" method="ConvertTimeToFrames"]
+[connection signal="close_requested" from="EventPanel/PhysicsCenter" to="EventPanel/PhysicsCenter" method="Close"]
+[connection signal="mouse_entered" from="EventPanel/PhysicsCenter/point/Move" to="EventPanel/PhysicsCenter/point/Move" method="entered"]
+[connection signal="mouse_exited" from="EventPanel/PhysicsCenter/point/Move" to="EventPanel/PhysicsCenter/point/Move" method="exited"]
+[connection signal="item_selected" from="EventPanel/PhysicsCenter/Panel/HitBoxEdit/Type" to="EventPanel/PhysicsCenter" method="HitBoxType"]
+[connection signal="pressed" from="EventPanel/PhysicsCenter/Panel/HitBoxEdit/PolygonEdit/add" to="EventPanel/PhysicsCenter" method="AddPoint"]
+[connection signal="pressed" from="EventPanel/PhysicsCenter/Panel/HitBoxEdit/PolygonEdit/del" to="EventPanel/PhysicsCenter" method="RemovePoint"]
+[connection signal="value_changed" from="EventPanel/PhysicsCenter/Panel/View" to="EventPanel/PhysicsCenter" method="ScaleView"]
+[connection signal="pressed" from="EventPanel/PhysicsCenter/Panel/Apply" to="EventPanel/PhysicsCenter" method="Apply"]
+[connection signal="close_requested" from="EventPanel/TextEditor" to="EventPanel/TextEditor" method="Close"]
+[connection signal="pressed" from="EventPanel/TextEditor/Done" to="EventPanel/TextEditor" method="Done"]
+[connection signal="canceled" from="EventPanel/ExitConfirmation" to="." method="Exit"]
+[connection signal="close_requested" from="EventPanel/ExitConfirmation" to="." method="CloseExitConfirmation"]
+[connection signal="confirmed" from="EventPanel/ExitConfirmation" to="." method="ConfirmSavingBeforeExiting"]
+[connection signal="item_selected" from="EventPanel/LFOEditor/Panel/WaveType" to="EventPanel/LFOEditor" method="WaveTypeSelected"]
+[connection signal="item_selected" from="EventPanel/LFOEditor/Panel/AddModifier" to="EventPanel/LFOEditor" method="AddModifier"]
+[connection signal="pressed" from="PropUnits/StringProp/Edit" to="PropUnits/StringProp" method="Edit"]
+[connection signal="pressed" from="PropUnits/BoolProp/Toggle" to="PropUnits/BoolProp" method="Confirm"]
+[connection signal="value_changed" from="PropUnits/NumberProp/Input" to="PropUnits/NumberProp" method="Confirm"]
+[connection signal="value_changed" from="PropUnits/IntProp/Input" to="PropUnits/IntProp" method="Confirm"]
+[connection signal="pressed" from="PropUnits/ElementProp/Select" to="PropUnits/ElementProp" method="Select"]
+[connection signal="pressed" from="PropUnits/ElementProp/Expand" to="PropUnits/ElementProp" method="Expand"]
+[connection signal="pressed" from="PropUnits/ElementProp/Element" to="PropUnits/ElementProp/Element" method="OnPressed"]
+[connection signal="pressed" from="PropUnits/ElementProp/Element/Edit" to="ElementExplorer" method="EditElementDirectly"]
+[connection signal="pressed" from="PropUnits/ElementProp/WriteFrame" to="ElementExplorer" method="WriteFrame"]
+[connection signal="toggled" from="PropUnits/ElementProp/TransformOnly" to="PropUnits/ElementProp" method="TransformOnly"]
+[connection signal="pressed" from="PropUnits/ColorProp/Indicator/Edit" to="ElementExplorer" method="ColorPicker"]
+[connection signal="pressed" from="PropUnits/ColorProp/Indicator/Apply" to="PropUnits/ColorProp" method="Apply"]
+[connection signal="pressed" from="PropUnits/ContentColorProp/Indicator/Edit" to="PropUnits/ContentColorProp" method="Edit"]
+[connection signal="pressed" from="PropUnits/ContentColorProp/Indicator/Apply" to="PropUnits/ContentColorProp" method="Apply"]
+[connection signal="pressed" from="PropUnits/TransformProp/Edit" to="CinemaPreview" method="EditTransform"]
+[connection signal="pressed" from="PropUnits/TransformProp/Write" to="CinemaPreview" method="Apply"]
+[connection signal="item_selected" from="PropUnits/BelongsToProp/Edit" to="PropUnits/BelongsToProp" method="Selected"]
+[connection signal="item_selected" from="PropUnits/ArchiveEventModeProp/Edit" to="PropUnits/ArchiveEventModeProp" method="Selected"]
+[connection signal="pressed" from="PropUnits/LFOProp" to="EventPanel/LFOEditor" method="Edit"]
+[connection signal="pressed" from="PropUnits/ThemeOverride" to="CustomTheme" method="ChooseTheme"]
+[connection signal="pressed" from="PropUnits/PhysicsBodyProp/Button" to="EventPanel" method="EditPhysics"]
+[connection signal="pressed" from="PropUnits/SpecialEventProp/Button" to="PropUnits/SpecialEventProp/Button" method="pressed"]
+[connection signal="file_selected" from="PropUnits/SpecialEventProp/FileDialog" to="EventPanel" method="EditSpecialEvent"]
+[connection signal="pressed" from="PropUnits/TweenControls" to="ControlWindow" method="Open"]
+[connection signal="close_requested" from="LoadDialog" to="." method="CloseLoadingDialog"]
+[connection signal="file_selected" from="LoadDialog" to="." method="FileConfirmed"]
+[connection signal="close_requested" from="SaveDialog" to="." method="CloseSavingDialog"]
+[connection signal="file_selected" from="SaveDialog" to="." method="_Save"]
+[connection signal="pressed" from="RecycleBinUnit/Del" to="RecycleBinUnit" method="Delete"]
+[connection signal="pressed" from="RecycleBinUnit/Restore" to="RecycleBinUnit" method="Restore"]
+[connection signal="pressed" from="RecycleEvents/Clear" to="." method="ClearBinEvents"]
+[connection signal="pressed" from="RecycleElements/Clear" to="." method="ClearBinElements"]
+[connection signal="focus_entered" from="Notes" to="." method="focus"]
+[connection signal="text_changed" from="Notes" to="Notes" method="_on_text_changed"]
+[connection signal="visibility_changed" from="ColorPicker" to="ElementExplorer" method="UpdatePreview"]
+[connection signal="pressed" from="ControlWindow/Apply" to="ControlWindow" method="Apply"]
+[connection signal="pressed" from="ControlWindow/Apply" to="ControlWindow" method="Close"]
+[connection signal="close_requested" from="CustomTheme" to="CustomTheme" method="Close"]
+[connection signal="files_selected" from="CustomTheme/Panel/FileDialog" to="CustomTheme" method="FilesSelected"]
+[connection signal="pressed" from="CustomTheme/Panel/Select" to="CustomTheme" method="_SelectImageForTheme"]
+[connection signal="pressed" from="CustomTheme/Panel/AddDeco" to="CustomTheme" method="AddDeco"]
+[connection signal="value_changed" from="CustomTheme/Panel/Rotation" to="CustomTheme" method="RotateDeco"]
+[connection signal="value_changed" from="CustomTheme/Panel/Size" to="CustomTheme" method="ScaleDeco"]
+[connection signal="pressed" from="CustomTheme/Panel/DeleteDeco" to="CustomTheme" method="DeleteDeco"]
+[connection signal="pressed" from="CustomTheme/Panel/EditDeco" to="CustomTheme" method="OpenDecoEdit"]
+[connection signal="pressed" from="CustomTheme/Panel/DupDeco" to="CustomTheme" method="DupDeco"]
+[connection signal="pressed" from="CustomTheme/Panel/Add" to="CustomTheme" method="AddTheme"]
+[connection signal="pressed" from="CustomTheme/Panel/ThemeDup" to="CustomTheme" method="Duplicate"]
+[connection signal="pressed" from="CustomTheme/Panel/Delete" to="CustomTheme" method="Delete"]
+[connection signal="pressed" from="CustomTheme/Panel/Explorer/Unit" to="CustomTheme/Panel/Explorer/Unit" method="Select"]
+[connection signal="pressed" from="CustomTheme/Panel/DecoExplorer/Unit" to="CustomTheme/Panel/DecoExplorer/Unit" method="Select"]
+[connection signal="value_changed" from="CustomTheme/Panel/PatchMargins/LMargin" to="CustomTheme" method="_AdjLinePos"]
+[connection signal="value_changed" from="CustomTheme/Panel/PatchMargins/RMargin" to="CustomTheme" method="_AdjLinePos"]
+[connection signal="value_changed" from="CustomTheme/Panel/PatchMargins/UMargin" to="CustomTheme" method="_AdjLinePos"]
+[connection signal="value_changed" from="CustomTheme/Panel/PatchMargins/BMargin" to="CustomTheme" method="_AdjLinePos"]
+[connection signal="value_changed" from="CustomTheme/Panel/AnchorOffsets/LOffset" to="CustomTheme" method="_AdjTextCase"]
+[connection signal="value_changed" from="CustomTheme/Panel/AnchorOffsets/ROffset" to="CustomTheme" method="_AdjTextCase"]
+[connection signal="value_changed" from="CustomTheme/Panel/AnchorOffsets/UOffset" to="CustomTheme" method="_AdjTextCase"]
+[connection signal="value_changed" from="CustomTheme/Panel/AnchorOffsets/BOffset" to="CustomTheme" method="_AdjTextCase"]
+[connection signal="item_selected" from="CustomTheme/Panel/HStretch" to="CustomTheme" method="_Update"]
+[connection signal="item_selected" from="CustomTheme/Panel/VStretch" to="CustomTheme" method="_Update"]
+[connection signal="value_changed" from="CustomTheme/Panel/PreviewScale" to="CustomTheme" method="Scale"]
+[connection signal="pressed" from="CustomTheme/Panel/Done" to="CustomTheme" method="Close"]
+[connection signal="pressed" from="CustomTheme/Panel/Apply" to="CustomTheme" method="Apply"]
+[connection signal="gui_input" from="CustomTheme/Panel/Move" to="CustomTheme" method="MoveDeco"]
+[connection signal="text_submitted" from="CustomTheme/Panel/Name" to="CustomTheme" method="ApplyThemeName"]
+[connection signal="close_requested" from="CustomTheme/DecoEditor" to="CustomTheme" method="CloseDecoEdit"]
+[connection signal="pressed" from="CustomTheme/DecoEditor/EditPanel/Image/Select" to="CustomTheme" method="_SelectImageForDeco"]
+[connection signal="pressed" from="CustomTheme/DecoEditor/EditPanel/Animation/Select" to="CustomTheme" method="SelectAnimForDeco"]
+[connection signal="toggled" from="CustomTheme/DecoEditor/EditPanel/Type" to="CustomTheme" method="SwitchType"]
+[connection signal="text_submitted" from="CustomTheme/DecoEditor/EditPanel/Name" to="CustomTheme" method="ApplyDecoName"]
+[connection signal="pressed" from="Markers/Button" to="Markers/Button" method="add"]
+[connection signal="mouse_entered" from="Markers/Button/marker/Move" to="Markers/Button/marker/Move" method="entered"]
+[connection signal="mouse_exited" from="Markers/Button/marker/Move" to="Markers/Button/marker/Move" method="exited"]
+[connection signal="pressed" from="Markers/Button2" to="Markers/Button2" method="add"]
+[connection signal="mouse_entered" from="Markers/Button2/marker/Move" to="Markers/Button2/marker/Move" method="entered"]
+[connection signal="mouse_exited" from="Markers/Button2/marker/Move" to="Markers/Button2/marker/Move" method="exited"]
+[connection signal="pressed" from="Markers/Button3" to="Markers/Button3" method="add"]
+[connection signal="mouse_entered" from="Markers/Button3/marker/Move" to="Markers/Button3/marker/Move" method="entered"]
+[connection signal="mouse_exited" from="Markers/Button3/marker/Move" to="Markers/Button3/marker/Move" method="exited"]
+[connection signal="pressed" from="Markers/Button4" to="Markers/Button4" method="add"]
+[connection signal="mouse_entered" from="Markers/Button4/marker/Move" to="Markers/Button4/marker/Move" method="entered"]
+[connection signal="mouse_exited" from="Markers/Button4/marker/Move" to="Markers/Button4/marker/Move" method="exited"]
+[connection signal="pressed" from="Markers/Button5" to="Markers/Button5" method="add"]
+[connection signal="mouse_entered" from="Markers/Button5/marker/Move" to="Markers/Button5/marker/Move" method="entered"]
+[connection signal="mouse_exited" from="Markers/Button5/marker/Move" to="Markers/Button5/marker/Move" method="exited"]
+[connection signal="pressed" from="Markers/Button6" to="Markers/Button6" method="add"]
+[connection signal="mouse_entered" from="Markers/Button6/marker/Move" to="Markers/Button6/marker/Move" method="entered"]
+[connection signal="mouse_exited" from="Markers/Button6/marker/Move" to="Markers/Button6/marker/Move" method="exited"]
+[connection signal="pressed" from="Markers/Button7" to="Markers/Button7" method="add"]
+[connection signal="mouse_entered" from="Markers/Button7/marker/Move" to="Markers/Button7/marker/Move" method="entered"]
+[connection signal="mouse_exited" from="Markers/Button7/marker/Move" to="Markers/Button7/marker/Move" method="exited"]
+[connection signal="pressed" from="Markers/Button8" to="Markers/Button8" method="add"]
+[connection signal="mouse_entered" from="Markers/Button8/marker/Move" to="Markers/Button8/marker/Move" method="entered"]
+[connection signal="mouse_exited" from="Markers/Button8/marker/Move" to="Markers/Button8/marker/Move" method="exited"]
+[connection signal="pressed" from="Markers/Delete/Button" to="Markers/Delete" method="_on_button_pressed"]
+[connection signal="pressed" from="Camera2D/test" to="." method="debug"]
+[connection signal="close_requested" from="EventGroupEditor" to="EventPanel" method="CloseGroupEditor"]
+[connection signal="close_requested" from="EventGroupEditor" to="EventPanel" method="EventGroupUnfocused"]
+[connection signal="focus_entered" from="EventGroupEditor" to="EventPanel" method="EventGroupFocused"]
+[connection signal="pressed" from="EventGroupEditor/Save" to="EventGroupEditor" method="SaveData"]
+[connection signal="pressed" from="EventGroupEditor/Load" to="EventGroupEditor" method="LoadData"]

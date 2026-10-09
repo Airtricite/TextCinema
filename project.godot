@@ -1,0 +1,48 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="TextCinema"
+run/main_scene="res://Scenes/main.tscn"
+config/features=PackedStringArray("4.3", "C#", "Mobile")
+run/low_processor_mode=true
+config/icon="res://icon.svg"
+
+[display]
+
+window/size/viewport_width=1920
+window/size/viewport_height=1080
+window/stretch/mode="viewport"
+
+[dotnet]
+
+project/assembly_name="TextCinema"
+
+[editor]
+
+movie_writer/mix_rate=8000
+movie_writer/mjpeg_quality=0.8
+movie_writer/movie_file="E:/Airtric/Desktop/Wander of Wonder无限之行/TextCinemaOutput/TextMovie.avi"
+
+[gui]
+
+theme/custom_font="res://Fonts/HarmonyOS_Sans_SC_Regular.ttf"
+
+[layer_names]
+
+2d_physics/layer_1="WorldBorder"
+2d_physics/layer_2="Line"
+2d_physics/layer_3="CamBorder"
+
+[rendering]
+
+renderer/rendering_method="mobile"
+anti_aliasing/quality/msaa_2d=2

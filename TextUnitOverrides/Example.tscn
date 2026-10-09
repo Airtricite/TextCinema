@@ -1,0 +1,56 @@
+[gd_scene load_steps=2 format=3 uid="uid://ckbefkxf0gp4h"]
+
+[ext_resource type="Texture2D" uid="uid://dfyo1sdvsqumi" path="res://icon.svg" id="1_7hkhb"]
+
+[node name="Example" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 295.0
+offset_bottom = 124.0
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_7hkhb")
+patch_margin_left = 16
+patch_margin_top = 18
+patch_margin_right = 14
+patch_margin_bottom = 13
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
+
+[node name="TextCase" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 17.0
+offset_top = 10.0
+offset_right = -12.0
+offset_bottom = -9.0
+metadata/_edit_use_anchors_ = true
+
+[node name="ReferenceRect" type="ReferenceRect" parent="TextCase"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+border_width = 3.5
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.932
+anchor_top = 1.0
+anchor_right = 0.932
+anchor_bottom = 1.0
+offset_left = -182.784
+offset_top = -43.105
+offset_right = -142.784
+offset_bottom = -13.105

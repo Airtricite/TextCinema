@@ -1,0 +1,58 @@
+[gd_scene load_steps=2 format=3 uid="uid://b14j7hvrmvl5o"]
+
+[ext_resource type="Script" path="res://Scripts/main.cs" id="1_doho3"]
+
+[node name="Main" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_doho3")
+
+[node name="Edit" type="Button" parent="."]
+layout_mode = 0
+anchor_left = 0.213542
+anchor_top = 0.477778
+anchor_right = 0.507292
+anchor_bottom = 0.760185
+theme_override_font_sizes/font_size = 146
+text = "📝Edit"
+metadata/_edit_use_anchors_ = true
+
+[node name="Play" type="Button" parent="."]
+layout_mode = 0
+anchor_left = 0.530729
+anchor_top = 0.477778
+anchor_right = 0.828125
+anchor_bottom = 0.760185
+theme_override_font_sizes/font_size = 146
+text = "▶Play"
+metadata/_edit_use_anchors_ = true
+
+[node name="title" type="Label" parent="."]
+layout_mode = 0
+anchor_left = 0.135417
+anchor_top = 0.0722222
+anchor_right = 0.86875
+anchor_bottom = 0.437963
+theme_override_font_sizes/font_size = 231
+text = "Text Cinema"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="PlayMenu" type="FileDialog" parent="."]
+title = "Open a File"
+initial_position = 1
+size = Vector2i(303, 180)
+ok_button_text = "Open"
+file_mode = 0
+access = 2
+filters = PackedStringArray("*.tmov")
+use_native_dialog = true
+
+[connection signal="pressed" from="Edit" to="." method="Edit"]
+[connection signal="pressed" from="Play" to="." method="Play"]
+[connection signal="file_selected" from="PlayMenu" to="." method="FileChosen"]

@@ -1,0 +1,43 @@
+[gd_scene load_steps=2 format=3 uid="uid://kcleyms48uqa"]
+
+[ext_resource type="Script" path="res://Scripts/element.cs" id="1_hlgs4"]
+
+[node name="Element" type="Button"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = 6.0
+offset_top = 2.0
+offset_right = 163.0
+offset_bottom = 165.0
+grow_horizontal = 0
+text = "[ProgressBar]
+"
+script = ExtResource("1_hlgs4")
+
+[node name="Edit" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = 5.0
+offset_right = 55.0
+offset_bottom = 36.0
+grow_vertical = 0
+text = "Edit"
+
+[node name="euid" type="Marker2D" parent="."]
+visible = false
+position = Vector2(1, 0)
+
+[node name="ReferenceRect" type="ReferenceRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+border_color = Color(0.988235, 0.92549, 0.192157, 1)
+border_width = 4.5

@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://ccgdv8i5ukuu7"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_ikont"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fr1kl"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"default",
+"speed": 24.0
+}]
+
+[node name="AnimNode" type="AnimatedSprite2D"]
+material = SubResource("CanvasItemMaterial_ikont")
+sprite_frames = SubResource("SpriteFrames_fr1kl")
